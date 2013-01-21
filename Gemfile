@@ -59,6 +59,7 @@ gem 'hot_body', '0.1.1'
 gem 'json_output_helper', '0.1.0'
 gem 'dynamic_models'
 gem 'capistrano'
+gem 'rvm-capistrano'
 gem 'unicorn'
 # third party SAS solution for monitoring performance
 group :production do
