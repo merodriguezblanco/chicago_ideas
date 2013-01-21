@@ -122,6 +122,7 @@ namespace :deploy do
 
   task :symlink_database_and_system_folder do
     run "ln -nfs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/mongoid.yml #{current_path}/config/mongoid.yml"
   end
 
   task :invoke_rake do
