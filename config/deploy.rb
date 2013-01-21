@@ -44,6 +44,7 @@ set :branch, "master"
 # Deploy via github
 set :deploy_via, :remote_cache
 set :deploy_to, "/var/rails/#{application}"
+set :repository_cache, "cached_copy"
 
 # We have all components of the app on the same server
 server domain, :app, :web, :db, :primary => true
