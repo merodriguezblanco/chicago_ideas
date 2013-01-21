@@ -14,7 +14,7 @@ gem 'devise', '1.5.3'
 gem 'httparty'
 gem 'GeoRuby'
 gem 'spatial_adapter'
-gem 'formtastic'
+gem 'formtastic', '2.2.1'
 gem 'haml'
 # pagination
 gem 'kaminari'

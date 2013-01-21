@@ -85,7 +85,7 @@ GEM
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
-    diff-lcs (1.2.0)
+    diff-lcs (1.1.3)
     doc_raptor (0.3.2)
       httparty (>= 0.7.0)
     dynamic_models (0.5.0)
@@ -234,18 +234,17 @@ GEM
       json (~> 1.4)
     redcarpet (2.2.2)
     riddle (1.5.4)
-    rspec (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-      rspec-mocks (~> 2.0.1)
-    rspec-core (2.0.1)
-    rspec-expectations (2.0.1)
-      diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-    rspec-rails (2.0.1)
-      rspec (~> 2.0.0)
+    rspec-core (2.12.2)
+    rspec-expectations (2.12.1)
+      diff-lcs (~> 1.1.3)
+    rspec-mocks (2.12.1)
+    rspec-rails (2.12.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     ruby-hmac (0.4.0)
     ruby_parser (3.1.1)
       sexp_processor (~> 4.1)
@@ -325,7 +324,7 @@ DEPENDENCIES
   flying-sphinx (= 0.8.5)!
   fog
   foreigner
-  formtastic
+  formtastic (= 2.2.1)
   haml
   hot_body (= 0.1.1)
   hpricot
