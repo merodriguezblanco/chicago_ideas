@@ -52,7 +52,7 @@ gem 'omniauth-facebook'
 gem 'jquery-rails'
 
 # css framework
-gem 'bourbon'
+gem 'bourbon', :git => 'git@github.com:thoughtbot/bourbon.git', :ref => 'e88945ad8a3f7f40c04319ee4b7214e7bed0e2f7'
 
 # my gems
 gem 'hot_body', '0.1.1'
