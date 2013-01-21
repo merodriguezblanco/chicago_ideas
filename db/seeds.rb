@@ -30,11 +30,11 @@ t = TalkBrand.new(:name => "Edison Talk")
 t.id = EDISON_TALK_BRAND_ID
 t.save!
 
-Topic.create!(:name => "Politics", :description => "add a description here")
-Topic.create!(:name => "Innovation", :description => "add a description here")
-Topic.create!(:name => "Entrepreneurship", :description => "add a description here")
-Topic.create!(:name => "Technology", :description => "add a description here")
-Topic.create!(:name => "Society", :description => "add a description here")
+Track.create!(:name => "Politics", :description => "add a description here")
+Track.create!(:name => "Innovation", :description => "add a description here")
+Track.create!(:name => "Entrepreneurship", :description => "add a description here")
+Track.create!(:name => "Technology", :description => "add a description here")
+Track.create!(:name => "Society", :description => "add a description here")
 
 Day.create!(:date => "2012-10-8".to_date, :name => "Meta Narrative for Day 1")
 Day.create!(:date => "2012-10-9".to_date, :name => "Meta Narrative for Day 2")

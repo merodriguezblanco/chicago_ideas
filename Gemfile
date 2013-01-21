@@ -1,5 +1,3 @@
-source 'http://gemcutter.org'
-source 'http://gems.github.com'
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.10'
@@ -8,11 +6,11 @@ gem 'rails', '3.1.10'
 gem 'mysql2'
 gem 'foreigner'
 # mongodb is perfect for logging and analytics which we care less about
-gem "mongoid"
+gem "mongoid", '2.4.2'
 gem "bson_ext"
 
 # Bundle the extra gems:
-gem 'devise'
+gem 'devise', '1.5.3'
 gem 'httparty'
 gem 'GeoRuby'
 gem 'spatial_adapter'
@@ -90,8 +88,8 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'cucumber-rails'
   gem 'capybara'
+  # gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'launchy'
   # for devise generators

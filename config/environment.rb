@@ -10,4 +10,4 @@ require 'pp'
 # Initialize the rails application
 CraigsAdmin::Application.initialize!
 
-DocRaptor.api_key DOC_RAPTOR_KEY
+DocRaptor.api_key 'tl8fHT64wxhkLUTW0Y6V'
