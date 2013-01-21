@@ -17,5 +17,7 @@ db/sphinx/*
 db/sphinx
 config/development.sphinx.conf
 config/development.sphinx.conf
-db/sphinx/*	
+db/sphinx/*
 db/sphinxconfig/development.sphinx.conf
+config/database.yml
+config/mongoid.yml
