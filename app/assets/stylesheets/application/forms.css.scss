@@ -1,3 +1,5 @@
+@import "bourbon";
+
 input, textarea {
   font-size: 15px;
   color:$grey;
@@ -41,9 +43,9 @@ input[type="submit"] {
   width:auto !important;
 }
 
-abbr { 
+abbr {
   margin-left: 4px;
-  text-decoration: none !important; 
+  text-decoration: none !important;
   border: none !important;
 }
 
@@ -51,7 +53,7 @@ abbr {
   font-size: 13px;
   font-weight: 300;
   color:$greyLight;
-  display: block; 
+  display: block;
   margin-bottom: 15px;
 }
 
@@ -70,37 +72,37 @@ abbr {
     margin:0;
     padding:0;
     list-style:none;
-    
+
     li {
       display:block;
       margin:0 0 20px 0;
       padding:0;
     }
-    
+
     li.boolean {
-      
+
       input#user_remember_me {
 
       }
-      
+
     }
-    
+
   } // end ol
-  
+
   abbr {
     color:red;
     text-decoration:none;
     margin-right:3px;
   }
-  
+
   input {
     width: 300px;
   }
-  
+
   #devise_links a {
     margin-right: 10px;
   }
-  
+
 }
 
 
@@ -111,37 +113,37 @@ abbr {
 ******************************************************/
 #dd_login_form {
   padding: 20px 0 10px 0!important;
-  width: 240px !important; 
+  width: 240px !important;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  
+
   li {
     display: block;
-    margin-bottom: 13px; 
+    margin-bottom: 13px;
     padding: 0 20px !important;
   }
-  
+
   label {
     font-size: 12px;
     color:$greyLight;
     margin-bottom: 2px;
     font-weight: 500;
   }
-  
+
   input[type="text"], input[type="password"] {
     width: 185px;
     padding: 6px;
     font-size: 13px;
   }
-  
+
   #dd_submit {
     padding-bottom: 13px !important;
     margin-bottom: 0px;
     label {
-      display: inline; 
+      display: inline;
       line-height: 30px;
     }
   }
@@ -208,14 +210,14 @@ a.fb_connected {
     padding: 6px;
     margin-right: 12px;
   }
-  
+
 }
 ul#nav_s_results {
   display: block;
   list-style: none;
   margin: 0;
   padding: 0;
-  
+
   li {
     display: block;
     margin: 0 0 5px 0;
@@ -237,19 +239,19 @@ ul.form_list {
   margin: 20px 0;
   padding: 0;
   list-style: none;
-  
+
   > li {
     display: block;
     margin: 0 0 25px 0;
     padding: 0;
-    
+
     label {
       font-size: 13px;
       font-weight: 700;
       display: block;
       margin-bottom: 5px;
     }
-    
+
     .block {
       display: block;
       margin-bottom: 12px;
@@ -265,30 +267,30 @@ ul.form_list {
       zoom: 1;
       clear: both;
     }
-    
+
     span.light {
       display: block;
       font-size: 13px;
       color: $greyLight;
       font-weight: 300;
     }
-    
+
   } // end li
-  
+
   li:after {
     display: table;
     content: "";
     zoom: 1;
     clear: both;
   }
-  
+
 }
 
 ul.check_list {
   display: block;
   margin: 20px 0;
   list-style: none;
-  
+
   li {
     display: inline;
     margin: 0 0 10px 0;
@@ -328,12 +330,12 @@ li.s_links {
       display: block;
       margin: 0 !important;
       padding: 0 !important;
-      
+
       li {
         display: block;
         margin: 0 0 20px 0 !important;
         padding: 0 !important;
-        
+
         label, legend span {
           font-size: 13px;
           font-weight: 700;
@@ -351,12 +353,12 @@ li.s_links {
    ol {
       display: block;
       margin: 0 0 20px 0;
-     li { 
-       margin: 0 0 10px 0 !important; 
+     li {
+       margin: 0 0 10px 0 !important;
        padding: 0;
-       
+
         input[type="checkbox"] {
-          display: inline; 
+          display: inline;
         }
         label {
           font-weight: inherit;
@@ -383,13 +385,13 @@ li.s_links {
 }
 
 fieldset.buttons {
-  margin: 20px 0 0 0; 
+  margin: 20px 0 0 0;
   display: block;
   clear: both;
 }
-fieldset.buttons, fieldset.buttons ol, fieldset.buttons li { 
-  padding: 0; 
-  margin: 20px 0 0 0; 
+fieldset.buttons, fieldset.buttons ol, fieldset.buttons li {
+  padding: 0;
+  margin: 20px 0 0 0;
 }
 
 
@@ -404,17 +406,17 @@ fieldset.buttons, fieldset.buttons ol, fieldset.buttons li {
   legend {
     display: none;
   }
-  
+
   ol {
     display: block;
     list-style: none;
     margin: 0;
     padding: 0;
-    
+
     li {
       display: inline;
       margin-right: 10px;
-      
+
       input[type="submit"] {
         line-height: 30px;
       }
@@ -463,8 +465,8 @@ a.expandable_search {
   display: block;
   margin: 0 0 40px 0;
   border-bottom: 1px solid #ccc;
-  padding: 0 0 0px 0; 
-  
+  padding: 0 0 0px 0;
+
   span {
     display: block;
     clear: both;
@@ -478,7 +480,7 @@ a.expandable_search {
     font-size: 19px;
     margin-bottom: 25px;
     color: #232323;
-    
+
     label {
         display: block;
         clear: both;
@@ -487,7 +489,7 @@ a.expandable_search {
 }
 .v_lists {
     display: block;
-    margin-bottom: 45px;     
+    margin-bottom: 45px;
 }
 legend {
     float:left;
@@ -497,9 +499,9 @@ legend {
     font-size: 15px;
     margin-bottom: 10px;
 }
-  
+
 .checkbox_list ul {
-     margin-top: 20px !important;   
+     margin-top: 20px !important;
 }
 .checkbox_list li {
    padding: 0;
@@ -533,14 +535,14 @@ form .error {
 
   input, textarea {
     border: 1px solid red;
-    background: #f9ebeb;    
-  }  
-    
+    background: #f9ebeb;
+  }
+
   p.inline-errors {
       display: block;
       margin: 0 0 10px 0;
       padding: 0;
-      color: red;    
+      color: red;
       font-weight: 400;
   }
 }
@@ -586,7 +588,7 @@ img.bhsi_logo{
     margin: 0 20px 20px 0;
     float: left;
   }
-  
+
   img.think_chicago_rahm{
     margin-top: 25px;
     border:5px solid #EBEBEB;
