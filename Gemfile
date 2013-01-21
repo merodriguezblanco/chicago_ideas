@@ -1,3 +1,5 @@
+source 'http://gemcutter.org'
+source 'http://gems.github.com'
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.10'
@@ -40,7 +42,7 @@ gem 'dalli'
 
 # search via sphinx deamon
 gem 'thinking-sphinx', '2.0.10'
-gem 'flying-sphinx',   '0.6.1'
+gem 'flying-sphinx',   '0.8.5', :git => 'git://github.com/flying-sphinx/flying-sphinx.git'
 
 # social
 gem 'koala'
@@ -58,7 +60,8 @@ gem 'bourbon'
 gem 'hot_body', '0.1.1'
 gem 'json_output_helper', '0.1.0'
 gem 'dynamic_models'
-
+gem 'capistrano'
+gem 'unicorn'
 # third party SAS solution for monitoring performance
 group :production do
   gem 'newrelic_rpm'
