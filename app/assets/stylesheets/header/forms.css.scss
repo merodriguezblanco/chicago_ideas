@@ -1,6 +1,7 @@
+@import bourbon;
 // buttons styles, which are used very commonly
-a.button, 
-a:link.button, 
+a.button,
+a:link.button,
 a:visited.button,
 input[type="submit"],
 input[type="button"] {
@@ -18,8 +19,8 @@ input[type="button"] {
   color: #FFFFFF;
 }
 
-a.button.hover, 
-a.button.active, 
+a.button.hover,
+a.button.active,
 a:hover.button,
 input[type="submit"]:hover,
 input[type="button"]:hover {
@@ -27,7 +28,7 @@ input[type="button"]:hover {
   @include linear-gradient(top, $navigation_highlight 0%, $navigation_highlight 60%);
 }
 
-a.button.active, 
+a.button.active,
 a:active.button,
 input[type="submit"]:active,
 input[type="button"]:active {
@@ -43,7 +44,7 @@ form.formtastic {
   iframe {
     display:none;
   }
-  
+
   fieldset {
     border: 0;
 
@@ -142,7 +143,7 @@ form.formtastic {
       &.text > label {
         line-height: 25px;
       }
-      
+
       p.inline-hints {
         margin: 0 0 0 150px;
         color: #AAAAAA;
@@ -165,7 +166,7 @@ form.formtastic {
     }
 
     > ol > li.nested {
-      @include border-radius;
+      @include border-radius(1px);
       background: #F5F5F5;
       padding: 8px 6px 4px;
       position: relative;
@@ -239,7 +240,7 @@ form.formtastic {
       top: -38px;
     }
   }
-    
+
 }
 
 form.formtastic fieldset.buttons, .fake_buttons {
@@ -258,7 +259,7 @@ form.formtastic fieldset.buttons, .fake_buttons {
     margin-left: 10px;
     img {
       float:left;
-      margin-top: 5px; 
+      margin-top: 5px;
       display:none;
     }
   }
