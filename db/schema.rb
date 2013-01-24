@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124080630) do
+ActiveRecord::Schema.define(:version => 20130124085046) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -608,21 +608,21 @@ ActiveRecord::Schema.define(:version => 20130124080630) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "email",                                         :default => "",    :null => false
+    t.string   "encrypted_password",             :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                                 :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "authentication_token",                                     :null => false
-    t.boolean  "admin",                                 :default => false, :null => false
-    t.boolean  "speaker",                               :default => false, :null => false
-    t.boolean  "staff",                                 :default => false, :null => false
-    t.boolean  "volunteer",                             :default => false, :null => false
+    t.string   "authentication_token",                                             :null => false
+    t.boolean  "admin",                                         :default => false, :null => false
+    t.boolean  "speaker",                                       :default => false, :null => false
+    t.boolean  "staff",                                         :default => false, :null => false
+    t.boolean  "volunteer",                                     :default => false, :null => false
     t.string   "name"
     t.string   "phone"
     t.integer  "fb_uid"
@@ -632,7 +632,7 @@ ActiveRecord::Schema.define(:version => 20130124080630) do
     t.string   "title"
     t.text     "bio"
     t.string   "twitter_screen_name"
-    t.string   "permalink",              :limit => 150
+    t.string   "permalink",                      :limit => 150
     t.string   "portrait_file_name"
     t.string   "portrait_content_type"
     t.integer  "portrait_file_size"
@@ -644,8 +644,13 @@ ActiveRecord::Schema.define(:version => 20130124080630) do
     t.string   "portrait2_content_type"
     t.integer  "portrait2_file_size"
     t.datetime "portrait2_updated_at"
-    t.boolean  "newsletter",                            :default => true,  :null => false
-    t.boolean  "published",                             :default => false, :null => false
+    t.boolean  "newsletter",                                    :default => true,  :null => false
+    t.boolean  "published",                                     :default => false, :null => false
+    t.string   "sponsor_agreement_file_name"
+    t.string   "sponsor_agreement_content_type"
+    t.integer  "sponsor_agreement_file_size"
+    t.datetime "sponsor_agreement_updated_at"
+    t.boolean  "sponsor_agreement_signed",                      :default => false
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"

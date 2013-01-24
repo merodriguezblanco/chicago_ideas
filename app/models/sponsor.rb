@@ -11,7 +11,7 @@ class Sponsor < ActiveRecord::Base
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
   has_many :sponsor_users 
-  
+   
   validates :sponsorship_level_id, :presence => true
   validates :name, :presence => true, :uniqueness => true
   validate :validate_logo_dimensions, :if => "logo.present?", :unless => "errors.any?"
@@ -39,6 +39,8 @@ class Sponsor < ActiveRecord::Base
   def accepts_file_upload?
     true
   end
+  
+  has_attached_file :sponsor_argreement
   
   has_attached_file :logo,
     :styles => { 
