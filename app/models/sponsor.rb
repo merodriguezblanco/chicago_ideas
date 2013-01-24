@@ -10,6 +10,7 @@ class Sponsor < ActiveRecord::Base
   
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
+  has_many :sponsor_users 
   
   validates :sponsorship_level_id, :presence => true
   validates :name, :presence => true, :uniqueness => true

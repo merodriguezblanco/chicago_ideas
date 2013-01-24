@@ -1,4 +1,6 @@
 CraigsAdmin::Application.routes.draw do
+  devise_for :sponsor_users
+
   # the API                                                                          (http://api.domain.com/)
   # ---------------------------------------------------------------------------------------------------------
   namespace :api do
