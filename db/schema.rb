@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124085046) do
+ActiveRecord::Schema.define(:version => 20130125035253) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -472,9 +472,9 @@ ActiveRecord::Schema.define(:version => 20130124085046) do
   add_index "sponsor_users", ["reset_password_token"], :name => "index_sponsor_users_on_reset_password_token"
 
   create_table "sponsors", :force => true do |t|
-    t.string   "name",                 :limit => 150, :null => false
+    t.string   "name",                  :limit => 150,                                :null => false
     t.text     "description"
-    t.integer  "sponsorship_level_id",                :null => false
+    t.integer  "sponsorship_level_id",                                                :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -484,6 +484,13 @@ ActiveRecord::Schema.define(:version => 20130124085046) do
     t.string   "url"
     t.boolean  "featured"
     t.integer  "sort"
+    t.integer  "ciw_talks_tickets"
+    t.integer  "labs_tickets"
+    t.integer  "vip_reception_tickets"
+    t.integer  "edison_talk_tickets"
+    t.integer  "concert_tickets"
+    t.decimal  "sponsorship_amount",                   :precision => 10, :scale => 0
+    t.boolean  "primary_contact"
   end
 
   add_index "sponsors", ["sponsorship_level_id"], :name => "index_sponsors_on_sponsorship_level_id"

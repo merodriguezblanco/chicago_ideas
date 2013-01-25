@@ -3,5 +3,102 @@
   = f.input :description 
   = f.input :url
   = f.input :sponsorship_level, :include_blank => false, :as => :select, :collection => SponsorshipLevel.by_sort.all
-  = f.input :logo, :as => :file, :hint => "logo image must be #{@model.logo_dimensions_string}"
+  #sliders
+    - f.object.ciw_talks_tickets ||= 0
+    - f.object.labs_tickets ||= 0
+    - f.object.vip_reception_tickets ||= 0
+    - f.object.edison_talk_tickets ||= 0
+    - f.object.concert_tickets||= 0
+    .row{style: "margin-bottom: 0;"}
+      .label &nbsp;
+      .span{style: "font-size: 16px"} used
+      .span.center{style: "font-size: 16px"} total
+    .row{style: "margin-top: 0;"}
+      .label CIW Talks Tickets
+      .span.center
+        = "0"
+        &nbsp;&nbsp;/ 
+      .span= f.input :ciw_talks_tickets, label: false
+      .span.slide
+        .slider      
+    .row
+      .label Labs Tickets
+      .span.center
+        = "0"
+        &nbsp;&nbsp;/ 
+      .span= f.input :labs_tickets, label: false
+      .span.slide
+        .slider
+    .row
+      .label VIP Reception Tickets
+      .span.center
+        = "0"
+        &nbsp;&nbsp;/ 
+      .span= f.input :vip_reception_tickets, label: false
+      .span.slide
+        .slider
+    .row
+      .label Edison Talk Tickets
+      .span.center
+        = "0"
+        &nbsp;&nbsp;/ 
+      .span= f.input :edison_talk_tickets, label: false
+      .span.slide
+        .slider
+    .row
+      .label Concert Tickets
+      .span.center
+        = "0"
+        &nbsp;&nbsp;/
+      .span= f.input :concert_tickets, label: false
+      .span.slide
+        .slider
+  .row{style: "margin-bottom: 20px;"}
+    .label Sponsorship Amount
+    .span= f.input :sponsorship_amount, label: false
+  .row= f.input :primary_contact
+  .row
+    .label Logo
+    .span= f.object.logo_file_name
+    .span= f.input :logo, as: :file, label: false, :hint => "logo image must be #{@model.logo_dimensions_string}"
   = f.input :featured
+  
+  
+:javascript
+  $(document).ready(function(){
+    $( ".slider" ).each(function() {
+      val = $(this).closest('.row').find('input').val();
+      $(this).slider({
+        range: "min",
+        value: val,
+        min: 0,
+        max: 500,
+        slide: function( event, ui ) {
+          $(this).closest('.row').find('input').val(ui.value);
+        }
+      });
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+    
+    $("#sliders input").change(function(){
+      val=$(this).val();
+      if(val > 500){
+        val=500;
+        $(this).val(val);
+      }
+      
+      if(isNaN(val)){
+        val = 0;
+        $(this).val(val);
+      }
+      $(this).closest('.row').find('.slider').slider({
+        range: "min",
+        value: val,
+        min: 0,
+        max: 500,
+        slide: function( event, ui ) {
+          $(this).closest('.row').find('input').val(ui.value);
+        }
+      });
+    });
+  });

@@ -48,11 +48,7 @@ class Sponsor < ActiveRecord::Base
     },
     :convert_options => { 
         :full => "-quality 70", 
-    },
-    
-    :path => "sponsor-logos/:style/:id.:extension"
-
-
+    }
   
   # the hash representing this model that is returned by the api
   def api_attributes
@@ -93,7 +89,7 @@ class Sponsor < ActiveRecord::Base
 
     # i know its strict, but otherwise people will upload images without appreciation for aspect ratio
     def validate_logo_dimensions
-      dimensions = Paperclip::Geometry.from_file(logo.to_file(:original))
+      dimensions = Paperclip::Geometry.from_file(logo.queued_for_write[:original].path)
       errors.add(:logo, "Image dimensions were #{dimensions.width.to_i}x#{dimensions.height.to_i}, they must be exactly #{logo_dimensions_string}") unless dimensions.width == LOGO_WIDTH && dimensions.height == LOGO_HEIGHT
     end
 

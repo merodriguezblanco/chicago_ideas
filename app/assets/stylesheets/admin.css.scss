@@ -347,3 +347,55 @@ a:hover {
   border: 1px dashed #999;
   height: 40px;
 }
+
+.center{
+  text-align: center;
+}
+
+.span{
+  float: left;
+}
+
+.row{
+  width: 100%;
+  float: left;
+  margin: 10px 0; 
+  label, .label{
+    float: left;
+    color: #111111;
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    width: 180px;
+    margin-left: 6px;
+  }
+  .label{line-height: 40px;}
+  .ez-checkbox{
+    float: left;
+  }
+}
+
+#sliders{
+  float: left;
+  .slide{
+    width: 280px;
+    margin: 10px 0 0 30px;
+  }
+  li{
+    float: left;
+    width: 40px;
+    input{
+      width: 40px;
+      height: 14px;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+  .span{
+    line-height: 40px;
+    font-size: 18px;
+    min-width: 50px;
+  }
+  
+}

@@ -1,12 +1,20 @@
 Paperclip::Attachment.default_options.update({
-  :storage => :fog,
-  :fog_credentials => {
-    :aws_access_key_id => AWS_ACCESS_KEY_ID,
-    :aws_secret_access_key => AWS_SECRET_ACCESS_KEY,
-    :provider => 'AWS',
-    :region => 'us-east-1',
+#  :storage => :fog,
+#  :fog_credentials => {
+#    :aws_access_key_id => "AKIAJSWT7MY44B6EV2TQ",
+#    :aws_secret_access_key => "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",
+#    :provider => 'AWS',
+#    :region => 'us-east-1',
+#  },
+#  :fog_public    => true,
+#  :fog_directory => "chicagoideas_development",
+#  :fog_host      => "http://s3.amazonaws.com",
+#  :path          => ":class/:attachment/:id/:style/:filename"
+  :storage        => :s3,
+  :s3_credentials => {
+    :access_key_id     => "AKIAJSWT7MY44B6EV2TQ",
+    :secret_access_key => "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",
+    :bucket            => "chicagoideas_development"
   },
-  :fog_public => true,
-  :fog_directory => S3_NAMESPACE,
-  :fog_host => "https://#{S3_CLOUDFRONT_DOMAIN}"
+  :path           => ":class/:attachment/:id/:style/:filename"
 })

@@ -186,23 +186,23 @@ Forms = {
   form_success: function(form, status){
     
     // if rails sent back a redirect instruction, then we redirect
-    if ( status.status == "redirect" ){
+    if ( status && status.status == "redirect" ){
       window.location = status.to;
       return;
     } 
   
     // if we recieved a message then display it
-    if ( status.notice ){
+    if ( status && status.notice ){
       Utility.flash_notice(status.notice);
     }
   
     // if we created or added an object then look for a table to update
-    if ( status.created ){
+    if ( status && status.created ){
       var $new_row = $(status.html).effect("pulsate", { times:3 }, 500);
       // insert the HTML
       $('#'+status.created.types+' tr:first').after($new_row);
     }
-    if ( status.updated ){
+    if ( status && status.updated ){
       var selector = '#'+status.updated.types+' tr['+status.updated.type+'="'+status.updated.id+'"]';
       var $new_row = $(status.html).effect("pulsate", { times:3 }, 500);
       // insert the HTML
@@ -210,7 +210,7 @@ Forms = {
     }
   
     // if there was an error, then re-display the html (if there is html to display)
-    if ( status.status == "error" && status.html ){
+    if ( status && status.status == "error" && status.html ){
       
       // if this is a form with an instruction to reload, pass that instruction to the new form
       var $dialog_contents = $(status.html);
@@ -225,7 +225,7 @@ Forms = {
       Forms.create_custom_controls();
       return;
     
-    } else if ( status.status == "error" ){
+    } else if ( status && status.status == "error" ){
       // if there is no html, then close the dialog and assume there was a message
       Utility.close_dialog();
       return;
@@ -243,7 +243,7 @@ Forms = {
     }
 
     // if it was a success, and we are not redirecting, then close the dialog (if we are in one)
-    if ( status.status == "ok" ) {
+    if ( status && status.status == "ok" ) {
       Utility.close_dialog();
       return;
     }
