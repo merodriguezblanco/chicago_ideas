@@ -14,7 +14,7 @@
   %p= @sponsor.name
 
   %h4 Description
-  %p= @sponsor.description_html
+  %p= @sponsor.description_html if @sponsor.description
 
   %h4 Sponsorship Level
   %p= @sponsor.sponsorship_level.name
