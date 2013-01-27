@@ -32,6 +32,10 @@ class Admin::UsersController < Admin::AdminController
 
   # MEMBER ACTIONS
   # ---------------------------------------------------------------------------------------------------------
+  def new
+    @model = new_model(default_model)
+  end
+  
   def show
     @section_title = 'Detail'
     @user = User.find(params[:id])
