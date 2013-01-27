@@ -1,0 +1,7 @@
+= render 'collection_controls'
+
+= semantic_form_for [:admin, @model], :html => { :multipart => true, :target => 'iframe_upload' } do |f|
+  = render partial: 'fields', locals: {f: f}
+  = f.buttons do
+    = f.commit_button
+  %iframe{:name => 'iframe_upload'}

@@ -36,6 +36,10 @@ class Admin::UsersController < Admin::AdminController
     @model = new_model(default_model)
   end
   
+  def edit
+    @model = fetch_model
+  end
+  
   def show
     @section_title = 'Detail'
     @user = User.find(params[:id])

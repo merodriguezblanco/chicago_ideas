@@ -1,7 +1,6 @@
 = render 'collection_controls'
 
 - content_for :top_links do
-  = new_model_link User
   = icon_link_to "add user", new_admin_user_path, 'plusthick'
   = export_model_link User, "csv"
  

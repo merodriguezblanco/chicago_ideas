@@ -6,5 +6,5 @@
   %td.speaker= user.speaker? ? 'yes' : 'no'
   %td.staff= user.staff? ? 'yes' : 'no'
   %td.options
-    = edit_model_link user
+    = icon_link_to 'edit', edit_admin_user_path(user), 'pencil'
     = delete_model_link user
