@@ -376,6 +376,10 @@ a:hover {
   }
 }
 
+.w_100{
+  width: 100%;
+}
+
 #sliders{
   float: left;
   .slide{
@@ -398,4 +402,31 @@ a:hover {
     min-width: 50px;
   }
   
+}
+
+#admin_users_page{
+  .row{
+    .label{width: 150px;}
+    .right{
+      width: 740px;
+      label{
+        width: 100%;
+        font-size: 14px
+      }
+      .hint{
+        color: #AAAAAA;
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
+  }
+  
+  ol li{
+    width: 100%;
+    float: left;
+    .ez-radio{
+      float: left;
+    }
+  }
+  li.cancel{display: none;}
 }

@@ -3,7 +3,7 @@
   %td.email= user.email
   %td.title= user.title
   %td.admin= user.admin? ? 'yes' : 'no'
-  %td.speaker= user.speaker? ? 'yes' : 'no'
+  %td.speaker= user.is_speaker? ? 'yes' : 'no'
   %td.staff= user.staff? ? 'yes' : 'no'
   %td.options
     = icon_link_to 'edit', edit_admin_user_path(user), 'pencil'

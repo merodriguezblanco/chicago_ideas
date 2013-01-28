@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125035253) do
+ActiveRecord::Schema.define(:version => 20130128021535) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -459,7 +459,7 @@ ActiveRecord::Schema.define(:version => 20130125035253) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.integer  "sponsor"
+    t.integer  "sponsor_id"
     t.string   "title"
     t.string   "phone"
     t.boolean  "newsletters_subscription"
@@ -627,9 +627,9 @@ ActiveRecord::Schema.define(:version => 20130125035253) do
     t.string   "last_sign_in_ip"
     t.string   "authentication_token",                                             :null => false
     t.boolean  "admin",                                         :default => false, :null => false
-    t.boolean  "speaker",                                       :default => false, :null => false
+    t.boolean  "is_speaker",                                    :default => false, :null => false
     t.boolean  "staff",                                         :default => false, :null => false
-    t.boolean  "volunteer",                                     :default => false, :null => false
+    t.boolean  "is_volunteer",                                  :default => false, :null => false
     t.string   "name"
     t.string   "phone"
     t.integer  "fb_uid"
@@ -658,6 +658,8 @@ ActiveRecord::Schema.define(:version => 20130125035253) do
     t.integer  "sponsor_agreement_file_size"
     t.datetime "sponsor_agreement_updated_at"
     t.boolean  "sponsor_agreement_signed",                      :default => false
+    t.boolean  "is_sponsor"
+    t.boolean  "is_member"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
@@ -666,11 +668,11 @@ ActiveRecord::Schema.define(:version => 20130125035253) do
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["fb_access_token"], :name => "index_users_on_fb_access_token"
   add_index "users", ["fb_uid"], :name => "index_users_on_fb_uid"
+  add_index "users", ["is_speaker"], :name => "index_users_on_speaker"
+  add_index "users", ["is_volunteer"], :name => "index_users_on_volunteer"
   add_index "users", ["permalink"], :name => "index_users_on_permalink"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
-  add_index "users", ["speaker"], :name => "index_users_on_speaker"
   add_index "users", ["staff"], :name => "index_users_on_staff"
-  add_index "users", ["volunteer"], :name => "index_users_on_volunteer"
 
   create_table "venues", :force => true do |t|
     t.string   "name",                :limit => 100,                   :null => false

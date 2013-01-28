@@ -56,15 +56,26 @@ class User < ActiveRecord::Base
   # this random password will be sent to the welcome email, so we can notify the user of it
   attr_accessor :temporary_password
   
-  attr_accessor :is_admin_created
+  attr_accessor :is_admin_created, :role
   
   # devise modules
   devise :database_authenticatable, :registerable, :token_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable 
          
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :title, :bio, :twitter_screen_name, :newsletter, :portrait, :portrait2, :quotes_attributes, :year_ids
-
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :title, 
+                  :bio, :twitter_screen_name, :newsletter, :portrait, :portrait2, 
+                  :quotes_attributes, :year_ids, :role
+  HINT={admin: "Super Admins access full admin and can simulate other admin users.",
+        sponsor: "Sponsor Admins can access their respective sponsor portals.",
+        speaker: "Speakers can access Speaker portal and be associated with talks.",
+        volunteer: "Volunteers can access Speaker portal.",
+        member: "Members can access Member portal."}
+  ROLES={"Super Admin<br><div class='hint'>#{HINT[:admin]}</span>".html_safe => "admin", 
+         "Sponsor Admin<br><div class='hint'>#{HINT[:sponsor]}</span>".html_safe => "is_sponsor",
+         "Speaker<br><div class='hint'>#{HINT[:speaker]}</span>".html_safe => "is_speaker",
+         "Volunteer<br><div class='hint'>#{HINT[:volunteer]}</span>".html_safe => "is_volunteer",
+         "Member<br><div class='hint'>#{HINT[:member]}</span>".html_safe => "is_member"}
   # validators
   validates :email, :email => true, :presence => true, :uniqueness => true
   validates :name, :presence => true
@@ -251,6 +262,13 @@ class User < ActiveRecord::Base
     {:title => self.name, :description => self.bio.present? ? self.bio[0..100] : "", :image => self.portrait(:thumb)}
   end
   
+  def top_role
+    return 'admin' if admin
+    return 'is_sponsor' if is_sponsor
+    return 'is_speaker' if is_speaker
+    return 'is_volunteer' if is_volunteer
+    return 'is_member' if is_member
+  end
   
   private 
 
