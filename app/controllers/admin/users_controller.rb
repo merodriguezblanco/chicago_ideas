@@ -61,9 +61,6 @@ class Admin::UsersController < Admin::AdminController
   # the admin area is allowed to update these protected attributes
   def pre_create(user)
     eval("user.#{params[:user][:role]}=true") unless params[:user][:role].blank?
-#    user.admin = params[:user][:role]
-#    user.speaker = params[:user][:speaker]
-#    user.staff = params[:user][:staff]
     # when creating users, we assign them a temporary password and send it to them
     user.temporary_password = Devise.friendly_token[0,8]
     user.is_admin_created = true
@@ -72,9 +69,6 @@ class Admin::UsersController < Admin::AdminController
 
   def pre_update(user)
     eval("user.#{params[:user][:role]}=true") unless params[:user][:role].blank?
-#    user.admin = params[:user][:admin]
-#    user.speaker = params[:user][:speaker]
-#    user.staff = params[:user][:staff]
     user
   end
 
