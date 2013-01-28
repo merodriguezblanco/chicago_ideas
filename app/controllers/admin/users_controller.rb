@@ -44,7 +44,34 @@ class Admin::UsersController < Admin::AdminController
     @section_title = 'Detail'
     @user = User.find(params[:id])
   end
+  
+  def create   
+    @parent = parent_model
+    @model = new_model(params[model_name])
+    @model = pre_create(@model)
+       
+    if @model.errors.empty? and @model.save
+      redirect_to admin_users_path, notice: "#{@model.class.name.titlecase} was successfully created."
+    else
+      render :new
+    end
 
+  end
+  
+  def update
+    @parent = parent_model
+    @model = fetch_model
+
+    @model = pre_update(@model)
+    
+    if @model.errors.empty? and @model.update_attributes(params[model_name])
+      # allows for some basic controler specific functionality without redefining the create method
+      redirect_to admin_users_path, notice: "#{@model.class.name.titlecase} was successfully updated."
+    else
+      render :edit
+    end
+
+  end
   # edit password form
   def edit_password
     @field_template = 'password'
@@ -68,7 +95,14 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def pre_update(user)
-    eval("user.#{params[:user][:role]}=true") unless params[:user][:role].blank?
+    unless params[:user][:role].blank?
+      user.admin = false
+      user.is_sponsor = false
+      user.is_speaker = false
+      user.is_volunteer = false
+      user.is_member = false  
+      eval("user.#{params[:user][:role]}=true")
+    end
     user
   end
 
