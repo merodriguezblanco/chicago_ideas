@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128021535) do
+ActiveRecord::Schema.define(:version => 20130129022001) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -490,7 +490,6 @@ ActiveRecord::Schema.define(:version => 20130128021535) do
     t.integer  "edison_talk_tickets"
     t.integer  "concert_tickets"
     t.decimal  "sponsorship_amount",                   :precision => 10, :scale => 0
-    t.boolean  "primary_contact"
   end
 
   add_index "sponsors", ["sponsorship_level_id"], :name => "index_sponsors_on_sponsorship_level_id"
