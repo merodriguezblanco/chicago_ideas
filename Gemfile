@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.10'
 gem 'aws-sdk', '~> 1.3.4'
+gem 'nested_form'
 # our database of choice for key constrained, transaction enforced critical business data
 gem 'mysql2'
 gem 'foreigner'

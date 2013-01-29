@@ -2,12 +2,29 @@
 = f.inputs do
   = f.input :email
   = f.input :name
+  .row
+    .label Staff?
+    .right.span{style: "margin-top: 10px;"}
+      = f.input :staff, label: false, hint: "Staff will appear on the about us page"
   .row{style: "margin-bottom: 20px;"}
     .label Special Priviledges
     .right.span
-      = f.input :role, as: :radio, label: false,collection: User::ROLES, :hint => "Super Admins access full admin and can simulate other admin users"
+      = f.input :role, as: :radio, label: false,collection: User::ROLES
+      #admin_password.switcher.span.pink_bg{class: "#{'hidden' unless f.object.role == 'admin'}"}
+        .label{style: "width: 300px"} Super Admin creation password
+        .span= f.input :creation_password, as: :password, label: false
+      #sponsor_user_form.switcher.span.yellow_bg{class: "#{'hidden' unless f.object.role == 'is_sponsor'}"}
+        = f.semantic_fields_for :sponsor_user do |su_f|
+          .row
+            .label Sponsor
+            .span=su_f.select :sponsor_id, options_from_collection_for_select(Sponsor.all, :id, :name), prompt: "Choose from Sponsors..."
+          .row
+            .label Phone
+            .span= su_f.input :phone, label: false
+          .row
+            .label Primary Contact?
+            .span{style: "margin-top: 10px;"}= su_f.input :primary_contact
   = f.input :years, :as => :check_boxes, :member_label => Proc.new { |year| year.id.to_s }
-  = f.input :staff, :hint => "staff will appear on the about us page"
   = f.input :title 
   = f.input :bio, :hint => "bios accept basic markdown formatting"
   = f.input :twitter_screen_name 
@@ -23,4 +40,12 @@
   $(document).ready(function(){
     $('.ez-radio').removeClass('ez-selected');
     $("input[value=#{f.object.role}]").closest(".ez-radio").addClass('ez-selected');
+    $('.ez-radio').click(function(){
+      $('.switcher').addClass('hidden');
+      if($(this).find('input').val()=='admin'){
+        $("#admin_password").removeClass("hidden");
+      }else if($(this).find('input').val()=='is_sponsor'){
+        $("#sponsor_user_form").removeClass("hidden");
+      }
+    });
   });

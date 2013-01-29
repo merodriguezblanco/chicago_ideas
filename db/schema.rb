@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129022001) do
+ActiveRecord::Schema.define(:version => 20130129030143) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -446,30 +446,20 @@ ActiveRecord::Schema.define(:version => 20130129022001) do
   end
 
   create_table "sponsor_users", :force => true do |t|
-    t.string   "email",                                   :default => "", :null => false
-    t.string   "encrypted_password",       :limit => 128, :default => "", :null => false
-    t.string   "reset_password_token"
-    t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                           :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
     t.integer  "sponsor_id"
+    t.integer  "user_id"
     t.string   "title"
     t.string   "phone"
     t.boolean  "newsletters_subscription"
     t.boolean  "primary_contact"
+    t.string   "sponsor_agreement_file_name"
+    t.string   "sponsor_agreement_content_type"
+    t.integer  "sponsor_agreement_file_size"
+    t.datetime "sponsor_agreement_updated_at"
+    t.boolean  "sponsor_agreement_signed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "sponsor_users", ["email"], :name => "index_sponsor_users_on_email"
-  add_index "sponsor_users", ["reset_password_token"], :name => "index_sponsor_users_on_reset_password_token"
 
   create_table "sponsors", :force => true do |t|
     t.string   "name",                  :limit => 150,                                :null => false
@@ -614,21 +604,21 @@ ActiveRecord::Schema.define(:version => 20130129022001) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                         :default => "",    :null => false
-    t.string   "encrypted_password",             :limit => 128, :default => "",    :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                 :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "authentication_token",                                             :null => false
-    t.boolean  "admin",                                         :default => false, :null => false
-    t.boolean  "is_speaker",                                    :default => false, :null => false
-    t.boolean  "staff",                                         :default => false, :null => false
-    t.boolean  "is_volunteer",                                  :default => false, :null => false
+    t.string   "authentication_token",                                     :null => false
+    t.boolean  "admin",                                 :default => false, :null => false
+    t.boolean  "is_speaker",                            :default => false, :null => false
+    t.boolean  "staff",                                 :default => false, :null => false
+    t.boolean  "is_volunteer",                          :default => false, :null => false
     t.string   "name"
     t.string   "phone"
     t.integer  "fb_uid"
@@ -638,7 +628,7 @@ ActiveRecord::Schema.define(:version => 20130129022001) do
     t.string   "title"
     t.text     "bio"
     t.string   "twitter_screen_name"
-    t.string   "permalink",                      :limit => 150
+    t.string   "permalink",              :limit => 150
     t.string   "portrait_file_name"
     t.string   "portrait_content_type"
     t.integer  "portrait_file_size"
@@ -650,13 +640,8 @@ ActiveRecord::Schema.define(:version => 20130129022001) do
     t.string   "portrait2_content_type"
     t.integer  "portrait2_file_size"
     t.datetime "portrait2_updated_at"
-    t.boolean  "newsletter",                                    :default => true,  :null => false
-    t.boolean  "published",                                     :default => false, :null => false
-    t.string   "sponsor_agreement_file_name"
-    t.string   "sponsor_agreement_content_type"
-    t.integer  "sponsor_agreement_file_size"
-    t.datetime "sponsor_agreement_updated_at"
-    t.boolean  "sponsor_agreement_signed",                      :default => false
+    t.boolean  "newsletter",                            :default => true,  :null => false
+    t.boolean  "published",                             :default => false, :null => false
     t.boolean  "is_sponsor"
     t.boolean  "is_member"
   end

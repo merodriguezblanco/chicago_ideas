@@ -356,6 +356,9 @@ a:hover {
   float: left;
 }
 
+.hidden{
+  display: none;
+}
 .row{
   width: 100%;
   float: left;
@@ -404,6 +407,16 @@ a:hover {
   
 }
 
+.pink_bg{
+  background: #EAD9D9;
+  padding: 3px 10px;
+}
+
+.yellow_bg{
+  background: #F7F8BC;
+  padding: 3px 10px;
+}
+
 #admin_users_page{
   .row{
     .label{width: 150px;}
@@ -417,6 +430,16 @@ a:hover {
         color: #AAAAAA;
         font-size: 12px;
         font-weight: normal;
+      }
+      #user_staff_input{
+        label{
+          margin-left: 0;
+          color: #fff;
+        }
+        p.inline-hints{
+          left: 195px;
+          text-align: left;
+        }
       }
     }
   }

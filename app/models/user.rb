@@ -12,31 +12,31 @@ class User < ActiveRecord::Base
   PORTRAIT2_HEIGHT = 400
   
   # we have a polymorphic relationship with notes
-  has_many :notes, :as => :asset
-  
-  
   has_many :speakers, :dependent => :destroy
   has_many :years, :through => :speakers
-  
-  
+  has_many :notes, :as => :asset  
   has_many :performances, :foreign_key => :speaker_id
   has_many :chapters, :through => :performances
   
   has_many :event_speakers, :foreign_key => :speaker_id
   has_many :events, :through => :event_speakers
+  has_many :quotes
   
-  has_one :volunteer
+  
+  has_one :volunteer, :dependent => :destroy
   has_one :community_partner_application
   has_one :affiliate_event_application
   has_one :bhsi_application
+  has_one :sponsor_user, :dependent => :destroy
+  has_one :member
   
-  has_many :quotes
   accepts_nested_attributes_for :quotes, :allow_destroy => true
-
+  accepts_nested_attributes_for :sponsor_user, :allow_destroy => true
+  
   # useful scopes
   scope :admin, :conditions => { :admin => true }
-  scope :speaker, :conditions => { :speaker => true }
-  scope :volunteer, :conditions => { :volunteer => true }
+  scope :speaker, :conditions => { "is_speaker" => true }
+  scope :volunteer, :conditions => { "is_volunteer" => true }
   scope :staff, :conditions => { :staff => true }
   
   scope :current, joins(:years).where("years.id = #{DateTime.now.year}")
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   # this random password will be sent to the welcome email, so we can notify the user of it
   attr_accessor :temporary_password
   
-  attr_accessor :is_admin_created, :role
+  attr_accessor :is_admin_created, :role, :creation_password
   
   # devise modules
   devise :database_authenticatable, :registerable, :token_authenticatable,
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :title, 
                   :bio, :twitter_screen_name, :newsletter, :portrait, :portrait2, 
-                  :quotes_attributes, :year_ids, :role
+                  :quotes_attributes, :year_ids, :role, :sponsor_user_attributes
   HINT={admin: "Super Admins access full admin and can simulate other admin users.",
         sponsor: "Sponsor Admins can access their respective sponsor portals.",
         speaker: "Speakers can access Speaker portal and be associated with talks.",
@@ -168,7 +168,7 @@ class User < ActiveRecord::Base
   def access_tags
     tags = []
     tags << 'admin' if admin?
-    tags << 'speaker' if speaker?
+    tags << 'speaker' if is_speaker?
     tags << 'staff' if staff?
     tags
   end
@@ -270,6 +270,7 @@ class User < ActiveRecord::Base
     return 'is_member' if is_member
   end
   
+  after_save :create_role_association
   private 
 
     # i know its strict, but otherwise people will upload images without appreciation for aspect ratio
@@ -283,5 +284,11 @@ class User < ActiveRecord::Base
       dimensions = Paperclip::Geometry.from_file(portrait2.to_file(:full))
       errors.add(:portrait2, "Image dimensions were #{dimensions.width.to_i}x#{dimensions.height.to_i}, they must be exactly #{portrait2_dimensions_string}") unless dimensions.width == PORTRAIT2_WIDTH && dimensions.height == PORTRAIT2_HEIGHT
     end
-
+    
+    def create_role_association
+      case top_role
+        when 'is_speaker'
+          self.speakers.create(year_id: DateTime.now.year) unless self.years.map(&:id).include?(DateTime.now.year)
+      end
+    end
 end

@@ -87,21 +87,31 @@ class Admin::UsersController < Admin::AdminController
   
   # the admin area is allowed to update these protected attributes
   def pre_create(user)
-    eval("user.#{params[:user][:role]}=true") unless params[:user][:role].blank?
+    role =params[:user][:role]
+    eval("user.#{role}=true") unless role.blank?
     # when creating users, we assign them a temporary password and send it to them
     user.temporary_password = Devise.friendly_token[0,8]
     user.is_admin_created = true
+    if role == 'admin'
+      password = params[:user][:creation_password] || ""
+      user.errors.add(:creation_password, "wrong password") if password != "Fandango32@!"
+    end
     user
   end
 
   def pre_update(user)
-    unless params[:user][:role].blank?
+    role = params[:user][:role]
+    unless role.blank?
       user.admin = false
       user.is_sponsor = false
       user.is_speaker = false
       user.is_volunteer = false
       user.is_member = false  
-      eval("user.#{params[:user][:role]}=true")
+      eval("user.#{role}=true")
+    end
+    if role == 'admin'
+      password = params[:user][:creation_password] || ""
+      user.errors.add(:creation_password, "wrong password") if password != "Fandango32@!"
     end
     user
   end
@@ -111,12 +121,12 @@ class Admin::UsersController < Admin::AdminController
 
   # a list of users who are also administrators
   def administrators
-    @users = User.admin.search_sort_paginate(params)
+    @users = User.admins.search_sort_paginate(params)
   end
 
   # a list of users who are also staff members
   def staff
-    @users = User.staff.search_sort_paginate(params)
+    @users = User.staffs.search_sort_paginate(params)
   end
 
   # a list of users who are also speakers

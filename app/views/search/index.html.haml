@@ -46,7 +46,7 @@
                     .img_frame
                       = image_tag(result.search_attributes[:image])
                   - if result.kind_of? User
-                    - if result.speaker?
+                    - if result.is_speaker?
                       %span{:class => "r_label"} Speaker
                     - elsif result.staff?
                       %span{:class => "r_label"} Team
@@ -60,7 +60,7 @@
                       #{result.search_attributes[:description]}
                       - if result.user.staff?
                         = link_to "read more", team_member_path(result.user)
-                      - elsif result.user.speaker?
+                      - elsif result.user.is_speaker?
                         = link_to "read more", speaker_path(result.user)
                     - else
                       #{result.search_attributes[:description]}...
@@ -69,7 +69,7 @@
                       - elsif result.kind_of? User
                         - if result.staff?
                           = link_to "read more", team_member_path(result)
-                        - elsif result.speaker?
+                        - elsif result.is_speaker?
                           = link_to "read more", speaker_path(result)
                       - elsif result.kind_of? Chapter
                         = link_to "read more", video_path(result)
