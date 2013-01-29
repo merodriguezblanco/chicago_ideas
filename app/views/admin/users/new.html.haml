@@ -1,5 +1,5 @@
 = render 'collection_controls'
-- @model.sponsor_user || @model.build_sponsor_user
+
 = semantic_nested_form_for [:admin, @model], :html => { :multipart => true } do |f|
   %h3 Create a New User
   = render partial: 'fields', locals: {f: f}
