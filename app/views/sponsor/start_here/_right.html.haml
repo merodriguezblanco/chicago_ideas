@@ -1,0 +1,4 @@
+.row
+  .title Primary Contact Person
+  %br
+  .span=select_tag :contact, options_from_collection_for_select(@sponsor.users, :id, :name)

@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   has_one :affiliate_event_application
   has_one :bhsi_application
   has_one :sponsor_user, :dependent => :destroy
+  has_one :sponsor, through: :sponsor_user
   has_one :member
   
   accepts_nested_attributes_for :quotes, :allow_destroy => true

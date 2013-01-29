@@ -1,7 +1,5 @@
 CraigsAdmin::Application.routes.draw do
   
-  devise_for :sponsor_users
-
   # the API                                                                          (http://api.domain.com/)
   # ---------------------------------------------------------------------------------------------------------
   namespace :api do
@@ -536,9 +534,12 @@ CraigsAdmin::Application.routes.draw do
   end
   
   namespace :sponsor do
-    root :to => "info#index"
-    get "info/index"
-    match "info" => "info#index"  
+    root :to => "start_here#index"
+    resources :start_here, only: [:index] do
+      member do
+        put :update
+      end
+    end
   end
 
 end

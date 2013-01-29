@@ -363,7 +363,7 @@ a:hover {
   width: 100%;
   float: left;
   margin: 10px 0; 
-  label, .label{
+  label, .label, .title{
     float: left;
     color: #111111;
     display: block;
@@ -374,6 +374,11 @@ a:hover {
     margin-left: 6px;
   }
   .label{line-height: 40px;}
+  .title{
+    font-size: 16px;
+    width: auto;
+    margin-right: 20px;
+   }
   .ez-checkbox{
     float: left;
   }
@@ -452,4 +457,15 @@ a:hover {
     }
   }
   li.cancel{display: none;}
+}
+
+
+.left-column{
+  float: left;
+  width: 450px;
+}
+
+.right-column{
+  float: left;
+  width: 500;
 }

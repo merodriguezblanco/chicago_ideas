@@ -1,0 +1,8 @@
+.row
+  .span
+    .title Sponsorship Level:
+  .span= @sponsor.sponsorship_level.name
+.row
+  = f.inputs do
+    .row
+      .span=f.input :logo, as: :file, label: "EPS logo"

@@ -1,2 +1,0 @@
-module Sponsor::InfoHelper
-end
