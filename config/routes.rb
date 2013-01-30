@@ -79,6 +79,7 @@ CraigsAdmin::Application.routes.draw do
     collection do
       # actions
       post :newsletter
+      get :end_simulate
     end
     member do
       # pages
@@ -90,7 +91,8 @@ CraigsAdmin::Application.routes.draw do
   # user account page
   match 'dashboard' => 'users#dashboard', :as => 'user_root'
   # authentication for the website, uses Devise and Omniauth for facebook and twitter connect
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
+                                       :sessions => "sessions" }
 
   # forms we capture data from
   resources :volunteers, :only => [:new, :create]
@@ -512,6 +514,7 @@ CraigsAdmin::Application.routes.draw do
         get :administrators
         get :staff
         get :speakers
+        get :end_simulate
       end
       member do
         # pages
@@ -523,7 +526,6 @@ CraigsAdmin::Application.routes.draw do
         get :edit_password
         put :update_password
         get :simulate
-        get :end_simulate
       end
       resources :export
         collection do

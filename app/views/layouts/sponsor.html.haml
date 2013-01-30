@@ -7,9 +7,9 @@
     = stylesheet_link_tag 'admin_print', :media => "print"
     = javascript_include_tag :admin
     = csrf_meta_tag
- 
+
   %body.admin{:id => body_id, :class => body_class}
-  
+
     #header_container
       #header
         = link_to '', sponsor_root_path, :id => :logo
@@ -19,11 +19,14 @@
           = link_to 'Book Tickets', "", :class => active_for_controller('sponsor/tickets')
           = link_to 'Events Calendar', "", :class => active_for_controller('sponsor/event')
 
-        
+
         #account_links
           = icon_link_to 'my account', "#", 'person', :icon_set => 'light'
           = icon_link_to 'sign out', destroy_user_session_path, 'extlink', :icon_set => 'light'
-  
+          - if current_simulate_user
+            |
+            = icon_link_to "End simulate", end_simulate_users_path, 'locked'
+
     #content_container
       #content_navigation
         = yield(:content_navigation)
@@ -41,13 +44,13 @@
           = yield
           .clr
       .clr
-  
-    #flash_helper= flash_helper  
-  
+
+    #flash_helper= flash_helper
+
     #dialog_loading{:style => "display:none"}= image_tag 'admin/loader.gif', :id => 'dialog_loading'
     #dialog{:style => "display:none"}
       .backdrop
       .dialog_position
         .dialog_container
           .dialog_contents
-    
+

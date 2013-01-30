@@ -72,17 +72,11 @@ class Admin::UsersController < Admin::AdminController
     else
       flash[:alert] = "You do not have permission"
     end
-    redirect_to admin_root_url
-  end
-
-  def end_simulate
-    if current_simulate_user && current_simulate_user.user.admin?
-      sign_out(current_user)
-      sign_in(:user, current_simulate_user.user, :bypass => true)
-      sign_out(current_simulate_user)
-      flash[:notice] = "End simulating user..."
+    if @new_user.is_sponsor?
+      redirect_to sponsor_root_url
+    else
+      redirect_to admin_root_url
     end
-    redirect_to admin_root_url
   end
 
   def update

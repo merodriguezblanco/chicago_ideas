@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
-  
+
   before_filter :authenticate_user!, :only => [:index, :dashboard, :disconnect_facebook, :disconnect_twitter]
-  
+
   # cache rendered versions of these pages
   before_filter :cache_rendered_page, :only => [:list_speakers, :speaker, :list_team_members, :team_member]
-  
+
   # the users account homepage
   def dashboard
     @meta_data = {:page_title => "Chicago Ideas Week | Dashboard", :og_image => "", :og_title => "Chicago Ideas Week", :og_type => "article", :og_desc => ""}
     @user = current_user
   end
-  
+
   def newsletter
     # if a user is signed in, turn on the newsletter flag
     if current_user
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     # as this is equivilent to subscribing someone to a newsletter, security isnt that importaint.  Just update the flag for existing users too
     elsif existing_user = User.find_by_email(params[:user][:email])
       existing_user.update_attribute(:newsletter, true)
-      
+
     # if a user with this email does not exist, create them with a temporary password and add them as a newsletter subscriber
     else
       user = User.new(
@@ -37,23 +37,23 @@ class UsersController < ApplicationController
     end
     render_json_response :ok, :notice => 'Thank you, You have been added to the CIW newsletter.'
   end
-  
-  # remove the current users stored facebook credentials and redirect back to the page they came from 
+
+  # remove the current users stored facebook credentials and redirect back to the page they came from
   def disconnect_facebook
     current_user.fb_uid = nil
     current_user.fb_access_token = nil
     current_user.save!
     redirect_to request.referer, notice: 'Disconnected from Facebook'
   end
-  
-  # remove the current users stored twitter credentials and redirect back to the page they came from 
+
+  # remove the current users stored twitter credentials and redirect back to the page they came from
   def disconnect_twitter
     current_user.twitter_token = nil
     current_user.twitter_secret = nil
     current_user.save!
     redirect_to request.referer, notice: 'Disconnected from Twitter'
   end
-  
+
   # Speakers landing page
   def list_speakers
     # If it's a year based list, then return all the speakers for that year
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     @meta_data = {:page_title => "Speakers", :og_image => "http://www.chicagoideas.com/assets/application/logo.png", :og_title => "Speakers | Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
     render "speakers/index"
   end
-  
+
   # Edison speakers landing page
   def list_edison_speakers
     # If it's a year based list, then return all the speakers for that year
@@ -83,13 +83,13 @@ class UsersController < ApplicationController
     @meta_data = {:page_title => "Edison Talks Speakers", :og_image => "http://www.chicagoideas.com/assets/application/logo.png", :og_title => "Edison Talks Speakers | Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
     render "speakers/edison"
   end
-  
+
   def speakers_top_picks
     @meta_data = {:page_title => "Speaker Top Picks", :og_title => "Chicago Ideas Week Member Program", :og_type => "website", :og_image => "http://www.chicagoideas.com/assets/application/member_program_lightbulb.jpg"}
     render "speakers/top_picks"
   end
-  
-  
+
+
   # show an individual speaker
   def speaker
     if params[:id].is_number? # check if an ID or permalink is passed
@@ -103,21 +103,31 @@ class UsersController < ApplicationController
     @meta_data = {:page_title => "#{@speaker.name}", :og_image => "#{@speaker.portrait(:thumb)}", :og_title => "#{@speaker.name} | Chicago Ideas Week", :og_type => "article", :og_desc => "#{@speaker.bio.present? ? @speaker.bio[0..200] : ""}"}
     render "speakers/show"
   end
-  
+
   def recommend_speaker
     @meta_data = {:page_title => "Recommend a Speaker for 2012 CIW", :og_image => "http://www.chicagoideas.com/assets/application/logo.png", :og_title => "Recommenda Speaker for CIW 2012 | Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
     render "speakers/recommend_speaker"
   end
-  
+
   def list_team_members
     @meta_data = {:page_title => "CIW Team", :og_image => "http://www.chicagoideas.com/assets/application/logo.png", :og_title => "CIW Team | Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
     get_team_members
-  end  
-  
+  end
+
   def team_member
     get_team_members
     @team_member = User.find(params[:id])
     @meta_data = {:page_title => "About #{@team_member.name}", :og_image => "#{@team_member.portrait(:thumb)}", :og_title => "About #{@team_member.name} | Chicago Ideas Week", :og_type => "website", :og_desc => "#{@team_member.bio[0..200]}"}
+  end
+
+  def end_simulate
+    if current_simulate_user && current_simulate_user.user.admin?
+      sign_out(current_user)
+      sign_in(:user, current_simulate_user.user, :bypass => true)
+      sign_out(current_simulate_user)
+      flash[:notice] = "End simulating user..."
+    end
+    redirect_to admin_root_url
   end
 
 end

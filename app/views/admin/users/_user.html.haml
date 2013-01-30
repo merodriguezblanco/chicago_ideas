@@ -6,7 +6,7 @@
   %td.speaker= user.is_speaker? ? 'yes' : 'no'
   %td.staff= user.staff? ? 'yes' : 'no'
   %td.options
-    - unless current_user == user
+    - if current_user != user && user.is_sponsor?
       = icon_link_to "simulate", simulate_admin_user_path(user), "zoomin"
     = icon_link_to 'edit', edit_admin_user_path(user), 'pencil'
     = delete_model_link user
