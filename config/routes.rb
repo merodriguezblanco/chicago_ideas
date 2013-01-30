@@ -539,6 +539,9 @@ CraigsAdmin::Application.routes.draw do
       member do
         put :update
       end
+      collection do
+        post :send_request
+      end
     end
   end
 

@@ -2,7 +2,18 @@
   .span
     .title Sponsorship Level:
   .span= @sponsor.sponsorship_level.name
-.row
-  = f.inputs do
+= f.inputs do
+  .row
+    .row
+      .title My Logos
     .row
       .span=f.input :logo, as: :file, label: "EPS logo"
+  .row
+    .title Signed Agreement
+  .row
+    .span Please upload your signed Sponsorship Agreement here
+    .span=f.input :sponsor_argreement, as: :file, label: false
+  .row
+    .title Pay your Sponsorship Balance
+    .row Your balance is:
+    .row= link_to "MAKE PAYMENT ONLINE", "#", class: 'btn'

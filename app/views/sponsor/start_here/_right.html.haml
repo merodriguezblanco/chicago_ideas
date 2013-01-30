@@ -1,4 +1,16 @@
 .row
   .title Primary Contact Person
   %br
-  .span=select_tag :contact, options_from_collection_for_select(@sponsor.users, :id, :name)
+  .span
+    - primary_contact_id = @sponsor.primary_contact ? @sponsor.primary_contact.id : ""
+    =select_tag :contact, options_from_collection_for_select(@sponsor.users, :id, :name, primary_contact_id)
+.row
+  .title Additional Sponsor Admins
+.row
+  .span Jim Doe
+  %br
+  .span Jack Doherty
+
+.row
+  = link_to "Request an additional Sponsor Admin", "#email_form", class: 's_dialog'
+  

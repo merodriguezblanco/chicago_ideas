@@ -153,8 +153,9 @@ $(document).ready(function(){
     log(error);
 
   }).live('ajax:success', function(data, status){
-    Forms.form_success($(this), status);
-  
+    if(!$(this).hasClass('static')){
+      Forms.form_success($(this), status);
+    }
   });
 
   //activate the forms

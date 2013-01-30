@@ -356,6 +356,10 @@ a:hover {
   float: left;
 }
 
+.red{
+  color: red;
+}
+
 .hidden{
   display: none;
 }
@@ -377,6 +381,7 @@ a:hover {
   .title{
     font-size: 16px;
     width: auto;
+    margin-left: 0;
     margin-right: 20px;
    }
   .ez-checkbox{
@@ -480,5 +485,5 @@ input#sponsor_sponsorship_amount{width: 150px;}
 
 .right-column{
   float: left;
-  width: 500;
+  width: 450px;
 }

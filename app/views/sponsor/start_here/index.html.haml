@@ -3,3 +3,26 @@
     =render partial: "left", locals: {f: f}
   .right-column
     =render partial: "right", locals: {f: f}
+
+#email_form.hidden
+  %h2
+    Request Additional Sponsor Admin
+    %a{:href => '#none', :class => 'close icon'}= icon('closethick', :light)
+  ~ form_tag send_request_sponsor_start_here_index_path, remote: true, class: 'static' do
+    .errors{style: "padding: 20px 0 0 20px"}
+    %div{style: "padding: 20px 0 0 20px"}
+      Name of Requested Admin:
+      = text_field_tag :name
+    %div{style: "padding: 20px 0 0 20px"}
+      Email of Requested Admin:
+      = text_field_tag :email
+    %div{style: "padding: 20px 0 0 20px"}
+      = submit_tag "Request Sponsor Admin"
+:javascript
+  $(document).ready(function(){
+    $(".s_dialog").click(function(e){
+      e.preventDefault();
+      content = $($(this).attr("href")).html();
+      Utility.open_dialog(content);
+    })
+  });

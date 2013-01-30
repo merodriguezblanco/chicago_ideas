@@ -86,6 +86,11 @@ class Sponsor < ActiveRecord::Base
     markdown.render(description).html_safe
   end
   
+  def primary_contact
+    su = self.sponsor_users.where(primary_contact: true).first
+    return su ? su.user : nil
+  end
+  
   private 
 
     # i know its strict, but otherwise people will upload images without appreciation for aspect ratio

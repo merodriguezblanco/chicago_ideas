@@ -1,7 +1,15 @@
 class Sponsor::BaseController < ApplicationController
   before_filter :authenticate_user!
   before_filter :require_sponsor_admin!
+  protect_from_forgery
   layout "sponsor"
+  
+  def validate_params(*args)
+    @errors ||= []
+    args.each { |name|
+      @errors << "#{name} can't be blank" if params[name].blank?
+    }
+  end 
   
   protected
     def require_sponsor_admin!
