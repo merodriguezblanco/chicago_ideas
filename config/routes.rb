@@ -1,13 +1,13 @@
 CraigsAdmin::Application.routes.draw do
-  
+
   # the API                                                                          (http://api.domain.com/)
   # ---------------------------------------------------------------------------------------------------------
   namespace :api do
     #scope :module => "api", :as => "api" do
-  
+
       # the documentation
       root :to => 'documentation#documentation'
-      
+
       resources :talks, :defaults => { :format => 'json', :version => '1.1.2' } do
         resources :chapters, :only => [:index]
       end
@@ -28,24 +28,24 @@ CraigsAdmin::Application.routes.draw do
       resources :speakers, :defaults => { :format => 'json', :version => '1.1.2' } do
         resources :talks, :only => [:index]
       end
-      
+
       resources :search, :defaults => { :format => 'json', :version => '1.1.2' }
       resources :jobs, :defaults => { :format => 'json', :version => '1.1.2' }
-      
+
       #resources :speaker, :only => [:list, :show] do
         # search for speakers
        # get :search, :on => :collection
         # resources
        # resources :talks, :only => [:list, :show]
       #end
-  
+
     #end
   end
-    
-    
+
+
   # the Site
   # ---------------------------------------------------------------------------------------------------------
-  
+
   root :to => 'application#index'
 
   # we load in this dynamic content after the page loads, this allows us to cache the entire front end of the website
@@ -57,7 +57,7 @@ CraigsAdmin::Application.routes.draw do
   match 'search/speakers(:format)', :to => 'search#speakers'
   match 'search/videos(:format)', :to => 'search#videos'
 
-  # legalese 
+  # legalese
   match 'privacy', :to => 'application#privacy'
   match 'terms', :to => 'application#terms'
 
@@ -76,7 +76,7 @@ CraigsAdmin::Application.routes.draw do
   # users
   # ----------------------------------------------------------------
   resources :users, :only => [] do
-    collection do 
+    collection do
       # actions
       post :newsletter
     end
@@ -91,7 +91,7 @@ CraigsAdmin::Application.routes.draw do
   match 'dashboard' => 'users#dashboard', :as => 'user_root'
   # authentication for the website, uses Devise and Omniauth for facebook and twitter connect
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  
+
   # forms we capture data from
   resources :volunteers, :only => [:new, :create]
   resources :community_partner_applications, :only => [:new, :create]
@@ -101,19 +101,19 @@ CraigsAdmin::Application.routes.draw do
       get :redirect
     end
   end
-  
+
   resources :think_chicago_applications, :path => "/thinkchicago_applications", :only => [:index, :new, :create] do
     collection do
       get :redirect
     end
   end
-  
+
   resources :edison_talks_applications, :only => [:index, :new, :create] do
     collection do
       get :redirect
     end
   end
-  
+
   #resources :years, :only => [:show]
   resources :years, :only => [:show] do
     match 'speakers', :to => 'users#list_speakers'
@@ -130,7 +130,7 @@ CraigsAdmin::Application.routes.draw do
     match 'schedule', :to => 'schedule#index'
     match ':month_id/:day_id/schedule', :to => 'schedule#index'
     match 'members', :to => 'members#index'
-    
+
     # talks and events
     # ----------------------------------------------------------------
     resources :events, :only => [:index, :show] do
@@ -141,7 +141,7 @@ CraigsAdmin::Application.routes.draw do
         get :affiliate_event
       end
     end
-    
+
     resources :talks, :only => [:index] do
       # home pages for the different talk types
       collection do
@@ -150,14 +150,14 @@ CraigsAdmin::Application.routes.draw do
       end
     end
   end
-  
+
   # Schedule redirect
   match "schedule" => redirect("/years/2012/schedule")
-  
+
   # Edison Speakers redirect
   match "edison" => redirect("/years/2012/speakers/edison")
   match 'project_youth', :to => 'application#project_youth'
-  
+
   # teams members and speakers are both a type of user, so are handled by the users controller
   match 'team_members', :to => 'users#list_team_members'
   match 'team_members/:id', :to => 'users#team_member', :as => "team_member"
@@ -166,8 +166,8 @@ CraigsAdmin::Application.routes.draw do
   match 'speakers', :to => 'users#list_speakers'
   match 'speakers/page/:page', :to => 'users#list_speakers'
   match 'speakers/:id', :to => 'users#speaker', :as => "speaker"
- 
-  
+
+
   # Static Pages
   match 'livestream', :to => 'application#livestream'
   match 'about', :to => 'application#about'
@@ -182,24 +182,24 @@ CraigsAdmin::Application.routes.draw do
   #match 'badge', :to => 'application#badge'
   match 'speaker/recommend_speaker', :to => 'users#recommend_speaker', :as => 'recommend_speaker'
   match 'special_programs', :to => 'application#special_programs_awards'
-  
+
   # BHSI
   match 'special_programs/bhsi', :to => 'bhsi#index', :as => 'blum_helfand'
   match 'special_programs/bhsi/fellows', :to => 'bhsi#fellows'
   match 'special_programs/bhsi/previous_fellows', :to => 'bhsi#previous_fellows'
   match 'special_programs/bhsi/nominate', :to => 'bhsi#nominate_form'
-  
+
   # We changed the url post-launch :(
   match "special_programs/blum_helfand_fellowship" => redirect("/special_programs/bhsi")
   match "special_programs/blum_helfand_fellowship/previous_fellows" => redirect("/special_programs/bhsi/previous_fellows")
   match "special_programs/blum_helfand_fellowship/nominate" => redirect("/special_programs/bhsi/nominate")
   match '/bhsi' => redirect("/special_programs/bhsi")
-  
+
   # ThinkChicago
   match 'special_programs/thinkchicago', :to => 'think_chicago#index', :as => 'thinkchicago'
   match '/special_programs/think_chicago' => redirect("/special_programs/thinkchicago")
   match '/thinkchicago' => redirect("/special_programs/thinkchicago")
-  
+
   match 'community', :to => 'application#community'
   match 'sizzle', :to => 'application#sizzle'
   match 'info_2012', :to => 'application#sizzle'
@@ -208,10 +208,10 @@ CraigsAdmin::Application.routes.draw do
   # contact form
   match 'contact', :to => 'application#contact'
   match 'send_contact', :to => 'application#send_contact'
-  
+
   # guest blogger form
   match 'guest_blogger_form', :to => 'application#guest_blogger_form'
-  
+
   # talks and events
   # ----------------------------------------------------------------
   resources :events, :only => [:index, :show] do
@@ -232,24 +232,24 @@ CraigsAdmin::Application.routes.draw do
     end
   end
   resources :tracks, :only => [:show]
-  
-  
+
+
   resources :jobs, :only => [:index, :show]
-  
+
 
   # all videos are of chapters, so pass to the chapter controller
   match 'videos', :to => 'chapters#index'
   match 'videos/:id', :to => 'chapters#show', :as => "video"
-  
-  
+
+
   match 'events/partner_programs/:id', :to => 'events#partner_programs', :as => 'partner_program'
-  
+
   match 'current', :to => 'chapters#current'
 
   # the Admin                                                                   (http://www.domain.com/admin)
   # ---------------------------------------------------------------------------------------------------------
   namespace :admin do
-  
+
     root :to => 'admin#index'
 
     resources :jobs do
@@ -267,7 +267,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :affiliate_event_applications do
       member do
         # pages
@@ -295,7 +295,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :think_chicago_applications do
       member do
         # pages
@@ -307,7 +307,7 @@ CraigsAdmin::Application.routes.draw do
         end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :edison_talks_applications do
       member do
         # pages
@@ -393,7 +393,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :member_types do
       member do
         # pages
@@ -401,7 +401,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :members do
       member do
         # pages
@@ -409,7 +409,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :venues do
       member do
         # pages
@@ -449,7 +449,7 @@ CraigsAdmin::Application.routes.draw do
       resources :event_photos, :only => [:new, :create]
       resources :event_speakers, :only => [:new, :create]
     end
-    
+
     resources :event_speakers do
       member do
         # pages
@@ -458,7 +458,7 @@ CraigsAdmin::Application.routes.draw do
       resources :notes, :only => [:new, :create]
     end
 
-    resources :sponsors do      
+    resources :sponsors do
       collection do
         post :sort
       end
@@ -479,7 +479,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
 
     resources :partners do
       member do
@@ -496,15 +496,15 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :notes, :only => [] do
       member do
-        # notes have attachemts, which are passed through the application because the 
+        # notes have attachemts, which are passed through the application because the
         # files are not publically availiable through the Internet
         get :attachment
       end
     end
-  
+
     resources :users do
       collection do
         # pages
@@ -521,6 +521,8 @@ CraigsAdmin::Application.routes.draw do
         get :delete
         get :edit_password
         put :update_password
+        get :simulate
+        post :end_simulate
       end
       resources :export
         collection do
@@ -528,11 +530,12 @@ CraigsAdmin::Application.routes.draw do
         end
       resources :notes, :only => [:new, :create]
     end
-  
+
     resources :venues
-  
+    devise_for :simulate_user
+
   end
-  
+
   namespace :sponsor do
     root :to => "start_here#index"
     resources :start_here, only: [:index] do
@@ -544,3 +547,4 @@ CraigsAdmin::Application.routes.draw do
   end
 
 end
+

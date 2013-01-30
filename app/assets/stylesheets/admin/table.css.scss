@@ -2,11 +2,11 @@
   margin-bottom:10px;
   font-size:12px;
   width: 100%;
-  
+
   tr:nth-child(odd) {
     background-color:#F5F5F5;
   }
-  
+
   tr:hover {
     background-color:#ffe4f1;
   }
@@ -16,7 +16,7 @@
       text-decoration: line-through;
       background-color:#FCE0E2;
     }
-    span.deleted { 
+    span.deleted {
       color:red;
       font-weight:bold;
     }
@@ -44,7 +44,7 @@
 
   // some widths we can be certain about
   td.options {
-    width:128px;
+    width:210px;
     padding:0px;
   }
   td.id {
@@ -53,7 +53,7 @@
   td.created_at {
     width:140px;
   }
-  
+
   td.description {
     width: 250px;
   }
@@ -61,7 +61,7 @@
 
 // tables in section containers
 #page .table_section {
-  
+
   &.height_restricted {
     height:400px;
     .table_wrapper {
@@ -76,7 +76,7 @@
       overflow-y:scroll;
     }
   }
-  
+
   &.warning {
     border: 1px solid #B00000;
     margin-bottom: 20px;
@@ -85,8 +85,8 @@
       background-color: #FCE0E2;
       color:#B00000;
     }
-  } 
-   
+  }
+
   margin-bottom: 14px;
   border: 1px solid #CCCCCC;
   border-radius: 3px 3px 3px 3px;
@@ -108,7 +108,7 @@
       margin: 3px 5px 0 0;
     }
   }
-  
+
   .table_wrapper {
     margin:0;
     table {
@@ -128,7 +128,7 @@
         a:hover {
           color:#000000;
         }
-        
+
         border:0;
         border-left:1px solid #AAAAAA;
         border-bottom:1px solid #AAAAAA;
@@ -145,7 +145,7 @@
       }
     }
   }
-  
+
   &.half_page {
     width:436px;
     float:left;
@@ -162,7 +162,7 @@
       }
     }
   }
-  
+
   .pagination {
     border-top: 1px solid #AAAAAA;
     margin: 5px 0 0;
@@ -173,3 +173,4 @@
     }
   }
 }
+

@@ -23,9 +23,9 @@ class Admin::UsersController < Admin::AdminController
             row << user.csv_attributes
           end
         end
-    	
+
     	# send .csv back to the browser
-        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=users_export_" << Date.today.to_s() << "_.csv") 
+        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=users_export_" << Date.today.to_s() << "_.csv")
       }
     end
   end
@@ -35,21 +35,21 @@ class Admin::UsersController < Admin::AdminController
   def new
     @model = new_model(default_model)
   end
-  
+
   def edit
     @model = fetch_model
   end
-  
+
   def show
     @section_title = 'Detail'
     @user = User.find(params[:id])
   end
-  
-  def create   
+
+  def create
     @parent = parent_model
     @model = new_model(params[model_name])
     @model = pre_create(@model)
-       
+
     if @model.errors.empty? and @model.save
       redirect_to admin_users_path, notice: "#{@model.class.name.titlecase} was successfully created."
     else
@@ -57,13 +57,40 @@ class Admin::UsersController < Admin::AdminController
     end
 
   end
-  
+
+  def simulate
+    @new_user = User.find params[:id]
+    if (current_user.admin? || current_simulate_user) && @new_user
+      unless current_simulate_user
+        @simulate_user = current_user.simulate_user
+        @simulate_user = current_user.create_simulate_user unless @simulate_user
+        sign_in(:simulate_user, @simulate_user)
+      end
+      sign_out(current_user)
+      sign_in(@new_user, :bypass => true)
+      flash[:notice] = "Simulating user start..."
+    else
+      flash[:alert] = "You do not have permission"
+    end
+    redirect_to admin_root_url
+  end
+
+  def end_simulate
+    if current_simulate_user && current_simulate_user.user.admin?
+      sign_out(current_user)
+      sign_in(:user, current_simulate_user.user, :bypass => true)
+      sign_out(current_simulate_user)
+      flash[:notice] = "End simulating user..."
+    end
+    redirect_to admin_root_url
+  end
+
   def update
     @parent = parent_model
     @model = fetch_model
 
     @model = pre_update(@model)
-    
+
     if @model.errors.empty? and @model.update_attributes(params[model_name])
       # allows for some basic controler specific functionality without redefining the create method
       redirect_to admin_users_path, notice: "#{@model.class.name.titlecase} was successfully updated."
@@ -81,10 +108,10 @@ class Admin::UsersController < Admin::AdminController
     @field_template = 'password'
     update
   end
-  
+
   # admin controller callbacks
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # the admin area is allowed to update these protected attributes
   def pre_create(user)
     role =params[:user][:role]
@@ -106,7 +133,7 @@ class Admin::UsersController < Admin::AdminController
       user.is_sponsor = false
       user.is_speaker = false
       user.is_volunteer = false
-      user.is_member = false  
+      user.is_member = false
       eval("user.#{role}=true")
     end
     if role == 'admin'
@@ -133,7 +160,7 @@ class Admin::UsersController < Admin::AdminController
   def speakers
     @users = User.speaker.search_sort_paginate(params)
   end
-  
+
 
   # MEMBER PAGES
   # ---------------------------------------------------------------------------------------------------------
@@ -145,24 +172,25 @@ class Admin::UsersController < Admin::AdminController
   end
 
 
-  
+
   # MEMBER PAGES (specifically for administrative users)
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # a log of what the user has done in the admin tool, these log entries are stored in mongodb
   def log_entries
     @user = User.find(params[:id])
     @log_entries = LogEntry.where(:user_id => @user.id).page(params[:page] || 1)
   end
-  
-  private 
-  
+
+  private
+
     #if the password field is empty, allow the password to stay the same
     # called from a before filter
     def delete_empty_password_params
       params[:user].delete :password if params[:user][:password].blank?
       params[:user].delete :password_confirmation if params[:user][:password_confirmation].blank?
     end
-    
-  
+
+
 end
+
