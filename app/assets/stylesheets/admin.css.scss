@@ -384,6 +384,7 @@ a:hover {
   }
 }
 
+input#sponsor_sponsorship_amount{width: 150px;}
 .w_100{
   width: 100%;
 }
@@ -409,7 +410,19 @@ a:hover {
     font-size: 18px;
     min-width: 50px;
   }
+  .ui-slider{
+    background: #969696;
+    height: .5em;
+  }
+  .ui-widget-header{
+    background: #eee;
+  }
   
+  .ui-slider-horizontal .ui-slider-handle {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+  }
 }
 
 .pink_bg{

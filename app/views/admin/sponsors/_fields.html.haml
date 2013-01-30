@@ -18,7 +18,7 @@
       .span.center
         = "0"
         &nbsp;&nbsp;/ 
-      .span= f.input :ciw_talks_tickets, label: false
+      .span= f.input :ciw_talks_tickets, as: :string, label: false
       .span.slide
         .slider      
     .row
@@ -26,7 +26,7 @@
       .span.center
         = "0"
         &nbsp;&nbsp;/ 
-      .span= f.input :labs_tickets, label: false
+      .span= f.input :labs_tickets, as: :string, label: false
       .span.slide
         .slider
     .row
@@ -34,7 +34,7 @@
       .span.center
         = "0"
         &nbsp;&nbsp;/ 
-      .span= f.input :vip_reception_tickets, label: false
+      .span= f.input :vip_reception_tickets, as: :string, label: false
       .span.slide
         .slider
     .row
@@ -42,7 +42,7 @@
       .span.center
         = "0"
         &nbsp;&nbsp;/ 
-      .span= f.input :edison_talk_tickets, label: false
+      .span= f.input :edison_talk_tickets, as: :string, label: false
       .span.slide
         .slider
     .row
@@ -50,16 +50,17 @@
       .span.center
         = "0"
         &nbsp;&nbsp;/
-      .span= f.input :concert_tickets, label: false
+      .span= f.input :concert_tickets, as: :string, label: false
       .span.slide
         .slider
   .row{style: "margin-bottom: 20px;"}
     .label Sponsorship Amount
-    .span= f.input :sponsorship_amount, label: false
+    .span= f.input :sponsorship_amount, as: :string, label: false
   .row
     .label Logo
-    .span= f.object.logo_file_name
-    .span= f.input :logo, as: :file, label: false, :hint => "logo image must be #{@model.logo_dimensions_string}"
+    .span
+      .span{style: "width: 100%; margin-top: 10px"}= f.object.logo_file_name
+      .span= f.input :logo, as: :file, label: false, :hint => "logo image must be #{@model.logo_dimensions_string}"
   = f.input :featured
   
   
