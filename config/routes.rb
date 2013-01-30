@@ -248,6 +248,7 @@ CraigsAdmin::Application.routes.draw do
 
   # the Admin                                                                   (http://www.domain.com/admin)
   # ---------------------------------------------------------------------------------------------------------
+  devise_for :simulate_user
   namespace :admin do
 
     root :to => 'admin#index'
@@ -522,7 +523,7 @@ CraigsAdmin::Application.routes.draw do
         get :edit_password
         put :update_password
         get :simulate
-        post :end_simulate
+        get :end_simulate
       end
       resources :export
         collection do
@@ -532,7 +533,6 @@ CraigsAdmin::Application.routes.draw do
     end
 
     resources :venues
-    devise_for :simulate_user
 
   end
 

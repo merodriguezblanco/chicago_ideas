@@ -229,7 +229,6 @@ class Admin::AdminController < ApplicationController
 
     # used from a before filter, this method will block and redirect the user if they dont have admin access
     def require_admin!
-      logger.info "----------------------------------"
       unless current_user.admin
         redirect_to root_path, :notice => 'you must be an admin to access this area'
       end
