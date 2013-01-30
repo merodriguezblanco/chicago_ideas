@@ -536,11 +536,9 @@ CraigsAdmin::Application.routes.draw do
   namespace :sponsor do
     root :to => "start_here#index"
     resources :start_here, only: [:index] do
-      member do
-        put :update
-      end
       collection do
         post :send_request
+        put :update_sponsor
       end
     end
   end

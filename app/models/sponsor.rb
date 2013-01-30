@@ -21,6 +21,10 @@ class Sponsor < ActiveRecord::Base
   scope :featured_sponsors, :conditions => { :featured => true }
   scope :by_sort, order('sort asc')
   
+  accepts_nested_attributes_for :sponsor_users
+  attr_accessible :sponsor_users_attributes, :eps_logo, :name, :description, :url, :featured, :sort, 
+  :ciw_talks_tickets, :labs_tickets, :vip_reception_tickets, :edison_talk_tickets, :concert_tickets,
+  :sponsorship_amount, :sponsorship_level_id
   # when this model is created, set the sort order to the last in the current set (unless it was already set)
   before_validation {|record|
     return true if record.sort.present?
@@ -40,9 +44,7 @@ class Sponsor < ActiveRecord::Base
   def accepts_file_upload?
     true
   end
-  
-  has_attached_file :sponsor_argreement
-  
+   
   has_attached_file :logo,
     :styles => { 
       :full => "260x260",
@@ -50,6 +52,8 @@ class Sponsor < ActiveRecord::Base
     :convert_options => { 
         :full => "-quality 70", 
     }
+  
+  has_attached_file :eps_logo
   
   # the hash representing this model that is returned by the api
   def api_attributes
@@ -95,8 +99,10 @@ class Sponsor < ActiveRecord::Base
 
     # i know its strict, but otherwise people will upload images without appreciation for aspect ratio
     def validate_logo_dimensions
-      dimensions = Paperclip::Geometry.from_file(logo.queued_for_write[:original].path)
-      errors.add(:logo, "Image dimensions were #{dimensions.width.to_i}x#{dimensions.height.to_i}, they must be exactly #{logo_dimensions_string}") unless dimensions.width == LOGO_WIDTH && dimensions.height == LOGO_HEIGHT
+      if self.logo.queued_for_write[:original]
+        dimensions = Paperclip::Geometry.from_file(logo.queued_for_write[:original].path)
+        errors.add(:logo, "Image dimensions were #{dimensions.width.to_i}x#{dimensions.height.to_i}, they must be exactly #{logo_dimensions_string}") unless dimensions.width == LOGO_WIDTH && dimensions.height == LOGO_HEIGHT
+      end
     end
 
 end

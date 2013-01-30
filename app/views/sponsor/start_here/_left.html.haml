@@ -1,3 +1,6 @@
+- unless @errors.blank?
+  .row
+    = render partial: "shared/errors"
 .row
   .span
     .title Sponsorship Level:
@@ -7,13 +10,19 @@
     .row
       .title My Logos
     .row
-      .span=f.input :logo, as: :file, label: "EPS logo"
-  .row
-    .title Signed Agreement
-  .row
-    .span Please upload your signed Sponsorship Agreement here
-    .span=f.input :sponsor_argreement, as: :file, label: false
+      .span=@sponsor.eps_logo_file_name
+      .span=f.input :eps_logo, as: :file, label: "EPS logo", hint: "Please provide an EPS version of your logo in high resolution."
+    .row
+      .span=@sponsor.logo_file_name
+      .span=f.input :logo, as: :file, label: "Jpg logo", hint: "Please provide a JPG version of your logo in 260x260."
+  = f.semantic_fields_for :sponsor_users, current_user.sponsor_user do |su|
+    .row
+      .title Signed Agreement
+    .row
+      .span Please upload your signed Sponsorship Agreement here
+      .span=su.object.sponsor_agreement_file_name
+      .span=su.input :sponsor_agreement, as: :file, label: false
   .row
     .title Pay your Sponsorship Balance
-    .row Your balance is:
+    .row Your balance is: #{@sponsor.sponsorship_amount}
     .row= link_to "MAKE PAYMENT ONLINE", "#", class: 'btn'

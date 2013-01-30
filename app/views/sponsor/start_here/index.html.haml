@@ -1,9 +1,11 @@
-= semantic_form_for sponsor_start_here_path(@sponsor) do |f|
+= semantic_form_for @sponsor, url: update_sponsor_sponsor_start_here_index_path, html:{ multipart: true } do |f|
   .left-column
     =render partial: "left", locals: {f: f}
   .right-column
     =render partial: "right", locals: {f: f}
-
+  .row
+    =f.submit "Save Changes"
+    =link_to "cancel", "Cancel"
 #email_form.hidden
   %h2
     Request Additional Sponsor Admin
@@ -20,9 +22,5 @@
       = submit_tag "Request Sponsor Admin"
 :javascript
   $(document).ready(function(){
-    $(".s_dialog").click(function(e){
-      e.preventDefault();
-      content = $($(this).attr("href")).html();
-      Utility.open_dialog(content);
-    })
+
   });
