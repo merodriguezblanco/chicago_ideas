@@ -15,13 +15,12 @@
     .row
       .span=@sponsor.logo_file_name
       .span=f.input :logo, as: :file, label: "Jpg logo", hint: "Please provide a JPG version of your logo in 260x260."
-  = f.semantic_fields_for :sponsor_users, current_user.sponsor_user do |su|
+  .row 
     .row
-      .title Signed Agreement
-    .row
-      .span Please upload your signed Sponsorship Agreement here
-      .span=su.object.sponsor_agreement_file_name
-      .span=su.input :sponsor_agreement, as: :file, label: false
+      .title Please upload your signed Sponsorship Agreement here
+    .row  
+      .span=f.object.sponsor_agreement_file_name
+      .span=f.input :sponsor_agreement, as: :file
   .row
     .title Pay your Sponsorship Balance
     .row Your balance is: #{@sponsor.sponsorship_amount}
