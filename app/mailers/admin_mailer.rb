@@ -19,7 +19,7 @@ class AdminMailer < ActionMailer::Base
     @user = user
     @password = password
     
-    mail(:to => user.email, :subject => "Your account at chicagoideas.com")
+    mail(:from => "no_reply@chicagoideas.com", :to => user.email, :subject => "Your account at chicagoideas.com")
   end
   
 end
