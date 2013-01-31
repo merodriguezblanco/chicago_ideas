@@ -1,5 +1,6 @@
 - f.object.role = f.object.top_role
 - @model.sponsor_user || @model.build_sponsor_user 
+= @model.errors.full_messages.flatten
 = f.inputs do
   = f.input :email
   = f.input :name
@@ -18,7 +19,10 @@
         = f.semantic_fields_for :sponsor_user do |su_f|
           .row
             .label Sponsor
-            .span=su_f.select :sponsor_id, options_from_collection_for_select(Sponsor.all, :id, :name), prompt: "Choose from Sponsors..."
+            .span
+              - unless @model.errors[:sponsor_id].blank?
+                .red Please select a sponsor.
+              =su_f.select :sponsor_id, options_from_collection_for_select(Sponsor.all, :id, :name), prompt: "Choose from Sponsors..."
           .row
             .label Phone
             .span= su_f.input :phone, label: false

@@ -49,8 +49,10 @@ class Admin::UsersController < Admin::AdminController
     @parent = parent_model
     @model = new_model(params[model_name])
     @model = pre_create(@model)
-
-    if @model.errors.empty? and @model.save
+    generated_password = Devise.friendly_token.first(8)
+    @model.password =  generated_password
+    if @model.errors.empty? && @model.save
+      AdminMailer.sponsor_admin_notification(@model, generated_password).deliver if @model.is_sponsor
       redirect_to admin_users_path, notice: "#{@model.class.name.titlecase} was successfully created."
     else
       render :new
@@ -113,10 +115,7 @@ class Admin::UsersController < Admin::AdminController
     # when creating users, we assign them a temporary password and send it to them
     user.temporary_password = Devise.friendly_token[0,8]
     user.is_admin_created = true
-    if role == 'admin'
-      password = params[:user][:creation_password] || ""
-      user.errors.add(:creation_password, "wrong password") if password != "Fandango32@!"
-    end
+    validate_role user, role
     user
   end
 
@@ -130,10 +129,7 @@ class Admin::UsersController < Admin::AdminController
       user.is_member = false
       eval("user.#{role}=true")
     end
-    if role == 'admin'
-      password = params[:user][:creation_password] || ""
-      user.errors.add(:creation_password, "wrong password") if password != "Fandango32@!"
-    end
+    validate_role user, role
     user
   end
 
@@ -185,6 +181,14 @@ class Admin::UsersController < Admin::AdminController
       params[:user].delete :password_confirmation if params[:user][:password_confirmation].blank?
     end
 
-
+    def validate_role(user, role)
+      if role == 'admin'
+        password = params[:user][:creation_password] || ""
+        user.errors.add(:creation_password, "wrong password") if password != "Fandango32@!"
+      elsif role == 'is_sponsor'
+        user.errors.add(:sponsor_id, "can't be blank") if params[:user][:sponsor_user_attributes][:sponsor_id].blank?
+      end
+      user
+    end
 end
 
