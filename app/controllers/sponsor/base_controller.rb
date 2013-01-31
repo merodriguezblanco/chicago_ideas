@@ -2,6 +2,7 @@ class Sponsor::BaseController < ApplicationController
   skip_before_filter :cache_rendered_page
   before_filter :authenticate_user!
   before_filter :require_sponsor_admin!
+  before_filter :init
   
   protect_from_forgery
   layout "sponsor"
@@ -12,6 +13,10 @@ class Sponsor::BaseController < ApplicationController
       @errors << "#{name} can't be blank" if params[name].blank?
     }
   end 
+  
+  def init
+    @sponsor = current_user.sponsor
+  end
   
   protected
     def require_sponsor_admin!
