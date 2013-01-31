@@ -56,6 +56,9 @@
   .row{style: "margin-bottom: 20px;"}
     .label Sponsorship Amount
     .span= f.input :sponsorship_amount, as: :string, label: false
+  .row{style: "margin-bottom: 20px;"}
+    .label Ticket Inviting Locked?
+    .span= f.input :locked, as: :radio, label: false, collection: {"Locked" => true, "Unlocked" => false}
   .row{style: "margin: 0"}
     .label JPG Logo
     .span
