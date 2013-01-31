@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130075257) do
+ActiveRecord::Schema.define(:version => 20130131050834) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -481,9 +481,9 @@ ActiveRecord::Schema.define(:version => 20130130075257) do
   end
 
   create_table "sponsors", :force => true do |t|
-    t.string   "name",                  :limit => 150,                                :null => false
+    t.string   "name",                           :limit => 150,                                :null => false
     t.text     "description"
-    t.integer  "sponsorship_level_id",                                                :null => false
+    t.integer  "sponsorship_level_id",                                                         :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -498,11 +498,15 @@ ActiveRecord::Schema.define(:version => 20130130075257) do
     t.integer  "vip_reception_tickets"
     t.integer  "edison_talk_tickets"
     t.integer  "concert_tickets"
-    t.decimal  "sponsorship_amount",                   :precision => 10, :scale => 0
+    t.decimal  "sponsorship_amount",                            :precision => 10, :scale => 0
     t.string   "eps_logo_file_name"
     t.string   "eps_logo_content_type"
     t.integer  "eps_logo_file_size"
     t.datetime "eps_logo_updated_at"
+    t.string   "sponsor_agreement_file_name"
+    t.string   "sponsor_agreement_content_type"
+    t.integer  "sponsor_agreement_file_size"
+    t.datetime "sponsor_agreement_updated_at"
   end
 
   add_index "sponsors", ["sponsorship_level_id"], :name => "index_sponsors_on_sponsorship_level_id"

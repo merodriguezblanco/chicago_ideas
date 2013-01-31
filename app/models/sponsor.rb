@@ -22,9 +22,9 @@ class Sponsor < ActiveRecord::Base
   scope :by_sort, order('sort asc')
 
   accepts_nested_attributes_for :sponsor_users
-  attr_accessible :sponsor_users_attributes, :eps_logo, :name, :description, :url, :featured, :sort,
+  attr_accessible :eps_logo, :name, :description, :url, :featured, :sort,
   :ciw_talks_tickets, :labs_tickets, :vip_reception_tickets, :edison_talk_tickets, :concert_tickets,
-  :sponsorship_amount, :sponsorship_level_id, :logo
+  :sponsorship_amount, :sponsorship_level_id, :logo, :sponsor_agreement
   # when this model is created, set the sort order to the last in the current set (unless it was already set)
   before_validation {|record|
     return true if record.sort.present?
@@ -54,7 +54,7 @@ class Sponsor < ActiveRecord::Base
     }
 
   has_attached_file :eps_logo
-
+  has_attached_file :sponsor_agreement
   # the hash representing this model that is returned by the api
   def api_attributes
     {

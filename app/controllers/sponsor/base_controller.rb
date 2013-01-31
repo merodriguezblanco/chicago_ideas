@@ -1,6 +1,8 @@
 class Sponsor::BaseController < ApplicationController
+  skip_before_filter :cache_rendered_page
   before_filter :authenticate_user!
   before_filter :require_sponsor_admin!
+  
   protect_from_forgery
   layout "sponsor"
   
