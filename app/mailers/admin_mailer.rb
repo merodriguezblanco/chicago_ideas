@@ -18,6 +18,8 @@ class AdminMailer < ActionMailer::Base
   def sponsor_admin_notification(user, password)
     @user = user
     @password = password
+    
+    mail(:to => user.email, :subject => "Your account at chicagoideas.com")
   end
   
 end
