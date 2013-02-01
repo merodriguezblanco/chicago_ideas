@@ -9,6 +9,7 @@
     - f.object.vip_reception_tickets ||= 0
     - f.object.edison_talk_tickets ||= 0
     - f.object.concert_tickets||= 0
+    - f.object.menlo_passes_tickets||= 0
     .row{style: "margin-bottom: 0;"}
       .label &nbsp;
       .span{style: "font-size: 16px"} used
@@ -51,6 +52,14 @@
         = "0"
         &nbsp;&nbsp;/
       .span= f.input :concert_tickets, as: :string, label: false
+      .span.slide
+        .slider
+    .row
+      .label Menlo Passes Tickets
+      .span.center
+        = "0"
+        &nbsp;&nbsp;/
+      .span= f.input :menlo_passes_tickets, as: :string, label: false
       .span.slide
         .slider
   .row{style: "margin-bottom: 20px;"}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131070534) do
+ActiveRecord::Schema.define(:version => 20130201033534) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -508,6 +508,7 @@ ActiveRecord::Schema.define(:version => 20130131070534) do
     t.integer  "sponsor_agreement_file_size"
     t.datetime "sponsor_agreement_updated_at"
     t.boolean  "locked",                                                                       :default => true
+    t.integer  "menlo_passes_tickets"
   end
 
   add_index "sponsors", ["sponsorship_level_id"], :name => "index_sponsors_on_sponsorship_level_id"
