@@ -512,3 +512,36 @@ input#sponsor_sponsorship_amount{width: 150px;}
     margin: 20px 20px 0 0;
   }
 }
+
+.ticket_item{
+  margin: 10px 10px 0 0;
+  width: 180px;
+  text-align: center;
+  float: left;
+  .box{
+    float: left;
+    border: 1px solid #333;
+    padding: 10px;
+    .title{
+      width: 100%;
+      float: left;
+      height: 40px;
+    }
+    .value{
+      width: 100%;
+      font-size: 70px;
+      padding: 10px 0;
+      float: left;
+    }
+    .bottom{
+      width: 100%;
+      font-weight: bold;
+      float: left;
+    }
+  }
+  .link{
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+  }
+}

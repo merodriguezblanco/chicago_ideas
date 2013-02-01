@@ -540,6 +540,7 @@ CraigsAdmin::Application.routes.draw do
 
   namespace :sponsor do
     root :to => "start_here#index"
+    resources :book_tickets, only: [:index]
     resources :materials, only: [:index]     
     resources :start_here, only: [:index] do
       collection do
