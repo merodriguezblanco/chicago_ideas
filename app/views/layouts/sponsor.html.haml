@@ -17,7 +17,7 @@
         #main_menu
           = link_to 'Start Here', sponsor_root_path, :class => active_for_controller('sponsor/start_here')
           = link_to 'Book Tickets', sponsor_book_tickets_path, :class => active_for_controller('sponsor/book_tickets')
-          = link_to 'Events Calendar', "", :class => active_for_controller('sponsor/event')
+          = link_to 'Events Calendar', sponsor_events_calendar_index_path, :class => active_for_controller('sponsor/events_calendar')
           = link_to 'CIW Materials', sponsor_materials_path, :class => active_for_controller('sponsor/materials')
 
 

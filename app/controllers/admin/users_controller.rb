@@ -137,12 +137,12 @@ class Admin::UsersController < Admin::AdminController
 
   # a list of users who are also administrators
   def administrators
-    @users = User.admins.search_sort_paginate(params)
+    @users = User.admin.search_sort_paginate(params)
   end
 
   # a list of users who are also staff members
   def staff
-    @users = User.staffs.search_sort_paginate(params)
+    @users = User.staff.search_sort_paginate(params)
   end
 
   # a list of users who are also speakers
