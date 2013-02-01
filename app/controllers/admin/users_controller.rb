@@ -49,11 +49,16 @@ class Admin::UsersController < Admin::AdminController
     @parent = parent_model
     @model = new_model(params[model_name])
     @model = pre_create(@model)
-    generated_password = Devise.friendly_token.first(8)
-    @model.password =  generated_password
     if @model.errors.empty? && @model.save
-      AdminMailer.sponsor_admin_notification(@model, generated_password).deliver if @model.is_sponsor
-      redirect_to admin_users_path, notice: "#{@model.class.name.titlecase} was successfully created."
+      password = [*('A'..'Z')].sample(8).join
+      @model.password = password
+      @model.password_confirmation = password
+      if @model.save
+        AdminMailer.sponsor_admin_notification(@model, password).deliver if @model.is_sponsor
+        redirect_to admin_users_path, notice: "#{@model.class.name.titlecase} was successfully created."
+      else
+        render :new
+      end
     else
       render :new
     end
