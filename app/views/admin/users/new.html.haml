@@ -1,5 +1,5 @@
 = render 'collection_controls'
-
+- @model.years << Year.where(id: DateTime.now.year)
 = semantic_nested_form_for [:admin, @model], :html => { :multipart => true } do |f|
   %h3 Create a New User
   = render partial: 'fields', locals: {f: f}
