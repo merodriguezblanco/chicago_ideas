@@ -11,7 +11,30 @@ class Admin::NotesController < Admin::AdminController
   def model_note(model, body)
   end
 
+  def new
+    @parent = parent_model
+    @model = @parent.notes.build
+    render_json_response :ok, :html => render_to_string('admin/shared/form.html.haml', :layout => false)
+  end
+  
+  def create
 
+    @parent = parent_model
+    @model = @parent.notes.build(params[:note])
+    @model = pre_create(@model)
+
+    if @model.errors.empty? and @model.save
+      succeeding_create(@model)
+      render_json_model_created_response @model
+    else
+      if @model.respond_to?('accepts_file_upload?') && @model.accepts_file_upload?
+        render_json_response_in_iframe :error, :html => render_to_string('admin/shared/form.html.haml', :layout => false)
+      else
+        render_json_response :error, :html => render_to_string('admin/shared/form.html.haml', :layout => false)
+      end
+    end
+
+  end
   # MEMBER PAGES
   # ---------------------------------------------------------------------------------------------------------
 

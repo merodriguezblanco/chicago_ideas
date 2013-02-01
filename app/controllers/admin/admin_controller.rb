@@ -85,7 +85,11 @@ class Admin::AdminController < ApplicationController
       # allows for some basic controler specific functionality without redefining the create method
       succeeding_create(@model)
       # add a note, so we can easily see who created this (unless of course this is a note)
-      model_note(@model, "#{@model.class.name.titlecase} was successfully created.")
+      if params[model_name][:notes]
+        model_note(@model, params[model_name][:notes][:body])
+      else
+        model_note(@model, "#{@model.class.name.titlecase} was successfully created.")
+      end
       render_json_model_created_response @model
     else
       # return the form, which will have error notices
@@ -110,7 +114,11 @@ class Admin::AdminController < ApplicationController
       # allows for some basic controler specific functionality without redefining the create method
       succeeding_update(@model)
       # add a note, so we can easily see who updated this (unless of course this is a note)
-      model_note(@model, "#{@model.class.name.titlecase} was successfully updated.")
+      if params[model_name][:notes]
+        model_note(@model, params[model_name][:notes][:body])
+      else
+        model_note(@model, "#{@model.class.name.titlecase} was successfully updated.")
+      end
       render_json_model_updated_response @model
     else
       # return the form, which will have error notices

@@ -1,3 +1,4 @@
+- note = @model.notes.last || @model.notes.build
 = f.inputs do
   = f.input :name 
   = f.input :description 
@@ -83,9 +84,12 @@
     .span{style: "max-width: 400px;"}
       .span{style: "width: 100%; margin-top: 10px"}= f.object.sponsor_agreement_file_name
       .span= f.input :sponsor_agreement, as: :file, label: false
-  
   = f.input :featured
-  
+  = f.semantic_fields_for :notes, note do |note_f|
+    .row
+      .label Note
+      .span
+        = note_f.input :body, label: false
   
 :javascript
   $(document).ready(function(){
