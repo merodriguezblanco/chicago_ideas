@@ -24,7 +24,7 @@ class Sponsor < ActiveRecord::Base
   accepts_nested_attributes_for :sponsor_users
   attr_accessible :eps_logo, :name, :description, :url, :featured, :sort,
   :ciw_talks_tickets, :labs_tickets, :vip_reception_tickets, :edison_talk_tickets, :concert_tickets,
-  :menlo_passes_tickets, :sponsorship_amount, :sponsorship_level_id, :logo, :sponsor_agreement, :locked
+  :menlo_passes, :sponsorship_amount, :sponsorship_level_id, :logo, :sponsor_agreement, :locked
   # when this model is created, set the sort order to the last in the current set (unless it was already set)
   before_validation {|record|
     return true if record.sort.present?

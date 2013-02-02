@@ -1,7 +1,7 @@
 .row
   .title Sponsorship Level: #{@sponsor.sponsorship_level.name}
 .row
-  - tickets = ["ciw_talks_tickets" => "CIW Talks Tickets", "labs_tickets" => "Labs Tickets", "vip_reception_tickets" => "VIP Receptions Tikets", "edison_talk_tickets" => "Edision Talk Tickets", "concert_tickets" => "Concert Tickets", "menlo_passes_tickets" => "Menlo Passes Tikets"]
+  - tickets = ["ciw_talks_tickets" => "CIW Talks Tickets", "labs_tickets" => "Labs Tickets", "vip_reception_tickets" => "VIP Receptions Tikets", "edison_talk_tickets" => "Edision Talk Tickets", "concert_tickets" => "Concert Tickets", "menlo_passes" => "Menlo Passes"]
   - tickets.each do |ticket|
     - ticket.map do |key, value|
       .ticket_item
