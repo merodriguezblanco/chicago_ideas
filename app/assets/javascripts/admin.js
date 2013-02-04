@@ -11,3 +11,4 @@
 
 // =require admin/content_navigation
 // =require admin/forms
+// =require jquery.uniform.min

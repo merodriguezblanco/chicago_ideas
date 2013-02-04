@@ -88,18 +88,7 @@
           %li{class: "#{'active' if controller_name=='materials'}"}= link_to 'CIW Materials', sponsor_materials_path
             
     #content_container
-      #content_navigation
-        = yield(:content_navigation)
-        .clr
       #content
-        #content_head
-          #breadcrumbs
-            = yield(:breadcrumbs)
-            .clr
-          #top_links
-            = yield(:top_links)
-            .clr
-          .clr
         #page
           = yield
           .clr

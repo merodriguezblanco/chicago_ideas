@@ -121,18 +121,18 @@ div.uploader span.action {
 
 }
 div.uploader span.filename {
-    cursor: default;
-    display: block;
-    float: left;
-    overflow: hidden;
-    padding: 0 10px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #777777;
-    font-size: 11px;
-    width: 220px;
+  cursor: default;
+  display: block;
+  float: left;
+  overflow: hidden;
+  padding: 0 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #777777;
+  font-size: 11px;
+  width: 220px;
 	height: 32px;
-    line-height: 32px;
+  line-height: 32px;
 	text-indent:-9999px;
 	
 }

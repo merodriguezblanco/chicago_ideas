@@ -319,18 +319,28 @@ ul.unstyle
 #sponsor_logo_input div.uploader
 { background-position:bottom left; }
 
-.sponsor input.form-submit
-{ background:none;
+.pointer{
+  cursor: pointer !important;
+}
+
+.sponsor input.form-submit{
+  background:none;
   border-radius:0;
-  background-color:#f1f1f1;
   border:#ebebeb 1px solid;
   height:50px;
   padding:0 25px;
-  color:#878787;
+  color: #fff;
   font-size:19px;
   line-height:50px;
   font-weight:normal;
-  margin-left:534px; }
+  margin-left:534px; 
+  background-color:#1dafef;;
+}
+.sponsor input.disabled{
+  background-color:#f1f1f1;
+  disabled: true;
+  color:#878787;
+}
 
 .right-column
 { float:right;
@@ -606,3 +616,7 @@ input[type="text"]
 .interest a
 { color:#020dff;
   text-decoration:underline; }
+.uploaded_file{
+  margin-left: 20px;
+  margin-top: 10px;
+}

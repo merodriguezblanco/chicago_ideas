@@ -4,7 +4,9 @@
   .right-column
     =render partial: "right", locals: {f: f}
   .row
-    =f.submit "Save Changes"
+    =f.submit "Save Changes", disabled: true,class: "form-submit disabled"
+  .clr
+  
 #email_form.hidden
   %h2
     Request Additional Sponsor Admin
@@ -21,5 +23,16 @@
       = submit_tag "Request Sponsor Admin"
 :javascript
   $(document).ready(function(){
-
+    $("input[type=file]").change(function(){
+      enable=true;
+      $("span.filename").each(function(){
+        if($(this).text()=='No file selected' && $(this).closest(".span").find(".uploaded_file").text()==''){
+          enable=false;
+        }
+      });
+      if(enable==true){
+        $('.form-submit').removeAttr("disabled");
+        $('.form-submit').removeClass("disabled");
+      }
+    });
   });
