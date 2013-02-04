@@ -52,7 +52,7 @@ a:hover {
   }
 
   // the admin main menu
-  #main_menu {
+  #main_menu.admin {
     position:absolute;
     left: 210px;
     top: 0;
@@ -80,7 +80,7 @@ a:hover {
   }
 
   // header account links
-  #account_links {
+  #account_links.admin {
     position:absolute;
     right:0;
 
