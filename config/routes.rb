@@ -69,8 +69,7 @@ CraigsAdmin::Application.routes.draw do
   # sponsors and partners
   # ----------------------------------------------------------------
   resources :sponsors, :only => [:index]
-  resources :partners, :only => [:index, :apply]
-  match 'partners/apply', :to => 'partners#apply', :as => 'partners_apply'
+  resources :cooperative, :only => [:index]
   match 'sponsors/media_partners', :to => 'sponsors#media_partners'
 
   # users
@@ -491,7 +490,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-
+    
     resources :days do
       member do
         # pages
