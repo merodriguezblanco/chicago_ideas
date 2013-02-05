@@ -1,0 +1,81 @@
+= stylesheet_link_tag :cooperative
+%section.banner.container-fluid
+  .banner_wrapper{:style => "background: url(#{asset_path "application/ciw_banner.jpg"}) top center no-repeat;"}
+
+
+-# Main Talk content
+%section.container#main_content
+
+  #page_header
+    #page_title.left
+      %h1.big-title The CIW Cooperative
+    = render "partials/share"
+
+  -# Left column, main content: About Us information
+  .box.double.left
+
+    #about_description.column_row.divided_row
+      .column.column_double
+        .entry
+          %p
+            %strong What is The Cooperative?
+            %br
+            CIW strives to genuinely invest in a better-connected, well-versed Chicago. That means we’re dedicated to showcasing innovative, empowering and community-driven organizations alongside our superior programming. In 2013, we’re launching a revamped and refined Community Partnerships program, aligned with our mission of nurturing great ideas and bolstering actionable initiatives. This is our distinctive community; our collection of great ambitions, profound ideas and stellar relationships: This is <strong>The Cooperative</strong>.
+          %p But for CIW, the old days of networking are over; and we’re standing up against industry-specific meet-ups and tired cocktail hours. The Co-op is the new-age social chamber of commerce; where nonprofits meet tech junkies, artists meet business leaders and entrepreneurs meet social radicals. Bottom line, this is a social ecosystem of deeply motivated, boldly active individuals striving to spark change across this city and the world. Do you have what it takes?
+          %p
+            = link_to "Apply Here", "#", class: "blue_btn big-btn"
+        %ul.list-expand
+          %li.top_level
+            %h3 IW Co-op Member Benefits
+            = link_to "<i></i>click here to expand".html_safe, "#member_benefits", class: "expand-btn"
+            #member_benefits.hide-expand
+              %ol
+                %li Invites to three (3) core Co-op events, as well as opportunities for select invites to supplementary group meet-ups intimate gatherings throughtout the year
+                %li Invitations to select VIP events during week
+                %li Member-coordinated think tanks before of after CIW events hosted at HQ
+                %li Early access to CIW ticket registration and discounted tickets
+                %li Unique branding experiences, including exposure on the CIW website, show Guide, possible Talk interventions and media content, etc.
+                %li Potential exposure through community ad campaign, on Co-op literature
+                %li racks @ CIW HQ and digital flat screens @ relevant Talks and lobbies
+                %li Showcases the organization's commitment to futhering the culture of ideas and innovation in Chicago
+                %li Social capital derived from association with the formidable brand, growing reputation, and strong present of CIW
+                %li Social capital derived from beneficial connections made within the selective, highly diverse program
+          %li.top_level
+            %h3 Members at a Glance
+            = link_to "<i></i>click here to expand".html_safe, "#member_glance", class: "expand-btn"
+            #member_glance.hide-expand
+              %div Members at a Glance
+          %li.top_level
+            %h3 Members Expectations and Requirements
+            = link_to "<i></i>click here to expand".html_safe, "#member_exp", class: "expand-btn"
+            #member_exp.hide-expand
+              %div Members Expectations and Requirements
+        .join-foot
+          %p
+            %strong Join the Co-op
+            %br
+            At a glance, the Co-op is a diverse collection of local leaders, artists, business pros, innovators and social pioneers, handpicked by the CIW team to catalyze action in this booming start-up scene.  And we’re going to be selective. So tell us show us why you should be involved in this tight-knit community of pragmatic idealists.
+        .row-wrap
+          =link_to "Apply Here", "#", class: "blue_btn big-btn"
+          .over-hid
+            Members will be announced March 15, 2013. Please contact Kelly Hagler with any questions: Kelly@chicagoideas.com
+          
+  #sidebar
+    = render "partials/join_cooperative"
+    = render "partials/social"
+    = render "partials/newsletter_form"
+
+:javascript
+  $(document).ready(function(){
+    $(".expand-btn").click(function(e){
+      e.preventDefault();
+      content_element = $(this).attr('href');
+      $(content_element).toggleClass('hide-expand');
+      
+      if($(this).html().indexOf("expand") > 0){
+        $(this).html("<i></i>click here to contract");
+      }else{
+        $(this).html("<i></i>click here to expand");
+      }
+    });
+  });
