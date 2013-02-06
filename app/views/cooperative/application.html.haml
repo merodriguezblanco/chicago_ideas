@@ -3,7 +3,7 @@
   .banner_wrapper{:style => "background: url(#{asset_path "application/ciw_banner.jpg"}) top center no-repeat;"}
 .bg-white.clearfix
   #page.coop_application
-    = semantic_form_for :cooperative do |f|
+    = semantic_form_for @resource, url: cooperative_index_path, method: :post do |f|
       .left-column
         %h1.head-page-tab
           %small CIW 2013: 
@@ -21,32 +21,38 @@
               .numb 1
               .over-hid
                 %label Why do you want to be a member of The Cooperative? <small>(NO WORD LIMIT)</small>
-                = text_area_tag :reason
+                = f.text_area :reason
+                .red= @resource.errors[:reason].first
             .form-row
               .numb 2
               .over-hid
                 %label What social projects have you worked on (i.e. volunteerism, community projects, etc.)? <small>(400 WORDS MAX)</small>
-                = text_area_tag :worked_on, "", maxlength: 400
+                = f.text_area :worked_on, maxlength: 400
+                .red= @resource.errors[:worked_on].first
             .form-row
               .numb 3
               .over-hid
                 %label What are your expectations for being involved in the Co-op? <small>(200 WORDS MAX)</small>
-                = text_area_tag :expectations, "", maxlength: 200
+                = f.text_area :expectations, maxlength: 200
+                .red= @resource.errors[:expectations].first
             .form-row
               .numb 4
               .over-hid
                 %label What was the most meaningful or magical part of 2012 for you? <small>(200 WORDS MAX)</small>
-                = text_area_tag :meaningful, "", maxlength: 200
+                = f.text_area :part_meaningful, maxlength: 200
+                .red= @resource.errors[:part_meaningful].first
             .form-row
               .numb 5
               .over-hid
                 %label What was your most inspiring failure? <small>(300 WORD MAX)</small>
-                = text_area_tag :inspiring_failure, "", maxlength: 300
+                = f.text_area :ins_failure, maxlength: 300
+                .red= @resource.errors[:ins_failure].first
             .form-row
               .numb 6
               .over-hid
                 %label What Chicago neighborhood best represents who you are? Why? <small>(100 WORDS MAX)</small>
-                = text_area_tag :neighborhood, "", maxlength: 100
+                = f.text_area :neighborhood, maxlength: 100
+                .red= @resource.errors[:neighborhood].first
           .head-box-form.icon2
             %p
               %strong Additional Info:
@@ -55,17 +61,20 @@
               .numb 1
               .over-hid
                 %label Briefly describe the ereas in which the Chicago Ideas Week community can assist you or your organization: <small>(NO WORD LIMIT)</small>
-                = text_area_tag :describe
+                = f.text_area :assisted_area
+                .red= @resource.errors[:assisted_area].first
             .form-row
               .numb 2
               .over-hid
                 %label List three #hashtags that best describe your work and what you are passionate about: <small>(NO WORD LIMIT)</small>
-                = text_area_tag :hashtags
+                = f.text_area :passion
+                .red= @resource.errors[:passion].first
             .form-row
               .numb 3
               .over-hid
                 %label Are there any other organization or individuals you would recommend to be a member of the Co-op? If so, why?: <small>(200 WORDS)</small>
-                = text_area_tag :recommend_org, "", maxlength: 200
+                = f.text_area :recommend, maxlength: 200
+                .red= @resource.errors[:recommend].first
       .right-column
         .right-inner
           .row.wrap-row-form
@@ -73,23 +82,29 @@
               %strong Information
             .span.wrap-form
               %label Name
-              = text_field_tag :name
+              = f.text_field :name
+              .red= @resource.errors[:name].first
             .span.wrap-form
               %label Title
-              = text_field_tag :title
+              = f.text_field :title
+              .red= @resource.errors[:title].first
           .row.wrap-row-form.bor-top
             .span.wrap-form
               %label Organization
-              = text_field_tag :organization
+              = f.text_field :organization
+              .red= @resource.errors[:organization].first
             .span.wrap-form
               %label Phone
-              = text_field_tag :phone, "", placeholder: "Phone: (xxx) xxx-xxxx"
+              = f.text_field :phone, placeholder: "Phone: (xxx) xxx-xxxx"
+              .red= @resource.errors[:phone].first
             .span.wrap-form
               %label Organization's mission
-              = text_area_tag :mission
+              = f.text_area :org_mission
+              .red= @resource.errors[:org_mission].first
             .span.wrap-form
               %label Organization's Twitter handle
-              = text_field_tag :twitter, "", placeholder: "@"
+              = f.text_field :org_twitter, placeholder: "@"
+              .red= @resource.errors[:org_twitter].first
       .row
         =f.submit "Save Changes", class: "form-submit"
   .clr

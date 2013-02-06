@@ -72,6 +72,8 @@ CraigsAdmin::Application.routes.draw do
   resources :cooperative, :only => [:index] do
     collection do
       get :application
+      get :thankyou
+      post :create
     end
   end
   match 'sponsors/media_partners', :to => 'sponsors#media_partners'

@@ -1,0 +1,78 @@
+#model_detail
+  .section
+    %h1 Cooperative Application
+    
+    .row
+      %h2 Organization Info
+    
+    .row.no_margin
+      .column
+        %strong Name
+      .column_double= @resource.name
+
+    .row.no_margin
+      %strong Title
+      %p= @resource.title
+
+    .row.no_margin
+      .column
+        %strong Address1
+      .column_double= @resource.organization
+
+    .row.no_margin
+      .column
+        %strong Phone
+      .column_double= @resource.phone
+
+    .row.no_margin
+      .column
+        %strong Organization Mission
+      .column_double= @resource.org_mission
+
+    .row.no_margin
+      .column
+        %strong Organization's Twitter handle
+      .column_double= @resource.org_twitter
+  
+  .section
+    .row
+      %h2 Chicago Ideas Week Cooperative Application Info
+    .row
+      .column
+        %strong Why do you want to be a member of The Cooperative? 
+      .column_double= @resource.reason
+    .row
+      .column
+        %strong What social projects have you worked on ?
+      .column_double= @resource.worked_on
+    .row
+      .column 
+        %strong What are your expectations for being involved in the Co-op?
+      .column_doubl= @resource.expectations
+    .row
+      .column
+        %strong What was the most meaningful or magical part of 2012 for you? 
+      .column_double= @resource.part_meaningful
+    .row
+      .column
+        %strong What was your most inspiring failure ?
+      .column_double= @resource.ins_failure
+    .row
+      .column 
+        %strong What Chicago neighborhood best represents who you are? Why? 
+      .column_doubl= @resource.neighborhood
+  .section
+    .row
+      %h2 Additional Info
+    .row
+      .column
+        %strong Briefly describe the ereas in which the Chicago Ideas Week community can assist you or your organization 
+      .column_double= @resource.assisted_area
+    .row
+      .column
+        %strong List three #hashtags that best describe your work and what you are passionate about
+      .column_double= @resource.passion
+    .row
+      .column 
+        %strong Are there any other organization or individuals you would recommend to be a member of the Co-op? If so, why?
+      .column_doubl= @resource.recommend
