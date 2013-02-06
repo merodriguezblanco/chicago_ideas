@@ -1,0 +1,2 @@
+module Sponsor::SendTicketsHelper
+end
