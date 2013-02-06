@@ -2,13 +2,14 @@ class Sponsor::StartHereController < Sponsor::BaseController
   def index
     @sponsor = current_user.sponsor
   end
-  
+
   def send_request
-    validate_params "name", "email" 
+    validate_params "name", "email"
+    validate_email_uniqueness "email", "User"
     SponsorMailer.request_admin(current_user, params[:name], params[:email]).deliver if @errors.blank?
     respond_to :js
   end
-  
+
   def update_sponsor
     @sponsor = current_user.sponsor
     do_unlock = false
@@ -24,15 +25,15 @@ class Sponsor::StartHereController < Sponsor::BaseController
       render :index
     end
   end
-  
-  private 
+
+  private
     def update_primary_contact
       user = User.find params[:primary_contact] if params[:primary_contact]
       if user
         user.sponsor_user.update_attribute(:primary_contact, true)
       end
     end
-  
+
     def unlock
       unless (@sponsor.logo_file_name.blank? || @sponsor.eps_logo_file_name.blank? || @sponsor.sponsor_agreement_file_name.blank?)
         @sponsor.locked = false
