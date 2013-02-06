@@ -12,6 +12,7 @@ gem "bson_ext"
 
 # Bundle the extra gems:
 gem 'devise', '1.5.3'
+gem 'devise_invitable'
 gem 'httparty'
 gem 'GeoRuby'
 gem 'spatial_adapter'

@@ -555,6 +555,7 @@ CraigsAdmin::Application.routes.draw do
       collection do
         post :send_request
         put :update_sponsor
+        delete :delete_user
       end
     end
   end

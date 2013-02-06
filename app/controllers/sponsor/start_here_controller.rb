@@ -9,17 +9,11 @@ class Sponsor::StartHereController < Sponsor::BaseController
       @errors << "Already a user of CIW"
     end
     if @errors.blank?
-      password = Devise.friendly_token[0,8]
-      user = User.new(name: params[:name], email: params[:email])
-      user.is_sponsor = true
-      user.sponsor = current_user.sponsor
-      user.password = password
-      user.is_admin_created = true
-      user.save
-      @errors += user.errors.full_messages unless user.errors.blank?
+      user = User.invite!(name: params[:name], email: params[:email], is_admin_created: true)
+      #user = User.find_by_email params[:email]
+      user.update_attribute(:is_sponsor, true)
+      current_user.sponsor.sponsor_users.create(user_id: user.id)
     end
-    url = "http://#{request.host_with_port}/sponsor"
-    SponsorMailer.invite_sponsor(current_user, params[:email], password, url).deliver if @errors.blank?
     respond_to :js
   end
   
@@ -37,6 +31,12 @@ class Sponsor::StartHereController < Sponsor::BaseController
       @errors = @sponsor.errors.full_messages
       render :index
     end
+  end
+  
+  def delete_user
+    @user = User.find params[:id]
+    @user.destroy
+    respond_to :js
   end
   
   private 

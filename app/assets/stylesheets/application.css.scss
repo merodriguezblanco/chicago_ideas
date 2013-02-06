@@ -22,3 +22,9 @@
 
 @import "application/kohtweets";
 @import "plugins/flash_helpers";
+
+#devise_user_invitations_page{
+  form#user_edit{
+    margin: 100px 150px !important;
+  }
+}

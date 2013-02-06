@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206051916) do
+ActiveRecord::Schema.define(:version => 20130206145020) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -658,7 +658,7 @@ ActiveRecord::Schema.define(:version => 20130206051916) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "encrypted_password",                    :default => ""
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -697,6 +697,12 @@ ActiveRecord::Schema.define(:version => 20130206051916) do
     t.boolean  "published",                             :default => false, :null => false
     t.boolean  "is_sponsor"
     t.boolean  "is_member"
+    t.string   "invitation_token",       :limit => 60
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
   end
 
   add_index "users", ["admin"], :name => "index_users_on_admin"
