@@ -1,14 +1,65 @@
-.left-column
-  =render partial: "left"
-.right-column
-  =render partial: "right"
-.row
-  .title CIW Marketing Materials
-  .row Please use these resources when sharing your involvement with
-CIW, both inside and outside your organization!
-#marketing.row
-  - 8.times do
-    = image_tag "logo.png", size: "160x160"
-.row
-  .row.title Interested in Volunteering?
-  .row.span If anyone at your organization may be interested in volunteering at CIW, please contact
+%h1.head-page-tab
+  %small MATERIALS
+  = "Shared Materials"
+.desc-page
+  Please use these resources when sharing your involvement with CIW,
+  %br both inside and outside organization!
+#marketing
+  %ul
+    %li
+      %div
+        = link_to image_tag( 'admin/materials.jpg'),"#"
+      %h3
+        = link_to 'Marketing Exposure',"#"
+      %p
+        = link_to 'preview',"#"
+        |
+        = link_to 'download',"#"
+    %li
+      %div
+        = link_to image_tag( 'admin/materials.jpg'),"#"
+      %h3
+        = link_to 'Marketing Exposure',"#"
+      %p
+        = link_to 'preview',"#"
+        |
+        = link_to 'download',"#"
+    %li
+      %div
+        = link_to image_tag( 'admin/materials.jpg'),"#"
+      %h3
+        = link_to 'Marketing Exposure',"#"
+      %p
+        = link_to 'preview',"#"
+        |
+        = link_to 'download',"#"
+    %li
+      %div
+        = link_to image_tag( 'admin/materials.jpg'),"#"
+      %h3
+        = link_to 'Marketing Exposure',"#"
+      %p
+        = link_to 'preview',"#"
+        |
+        = link_to 'download',"#"
+    %li
+      %div
+        = link_to image_tag( 'admin/materials.jpg'),"#"
+      %h3
+        = link_to 'Marketing Exposure',"#"
+      %p
+        = link_to 'preview',"#"
+        |
+        = link_to 'download',"#"
+    %li
+      %div
+        = link_to image_tag( 'admin/materials.jpg'),"#"
+      %h3
+        = link_to 'Marketing Exposure',"#"
+      %p
+        = link_to 'preview',"#"
+        |
+        = link_to 'download',"#"
+
+.clr
+

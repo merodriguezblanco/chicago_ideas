@@ -1,5 +1,6 @@
 CraigsAdmin::Application.routes.draw do
 
+
   # the API                                                                          (http://api.domain.com/)
   # ---------------------------------------------------------------------------------------------------------
   namespace :api do
@@ -546,6 +547,7 @@ CraigsAdmin::Application.routes.draw do
   namespace :sponsor do
     root :to => "start_here#index"
     resources :book_tickets, only: [:index]
+    resources :send_tickets, only: [:index]
     resources :events_calendar, only: [:index]
     resources :materials, only: [:index]     
     resources :start_here, only: [:index] do
