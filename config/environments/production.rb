@@ -52,8 +52,8 @@ CraigsAdmin::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.asset_host = "http://www.#{ENV['BASE_DOMAIN_NAME']}"
-  config.action_mailer.default_url_options = {:host => "www.#{ENV['BASE_DOMAIN_NAME']}"}
+  config.action_mailer.asset_host = "http://www.#{ENV['BASE_DOMAIN_NAME'] || '23.23.114.156' }"
+  config.action_mailer.default_url_options = {:host => "www.#{ENV['BASE_DOMAIN_NAME'] || '23.23.114.156'}"}
   
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
