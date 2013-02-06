@@ -1,0 +1,99 @@
+= stylesheet_link_tag :cooperative
+%section.banner.container-fluid
+  .banner_wrapper{:style => "background: url(#{asset_path "application/ciw_banner.jpg"}) top center no-repeat;"}
+.bg-white.clearfix
+  #page.coop_application
+    = semantic_form_for :cooperative do |f|
+      .left-column
+        %h1.head-page-tab
+          %small CIW 2013: 
+          Co-op Application
+        .desc-page
+          Thanks for applying to The Cooperative! But just in case something crazy happens, we recommend you save all your entries before submitting. If you experience technical problems or if you have any questions, please contact Kelly@chicagoideas.com.
+        %fieldset.inputs
+          .head-box-form
+            %p
+              %strong Here's what we're looking for:
+            %p 
+              Spark, creativity and ambition. Tell us (concisely) what makes you awesome, and why you’d make an integral member in this specially connected, impact-driven community.
+          .row.box-upload-file
+            .form-row
+              .numb 1
+              .over-hid
+                %label Why do you want to be a member of The Cooperative? <small>(NO WORD LIMIT)</small>
+                = text_area_tag :reason
+            .form-row
+              .numb 2
+              .over-hid
+                %label What social projects have you worked on (i.e. volunteerism, community projects, etc.)? <small>(400 WORDS MAX)</small>
+                = text_area_tag :worked_on, "", maxlength: 400
+            .form-row
+              .numb 3
+              .over-hid
+                %label What are your expectations for being involved in the Co-op? <small>(200 WORDS MAX)</small>
+                = text_area_tag :expectations, "", maxlength: 200
+            .form-row
+              .numb 4
+              .over-hid
+                %label What was the most meaningful or magical part of 2012 for you? <small>(200 WORDS MAX)</small>
+                = text_area_tag :meaningful, "", maxlength: 200
+            .form-row
+              .numb 5
+              .over-hid
+                %label What was your most inspiring failure? <small>(300 WORD MAX)</small>
+                = text_area_tag :inspiring_failure, "", maxlength: 300
+            .form-row
+              .numb 6
+              .over-hid
+                %label What Chicago neighborhood best represents who you are? Why? <small>(100 WORDS MAX)</small>
+                = text_area_tag :neighborhood, "", maxlength: 100
+          .head-box-form.icon2
+            %p
+              %strong Additional Info:
+          .row.box-upload-file
+            .form-row
+              .numb 1
+              .over-hid
+                %label Briefly describe the ereas in which the Chicago Ideas Week community can assist you or your organization: <small>(NO WORD LIMIT)</small>
+                = text_area_tag :describe
+            .form-row
+              .numb 2
+              .over-hid
+                %label List three #hashtags that best describe your work and what you are passionate about: <small>(NO WORD LIMIT)</small>
+                = text_area_tag :hashtags
+            .form-row
+              .numb 3
+              .over-hid
+                %label Are there any other organization or individuals you would recommend to be a member of the Co-op? If so, why?: <small>(200 WORDS)</small>
+                = text_area_tag :recommend_org, "", maxlength: 200
+      .right-column
+        .right-inner
+          .row.wrap-row-form
+            .title
+              %strong Information
+            .span.wrap-form
+              %label Name
+              = text_field_tag :name
+            .span.wrap-form
+              %label Title
+              = text_field_tag :title
+          .row.wrap-row-form.bor-top
+            .span.wrap-form
+              %label Organization
+              = text_field_tag :organization
+            .span.wrap-form
+              %label Phone
+              = text_field_tag :phone, "", placeholder: "Phone: (xxx) xxx-xxxx"
+            .span.wrap-form
+              %label Organization's mission
+              = text_area_tag :mission
+            .span.wrap-form
+              %label Organization's Twitter handle
+              = text_field_tag :twitter, "", placeholder: "@"
+      .row
+        =f.submit "Save Changes", class: "form-submit"
+  .clr
+          
+              
+                    
+          
