@@ -13,9 +13,7 @@
         %span= u.name
         = link_to 'delete', '#', class: 'del'
   .row
-    .title
-      %strong Request an additional
-      %br Sponsor Admin
+    = link_to 'Add another sponsor admin', '#', class: 'blue-btn'
   .row= text_field :request, :name, placeholder: "Name* of Requested Admin"
   .row= text_field :request, :email, placeholder: "Email* of Requested admin"
   .row= text_field :request, :title, placeholder: "Title of Requested Admin"
