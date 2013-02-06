@@ -72,7 +72,7 @@
             .form-row
               .numb 3
               .over-hid
-                %label Are there any other organization or individuals you would recommend to be a member of the Co-op? If so, why?: <small>(200 WORDS)</small>
+                %label Are there any other organization or individuals you would recommend to be a member of the Co-op? If so, why? <small>(200 WORDS)</small>
                 = f.text_area :recommend, maxlength: 200
                 .red= @resource.errors[:recommend].first
       .right-column
