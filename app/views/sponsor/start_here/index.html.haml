@@ -1,10 +1,15 @@
+- inactive = @sponsor.eps_logo_file_name.blank? || @sponsor.logo_file_name.blank? || @sponsor.sponsor_agreement_file_name.blank?
 = semantic_form_for @sponsor, url: update_sponsor_sponsor_start_here_index_path, html:{ multipart: true } do |f|
   .left-column
-    =render partial: "left", locals: {f: f}
+    - unless inactive
+      = render partial: "dashboard"
+    - else
+      = render partial: "left", locals: {f: f}
   .right-column
     =render partial: "right", locals: {f: f}
-  .row
-    =f.submit "Active Account", disabled: true, class: "form-submit disabled"
+  - if inactive
+    .row
+      =f.submit "Active Account", disabled: true, class: "form-submit disabled"
   .clr
 
 ~ form_tag send_request_sponsor_start_here_index_path, remote: true, class: 'static', id: "request_admin" do

@@ -1,7 +1,12 @@
 - if @sponsor.primary_contact == current_user
   .right-inner
+    .row
+      .title
+        %strong Your Organization
     .list-sponsor
       .title Additional Sponsor Admins
+      - if @sponsor.users.size == 1
+        there is no additional admins
       - @sponsor.users.each do |u|
         - unless current_user == u
           .span{id: "user_#{u.id}"}
