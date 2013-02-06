@@ -4,9 +4,13 @@
   .right-column
     =render partial: "right", locals: {f: f}
   .row
-    =f.submit "Save Changes", disabled: true,class: "form-submit disabled"
+    =f.submit "Active Account", disabled: true, class: "form-submit disabled"
   .clr
-  
+
+~ form_tag send_request_sponsor_start_here_index_path, remote: true, class: 'static', id: "request_admin" do
+  = hidden_field_tag :name
+  = hidden_field_tag :email
+
 #email_form.hidden
   %h2
     Request Additional Sponsor Admin
@@ -15,10 +19,10 @@
     .errors{style: "padding: 20px 0 0 20px"}
     %div{style: "padding: 20px 0 0 20px"}
       Name of Requested Admin:
-      = text_field_tag :name
+      = hidden_field_tag :name
     %div{style: "padding: 20px 0 0 20px"}
       Email of Requested Admin:
-      = text_field_tag :email
+      = hidden_field_tag :email
     %div{style: "padding: 20px 0 0 20px"}
       = submit_tag "Request Sponsor Admin"
 :javascript

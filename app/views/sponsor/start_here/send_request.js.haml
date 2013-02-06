@@ -1,4 +1,6 @@
+$("#submit_request").html("Send Invite");
+$("#loading_image").addClass("hidden");
 - if @errors.blank?
-  Utility.close_dialog();
+  $('.message').html("Sent invite email successfully");
 - else
   $('.errors').html("#{escape_javascript(render partial: "shared/errors")}");

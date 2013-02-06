@@ -3,11 +3,12 @@ class SponsorMailer < ActionMailer::Base
   default :from => "forms@chicagoideas.com"
   default :to => "leah@chicagoideas.com"
     
-  def request_admin(user, name, email)
+  def invite_sponsor(user, email, password, url)
     @user = user
-    @name = name
+    @password = password
     @email = email
-    mail(subject: "New Sponsor Admin request")
+    @url = url
+    mail(to: email, subject: "Invite mail from ChicagoIdeas")
   end
 
 end

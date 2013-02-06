@@ -4,8 +4,22 @@ class Sponsor::StartHereController < Sponsor::BaseController
   end
   
   def send_request
-    validate_params "name", "email" 
-    SponsorMailer.request_admin(current_user, params[:name], params[:email]).deliver if @errors.blank?
+    validate_params "name", "email"
+    unless User.where(email: params[:email]).blank?
+      @errors << "Already a user of CIW"
+    end
+    if @errors.blank?
+      password = Devise.friendly_token[0,8]
+      user = User.new(name: params[:name], email: params[:email])
+      user.is_sponsor = true
+      user.sponsor = current_user.sponsor
+      user.password = password
+      user.is_admin_created = true
+      user.save
+      @errors += user.errors.full_messages unless user.errors.blank?
+    end
+    url = "http://#{request.host_with_port}/sponsor"
+    SponsorMailer.invite_sponsor(current_user, params[:email], password, url).deliver if @errors.blank?
     respond_to :js
   end
   

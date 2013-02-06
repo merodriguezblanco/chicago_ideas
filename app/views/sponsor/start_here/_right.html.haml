@@ -15,7 +15,25 @@
   .row
     .title
       %strong Add another sponsor admin
+  .errors
   .row= text_field :request, :name, placeholder: "Name of Requested Admin"
   .row= text_field :request, :email, placeholder: "Email of Requested admin"
-  .form-action= link_to "Submit request", "#", class: "blue-btn"
-  .hint Your request was submitted. We will process it within 1-2 business days.   
+  .form-action= link_to "Send Invite", "", class: "blue-btn", id: "submit_request"
+  #loading_image.hidden{style: "width: 100%; text-align:center; margin-top: 10px;"}= image_tag 'admin/loader.gif'
+  .message.hint
+  
+:javascript
+  $(document).ready(function(){
+    $("a#submit_request").click(function(e){
+      e.preventDefault();
+      $(".errors").html("");
+      $(".message").html("");
+      if($(this).text()=="Send Invite"){
+        $("#request_admin input#name").val($("#request_name").val());
+        $("#request_admin input#email").val($("#request_email").val());
+        $(this).html("sending...");
+        $("#loading_image").removeClass("hidden");
+        $("#request_admin").submit();
+      }
+    });
+  });
