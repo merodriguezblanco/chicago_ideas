@@ -14,8 +14,11 @@
         = link_to 'delete', '#', class: 'del'
   .row
     .title
-      %strong Add another sponsor admin
-  .row= text_field :request, :name, placeholder: "Name of Requested Admin"
-  .row= text_field :request, :email, placeholder: "Email of Requested admin"
-  .form-action= link_to "Submit request", "#", class: "blue-btn"
+      %strong Request an additional
+      %br Sponsor Admin
+  .row= text_field :request, :name, placeholder: "Name* of Requested Admin"
+  .row= text_field :request, :email, placeholder: "Email* of Requested admin"
+  .row= text_field :request, :title, placeholder: "Title of Requested Admin"
+  .row= text_field :request, :phone, placeholder: "Phone number of Requested admin"
+  .form-action= link_to "CREATE NEW SPONSOR ADMIN", "#", class: "blue-btn"
   .hint Your request was submitted. We will process it within 1-2 business days.   

@@ -14,10 +14,13 @@ class Sponsor::BaseController < ApplicationController
     }
   end
 
+=begin
+  ## method to check email uniqueness for any model. Need to optimize and write tests.
   def validate_email_uniqueness(email, model_name)
     @errors ||= []
     @errors << "Already a user of CIW" if email && model_name.camelize.constantize.where(email => params[email]).exists?
   end
+=end
 
   def init
     @sponsor = current_user.sponsor

@@ -5,7 +5,6 @@ class Sponsor::StartHereController < Sponsor::BaseController
 
   def send_request
     validate_params "name", "email"
-    validate_email_uniqueness "email", "User"
     SponsorMailer.request_admin(current_user, params[:name], params[:email]).deliver if @errors.blank?
     respond_to :js
   end
