@@ -11,13 +11,6 @@
     %li#gn_logo
       %h1= link_to "Chicago Ideas Week", root_path, :rel => "bookmark", :title => "Chicago Ideas Week Homepage"
     = render partial: "layouts/application/menu_links"
-    - if current_user
-      #account_links
-        = icon_link_to 'my account', "#", 'person', :icon_set => 'light'
-        = icon_link_to 'sign out', destroy_user_session_path, 'extlink', :icon_set => 'light'
-        - if current_simulate_user
-          |
-        = icon_link_to "End simulate", end_simulate_users_path, 'locked'
   #social_media.container
     %div
       = link_to image_tag("/assets/application/btn_twitter.png"), "https://twitter.com/chicagoideas", :target => "_blank"
