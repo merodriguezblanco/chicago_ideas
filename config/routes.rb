@@ -284,7 +284,16 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-
+    
+    resources :cooperative_applications do
+      member do
+        # pages
+        get :notes
+      end
+      resources :notes, :only => [:new, :create]
+    end
+    
+    
     resources :volunteers do
       member do
         # pages

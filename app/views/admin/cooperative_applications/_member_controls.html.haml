@@ -1,0 +1,11 @@
+- content_for :breadcrumbs do
+  = breadcrumbs @cooperative_application
+  .crumb.end= section_title   
+
+- content_for :content_navigation do
+  %h2 CooperativeApplications
+  %ul
+    %li{:class => active_for('index')}= icon_link_to "Search", admin_cooperative_applications_path, 'search'
+  %h2= @cooperative_application.name
+  %ul
+    %li{:class => active_for('show')}= icon_link_to "Detail", admin_cooperative_application_path(@cooperative_application), 'circle-zoomin'

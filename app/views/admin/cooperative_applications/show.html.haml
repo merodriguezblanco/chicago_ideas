@@ -1,0 +1,53 @@
+= render 'member_controls'
+- content_for :top_links do
+  = destroy_model_link @cooperative_application, true
+
+%h1
+  = @cooperative_application.name
+
+#model_detail
+  %h4 Name
+  %p= @cooperative_application.name
+
+  %h4 Title
+  %p= @cooperative_application.title
+
+  %h4 Organization
+  %p= @cooperative_application.organization
+
+  %h4 Phone
+  %p= @cooperative_application.phone
+
+  %h4 Organization Mission
+  %p= @cooperative_application.org_mission
+
+  %h4 Twitter Handle
+  %p= @cooperative_application.org_twitter
+  
+  
+  %h3 Joining Purpose
+  %p= @cooperative_application.reason
+
+  %h3 Worked On Projects
+  %p= @cooperative_application.worked_on
+
+  %h3 Expectations
+  %p= @cooperative_application.expectations
+
+  %h3 Meaningful or magical part of 2012
+  %p= @cooperative_application.part_meaningful
+
+  %h3 Most Inspriring failure
+  %p= @cooperative_application.ins_failure
+
+  %h3 Neighborhood
+  %p= @cooperative_application.neighborhood
+ 
+  %h4 Assisted Area from Chicago Ideas Week
+  %p= @cooperative_application.assisted_area
+  
+  %h4 Passion
+  %p= @cooperative_application.passion
+  
+  %h4 Recommend
+  %p= @cooperative_application.recommend

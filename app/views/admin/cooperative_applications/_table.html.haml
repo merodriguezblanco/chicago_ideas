@@ -1,0 +1,8 @@
+%table#cooperative_application
+  %tr
+    %th.name= ssp_sort_link :name
+    %th.title= ssp_sort_link :title
+    %th.organization= ssp_sort_link :organization
+    %th.phone= ssp_sort_link :phone
+    %th 
+  = render :partial => 'admin/cooperative_applications/cooperative_application.html.haml', :collection => cooperative_applications

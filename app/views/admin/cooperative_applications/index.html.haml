@@ -1,0 +1,10 @@
+= render 'collection_controls'
+
+= ssp_search_form CooperativeApplication
+
+.table_section
+  %h3 
+    Cooperative Applications
+  .table_wrapper
+    = render 'admin/cooperative_applications/table.html.haml', :cooperative_applications => @cooperative_applications
+  = paginate @cooperative_applications

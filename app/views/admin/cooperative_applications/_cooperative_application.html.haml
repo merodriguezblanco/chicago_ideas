@@ -1,0 +1,8 @@
+%tr{:cooperative_application => cooperative_application.id}
+  %td.name= link_to cooperative_application.name, admin_cooperative_application_path(cooperative_application)
+  %td.title= cooperative_application.title
+  %td.organization= cooperative_application.organization
+  %td.phone= cooperative_application.phone
+  %td.options
+    = destroy_model_link cooperative_application
+ 
