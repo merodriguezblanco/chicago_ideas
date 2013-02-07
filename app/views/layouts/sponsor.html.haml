@@ -76,8 +76,11 @@
               .dropdown
                 %ul
                   %li= link_to "sign out", destroy_user_session_path
-            - if current_simulate_user
-              %li= icon_link_to "End simulate", end_simulate_users_path, 'locked'            
+            %li
+              - if current_simulate_user
+                = icon_link_to "End simulate", end_simulate_users_path, 'locked'
+              - else
+                .span{style: "visibility: hidden"} End simulate         
     .tab-nav
       .w100-fix
         .welcome Welcome #{current_user.name}
