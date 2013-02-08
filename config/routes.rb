@@ -100,6 +100,9 @@ CraigsAdmin::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks",
                                        :sessions => "sessions" }
 
+
+  # memberships
+  resources :member_types, :only => [:index]
   # forms we capture data from
   resources :volunteers, :only => [:new, :create]
   resources :community_partner_applications, :only => [:new, :create]

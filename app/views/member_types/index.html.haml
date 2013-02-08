@@ -1,0 +1,29 @@
+%section#header_toolbar.container-fluid
+  .container
+    #breadcrumbs
+      %ul
+        %li= link_to "Home", "/"
+        %li
+          %span Member Program
+
+%section.container#main_content
+  %div#member_program_header
+    %h1 CIW Member Program
+
+    %h2
+      %p Enjoy Unparalleled Access,
+      %p Advanced Tickets,
+      %p & Invitations to Insider Parties!
+
+  %div#member_program_content.clearfix
+    %div#member_program_levels.clearfix
+
+      %h2 Memberships
+      %div
+        - @member_types.each do |mt|
+          %div{:style => "width: 200px; float: left; padding: 5px;"}
+            %h2= mt.name
+            %p{:style => "height: 200px;"}= mt.description
+            %p
+              = number_to_currency(mt.price)
+              = button_to("Buy", "#", :class => "blue_btn")
