@@ -7,14 +7,28 @@ class MemberType < ActiveRecord::Base
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
   has_many :members
-  
-  
+
+  def price=(num)
+    @price = num.to_i
+  end
+
+  def price
+    return nil if self.new_record?
+    @price || price_in_cents / 100
+  end
+
+  before_save :set_price_in_cents
+  def set_price_in_cents
+    self.price_in_cents = price.to_i * 100 if price.to_i * 100 != price_in_cents
+  end
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
       :id => id.to_s,
       :type => self.class.name.underscore.downcase,
       :name => name,
+      :description => description
     }
   end
 
