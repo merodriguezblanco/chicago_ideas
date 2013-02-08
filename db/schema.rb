@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206145020) do
+ActiveRecord::Schema.define(:version => 20130208190228) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -361,6 +361,8 @@ ActiveRecord::Schema.define(:version => 20130206145020) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "price_in_cents"
   end
 
   add_index "member_types", ["name"], :name => "index_member_types_on_name"
@@ -394,6 +396,15 @@ ActiveRecord::Schema.define(:version => 20130206145020) do
 
   add_index "notes", ["asset_type", "asset_id"], :name => "index_notes_on_asset_type_and_asset_id"
   add_index "notes", ["author_id"], :name => "index_notes_on_author_id"
+
+  create_table "orders", :force => true do |t|
+    t.integer  "total_in_cents"
+    t.boolean  "approved"
+    t.integer  "user_id"
+    t.integer  "member_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "partners", :force => true do |t|
     t.string   "name",              :limit => 100, :null => false
