@@ -43,3 +43,9 @@ Day.create!(:date => "2012-10-11".to_date, :name => "Meta Narrative for Day 4")
 Day.create!(:date => "2012-10-12".to_date, :name => "Meta Narrative for Day 5")
 Day.create!(:date => "2012-10-13".to_date, :name => "Meta Narrative for Day 6")
 Day.create!(:date => "2012-10-14".to_date, :name => "Meta Narrative for Day 7")
+
+
+MemberType.create!(:name => "Friends")
+MemberType.create!(:name => "Donor")
+MemberType.create!(:name => "Patrons")
+MemberType.create!(:name => "Benefactor")
