@@ -506,7 +506,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :days do
       member do
         # pages
@@ -558,8 +558,8 @@ CraigsAdmin::Application.routes.draw do
     resources :book_tickets, only: [:index]
     resources :send_tickets, only: [:index]
     resources :events_calendar, only: [:index]
-    resources :materials, only: [:index]  
-    resources :send_tickets, only: [:index]   
+    resources :materials, only: [:index]
+    resources :send_tickets, only: [:index]
     resources :start_here, only: [:index] do
       collection do
         post :send_request
