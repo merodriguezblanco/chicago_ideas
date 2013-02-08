@@ -7,9 +7,9 @@
     = stylesheet_link_tag 'admin_print', :media => "print"
     = javascript_include_tag :admin
     = csrf_meta_tag
- 
+
   %body.admin{:id => body_id, :class => body_class}
-  
+
     #header_container
       #header
         = link_to '', admin_root_path, :id => :logo
@@ -23,7 +23,7 @@
           = link_to 'talks', admin_talks_path, :class => active_for_controller('admin/talks')
           = link_to 'events', admin_events_path, :class => active_for_controller('admin/events')
           = link_to 'news', admin_press_clippings_path, :class => active_for_controller('admin/press_clippings')
-        
+
         #account_links.admin
           - if current_user.connected_to_facebook?
             %a.facebook_connected_account{:href => admin_user_path(current_user)}
@@ -32,7 +32,7 @@
           - else
             = icon_link_to 'my account', admin_user_path(current_user), 'person', :icon_set => 'light'
           = icon_link_to 'sign out', destroy_user_session_path, 'extlink', :icon_set => 'light'
-  
+
     #content_container
       #content_navigation
         = yield(:content_navigation)
@@ -50,13 +50,13 @@
           = yield
           .clr
       .clr
-  
-    #flash_helper= flash_helper  
-  
+
+    #flash_helper= flash_helper
+
     #dialog_loading{:style => "display:none"}= image_tag 'admin/loader.gif', :id => 'dialog_loading'
     #dialog{:style => "display:none"}
       .backdrop
       .dialog_position
         .dialog_container
           .dialog_contents
-    
+

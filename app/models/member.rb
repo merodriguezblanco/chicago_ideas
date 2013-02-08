@@ -6,10 +6,10 @@ class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :member_type
   belongs_to :year
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -21,7 +21,7 @@ class Member < ActiveRecord::Base
       :last_name => last_name,
     }
   end
-  
+
   def get_first_name
     fname = (!first_name.nil? && first_name.strip.length > 0) ? first_name.strip : ''
     if fname.length == 0
@@ -33,7 +33,7 @@ class Member < ActiveRecord::Base
     end
     return fname
   end
-  
+
   def get_last_name
     lname = (!last_name.nil? && last_name.strip.length > 0) ? last_name.strip : ''
     if lname.length == 0
@@ -52,11 +52,11 @@ class Member < ActiveRecord::Base
     when 'foo'
     else
       [
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
-  
+
+
 
 end

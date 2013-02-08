@@ -3,7 +3,7 @@ class MemberType < ActiveRecord::Base
   # my bone dry solution to search, sort and paginate
   include SearchSortPaginate
 
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
   has_many :members
@@ -25,9 +25,9 @@ class MemberType < ActiveRecord::Base
     else
       [
         { :name => :search, :as => :string, :fields => [:name], :wildcard => :both },
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
 end
