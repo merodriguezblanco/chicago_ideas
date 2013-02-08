@@ -1,5 +1,7 @@
 %table#member_types
   %tr
     %th.name= ssp_sort_link :name
-    %th 
+    %th.description= ssp_sort_link :description
+    %th.price= ssp_sort_link :price
+    %th
   = render :partial => 'admin/member_types/member_type.html.haml', :collection => member_types

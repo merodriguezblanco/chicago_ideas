@@ -365,6 +365,8 @@ ActiveRecord::Schema.define(:version => 20130214151900) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "price_in_cents", :default => 0
   end
 
   add_index "member_types", ["name"], :name => "index_member_types_on_name"
@@ -398,6 +400,16 @@ ActiveRecord::Schema.define(:version => 20130214151900) do
 
   add_index "notes", ["asset_type", "asset_id"], :name => "index_notes_on_asset_type_and_asset_id"
   add_index "notes", ["author_id"], :name => "index_notes_on_author_id"
+
+  create_table "orders", :force => true do |t|
+    t.integer  "total_in_cents",              :default => 0
+    t.boolean  "approved",                    :default => false
+    t.integer  "user_id"
+    t.integer  "member_type_id"
+    t.string   "number",         :limit => 8,                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "partners", :force => true do |t|
     t.string   "name",              :limit => 100, :null => false
