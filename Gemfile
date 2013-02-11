@@ -63,6 +63,10 @@ gem 'dynamic_models'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'unicorn'
+
+# Authorize.net
+gem 'authorize-net'
+
 # third party SAS solution for monitoring performance
 group :production do
   gem 'newrelic_rpm'
