@@ -48,3 +48,7 @@ CraigsAdmin::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+AUTHNET_LOGIN = "2y9kBc3rXn"
+AUTHNET_KEY = "8SXA34Ag6qa28SuH"
+AUTHNET_ENV = :sandbox
