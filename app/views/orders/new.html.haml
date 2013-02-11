@@ -19,14 +19,14 @@
           %span.form_section_header Billing Information
 
           = f.inputs :class => "v_lists c_list" do
-            = f.input :name_on_card, :as => :string, :required => true, :label => "Name on card"
-            = f.input :email, :as => :string, :label => "Email"
-            = f.input :address, :as => :string, :required => true, :label => "Address"
-            = f.input :city, :as => :string, :required => true, :label => "City"
-            = f.input :state, :as => :string, :required => true, :label => "State"
+            = f.input :member_type_id, :as => :hidden, :value => @member_type.id
+            = f.input :name_on_card, :as => :string, :required => true
+            = f.input :address, :as => :string, :required => true
+            = f.input :city, :as => :string, :required => true
+            = f.input :state, :as => :string, :required => true
             = f.input :zip, :as => :string, :required => true, :label => "Zip Code"
-            = f.input :card_number, :as => :string, :required => true, :label => "Number on Card"
-            = f.input :cvc, :as => :string, :required => true, :label => "CVC"
+            = f.input :card_number, :as => :string, :required => true
+            = f.input :cvc, :as => :string, :required => true, :size => 3, :label => "Verification Code"
             %li.string.input.required.stringish
               = f.label :expiry_month, "Expiry Date", :class => "label"
               = f.text_field :expiry_month, :size => 1
@@ -36,7 +36,7 @@
         .form_section
           = f.inputs :class => "v_lists c_list" do
             %span.form_section_header Account Information
-            = f.input :username, :as => :string, :required => true, :label => "Username"
+            = f.input :email, :as => :string, :required => true
             = f.input :password, :as => :password, :required => true, :label=> "Password"
 
         = f.buttons do
