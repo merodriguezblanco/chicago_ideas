@@ -8,7 +8,7 @@ class Create<%= controller_class_name %> < ActiveRecord::Migration
       t.string :<%= attribute.name %>_content_type, :null => true
       t.integer :<%= attribute.name %>_file_size, :null => true
       t.datetime :<%= attribute.name %>_updated_at, :null => true
-      
+
 <% else -%>
       t.<%= attribute.type %> :<%= attribute.name %>, :null => true
 <% end -%>

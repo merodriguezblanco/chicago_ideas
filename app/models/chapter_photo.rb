@@ -4,35 +4,35 @@ class ChapterPhoto < ActiveRecord::Base
   include SearchSortPaginate
 
   belongs_to :chapter
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
-  PHOTO_WIDTH = 1360 
+
+  PHOTO_WIDTH = 1360
   PHOTO_HEIGHT = 800
-  
+
   validate :validate_photo_dimensions, :unless => "errors.any?"
-  
+
   # tell the dynamic form that we need to post to an iframe to accept the file upload
   # TODO:: find a more elegant solution to this problem, can we detect the use of has_attached_file?
   def accepts_file_upload?
     true
   end
-  
+
   has_attached_file :photo,
-    :styles => { 
-      :thumb => "145x95#", 
+    :styles => {
+      :thumb => "145x95#",
       :album => "680x400#",
       :full => "1360x800#",
     },
-    :convert_options => { 
-      :thumb => "-quality 70", 
-      :album => "-quality 70", 
+    :convert_options => {
+      :thumb => "-quality 70",
+      :album => "-quality 70",
       :full => "-quality 70",
     },
     :path => 'chapter-photos/:style/:id.:extension'
 
-  
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -43,7 +43,7 @@ class ChapterPhoto < ActiveRecord::Base
       :caption => caption,
     }
   end
-  
+
   # a string representation of the required dimensions for the banner image
   def self.photo_dimensions_string
     "#{PHOTO_WIDTH}x#{PHOTO_HEIGHT}"
@@ -55,7 +55,7 @@ class ChapterPhoto < ActiveRecord::Base
     when 'foo'
     else
       [
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
@@ -66,5 +66,5 @@ class ChapterPhoto < ActiveRecord::Base
       dimensions = Paperclip::Geometry.from_file(photo.to_file(:original))
       errors.add(:photo, "Image dimensions were #{dimensions.width.to_i}x#{dimensions.height.to_i}, they must be exactly #{self.photo_dimensions_string}") unless dimensions.width >= PHOTO_WIDTH && dimensions.height >= PHOTO_HEIGHT
     end
-  
+
 end

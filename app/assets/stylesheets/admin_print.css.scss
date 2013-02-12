@@ -6,11 +6,11 @@ body.admin {
   font-family: arial;
 
   // we have these additional jquery-ui icon sets for the admin
-  .ui-icon-highlight { 
-    background-image: asset-url('admin/ui_icons_highlight.png', image); 
+  .ui-icon-highlight {
+    background-image: asset-url('admin/ui_icons_highlight.png', image);
   }
-  .ui-icon-light { 
-    background-image: asset-url('admin/ui_icons_light.png', image); 
+  .ui-icon-light {
+    background-image: asset-url('admin/ui_icons_light.png', image);
   }
 }
 
@@ -22,8 +22,8 @@ a:hover {
   color: #ce2402;
 }
 
-.searchable-sortable-pagination-form { 
-  display: none; 
+.searchable-sortable-pagination-form {
+  display: none;
 }
 
 
@@ -35,7 +35,7 @@ a:hover {
   //@include box-shadow(0 0 20px 7px #999);
   height: 50px;
   display: none;
-  
+
   #header {
     width: 1200px;
     margin: 0 auto;
@@ -96,26 +96,26 @@ a:hover {
       display: block;
       text-decoration: none;
       margin-top: 6px;
-      
+
       span {
         margin-right: 4px;
       }
-  
+
       &.active, &:hover {
 //        color: $navigation_highlight;
-  
+
         span {
           background-image: image-url('admin/ui_icons_highlight.png');
         }
       }
-    
+
       // the account link with a facebook image gets positioned differently
       &.facebook_connected_account {
         line-height: 36px;
         padding-top: 0;
         width: 116px;
         text-align: right;
-      
+
         // make the facebook profile picture artificially smaller
         img {
           width: 36px;
@@ -141,23 +141,23 @@ a:hover {
   background-color: #1A1A1A;
   //@include linear-gradient(right, $navigation_background_lowlight 0%, $navigation_background_highlight 60%);
 //  border-left: 4px solid $navigation_highlight;
-  
+
   float: right;
   margin-top: 40px;
   width: 236px;
   padding: 10px 10px 10px 0;
   position: relative;
   z-index: 2;
-  
+
   ul {
     margin: 0;
     padding: 0;
-    
+
     li {
       list-style-type: none;
     }
   }
-  
+
   h2 {
     border-bottom: 1px solid #666;
     color: #FFFFFF;
@@ -165,14 +165,14 @@ a:hover {
     margin: 15px 12px 4px;
     padding-bottom: 8px;
   }
-  
+
   h3 {
     color: #FFFFFF;
     font-size: 12px;
     font-style: oblique;
     margin: 15px 12px 0;
   }
-  
+
   a {
     color: #FFF;
     display: block;
@@ -188,7 +188,7 @@ a:hover {
       margin-right: 4px;
       background-image: image-url('admin/ui_icons_light.png');
     }
-    
+
     &.active, &:hover {
       padding-left: 2px;
 //      background-color: $navigation_highlight;
@@ -220,7 +220,7 @@ a:hover {
   margin-bottom: 30px;
   position: relative;
   z-index: 1;
-  
+
 }
 
 /*the header of the content*/
@@ -248,7 +248,7 @@ a:hover {
       padding: 2px 8px 2px 4px;
       //@include transition(background-color .25s linear);
       text-decoration: none;
-      
+
       &:hover {
         background-color: #DDDDDD;
       }
@@ -264,7 +264,7 @@ a:hover {
   margin: 0 25px 25px 25px;
   color: #323232;
   position: relative;
-  
+
   p {
     margin: 8px 0;
   }
@@ -289,7 +289,7 @@ a:hover {
       &.deleted {
         color: red;
       }
-      
+
     }
   }
   > h2 {
@@ -320,7 +320,7 @@ a:hover {
 }
 .ui-icon {
   display: block;
-  float: left;  
+  float: left;
 }
 
 

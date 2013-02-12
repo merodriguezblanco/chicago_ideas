@@ -7,24 +7,24 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.trackable
 
       t.token_authenticatable
-      
+
       t.boolean :admin, :null => false, :default => 0
       t.boolean :speaker, :null => false, :default => 0
       t.boolean :staff, :null => false, :default => 0
       t.boolean :volunteer, :null => false, :default => 0
-      
+
       t.string :name, :null => true
       t.string :phone, :null => true
-      
+
       t.integer :fb_uid, :null => true, :length => 8
       t.string :fb_access_token, :null => true
-      
+
       t.string :twitter_token, :null => true, :null => true
       t.string :twitter_secret, :null => true, :null => true
-      
+
       t.string :title, :null => true
       t.text :bio, :null => true
-      
+
       t.string :twitter_screen_name, :null => true
 
       t.string :permalink, :null => true, :limit => 150
@@ -34,13 +34,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :portrait_content_type, :null => true
       t.integer :portrait_file_size, :null => true
       t.datetime :portrait_updated_at, :null => true
-      
+
       # large format photo for the website
       t.string :banner_file_name, :null => true
       t.string :banner_content_type, :null => true
       t.integer :banner_file_size, :null => true
       t.datetime :banner_updated_at, :null => true
-      
+
       t.timestamps
       t.datetime :deleted_at
     end
@@ -53,18 +53,18 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     add_index :users, :fb_uid,              :unique => true
     add_index :users, :fb_access_token
-      
+
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true
     add_index :users, :authentication_token, :unique => true
-    
+
     add_index :users, :permalink, :unique => true
-    
+
     add_index :users, :admin
     add_index :users, :speaker
     add_index :users, :staff
     add_index :users, :volunteer
-    
+
   end
 
   def self.down

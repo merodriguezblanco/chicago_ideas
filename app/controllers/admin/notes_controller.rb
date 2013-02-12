@@ -16,7 +16,7 @@ class Admin::NotesController < Admin::AdminController
     @model = @parent.notes.build
     render_json_response :ok, :html => render_to_string('admin/shared/form.html.haml', :layout => false)
   end
-  
+
   def create
 
     @parent = parent_model

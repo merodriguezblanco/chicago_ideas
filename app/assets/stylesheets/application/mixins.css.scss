@@ -10,7 +10,7 @@
 @mixin box-shadow($h:1px, $v:1px, $d:1px, $color:#fff) {
   box-shadow: $h $v $d $color;
   -moz-box-shadow: $h $v $d $color;
-  -webkit-box-shadow: $h $v $d $color;  
+  -webkit-box-shadow: $h $v $d $color;
 }
 
 // inset box shadow

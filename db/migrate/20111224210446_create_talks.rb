@@ -1,7 +1,7 @@
 class CreateTalks < ActiveRecord::Migration
   def change
     create_table :talks do |t|
-      
+
       t.string :name, :null => false, :limit => 150
       t.text :description, :null => true
 
@@ -24,21 +24,21 @@ class CreateTalks < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :talks, :day_id
     add_foreign_key :talks, :days
-    
+
     add_index :talks, :venue_id
     add_foreign_key :talks, :venues
-    
+
     add_index :talks, :topic_id
     add_foreign_key :talks, :topics
-    
+
     add_index :talks, :sponsor_id
     add_foreign_key :talks, :sponsors
-    
+
     add_index :talks, :talk_brand_id
     add_foreign_key :talks, :talk_brands
-    
+
   end
 end

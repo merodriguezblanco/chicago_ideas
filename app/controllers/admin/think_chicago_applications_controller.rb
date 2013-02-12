@@ -18,9 +18,9 @@ class Admin::ThinkChicagoApplicationsController < Admin::AdminController
             row << a.csv_attributes
           end
         end
-    	
+
     	# send .csv back to the browser
-        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=thinkchicago_applications_export_" << Date.today.to_s() << ".csv") 
+        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=thinkchicago_applications_export_" << Date.today.to_s() << ".csv")
       }
     end
   end
@@ -35,10 +35,10 @@ class Admin::ThinkChicagoApplicationsController < Admin::AdminController
   def show
     @section_title = 'Detail'
     @think_chicago_application = ThinkChicagoApplication.find(params[:id])
-    
+
     respond_to do |format|
       format.pdf {
-        
+
         pdf = doc_raptor_send({:document_type => "pdf".to_sym})
         friendlyName = "ThinkChicago_Application_#{@think_chicago_application.first_name}_#{@think_chicago_application.last_name}.pdf"
         friendlyName = friendlyName.gsub(" ", "")
@@ -47,17 +47,17 @@ class Admin::ThinkChicagoApplicationsController < Admin::AdminController
         @think_chicago_application.pdf = File.open("#{Rails.root}/tmp/#{friendlyName}");
         @think_chicago_application.save!({:validate => false})
         send_data pdf, :filename => friendlyName, :type => "pdf"
-        
+
       }
       format.html {
         render
       }
     end
-    
+
   end
-  
-  
-  
+
+
+
 
 
   # MEMBER PAGES

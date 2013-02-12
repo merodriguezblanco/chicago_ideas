@@ -33,13 +33,13 @@ class Sponsor::StartHereController < Sponsor::BaseController
       render :index
     end
   end
-  
+
   def delete_user
     @user = User.find params[:id]
     @user.destroy
     respond_to :js
   end
-  
+
 
   private
     def update_primary_contact

@@ -5,7 +5,7 @@ class HomepageBannerOnChapters < ActiveRecord::Migration
     add_column :chapters, :homepage_banner_content_type, :string, :null => true
     add_column :chapters, :homepage_banner_file_size, :integer, :null => true
     add_column :chapters, :homepage_banner_updated_at, :datetime, :null => true
-    
+
   end
 
   def down

@@ -1,6 +1,6 @@
 class RemoveFieldsFromBhsilong < ActiveRecord::Migration
   def change
-    change_table "bhsi_longtexts", :force => true do |t|    
+    change_table "bhsi_longtexts", :force => true do |t|
       t.remove     "makes_social_innovation"
       t.remove     "inspiration"
       t.remove     "sustainability_model"

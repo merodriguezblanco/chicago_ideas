@@ -10,5 +10,5 @@ class ApiLogEntry
   index :created_at
   index :action
   index :host
-  
+
 end

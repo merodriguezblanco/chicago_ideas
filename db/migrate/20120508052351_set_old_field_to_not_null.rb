@@ -1,6 +1,6 @@
 class SetOldFieldToNotNull < ActiveRecord::Migration
   def change
-    change_table "bhsi_applications", :force => true do |t|    
+    change_table "bhsi_applications", :force => true do |t|
       t.change     "about_yourself",                       :text, :limit => 16777215,                    :null => true
       t.change     "social_venture_description",           :text, :limit => 16777215,                    :null => true
       t.change     "venture_launched",                     :text, :limit => 16777215,                    :null => true

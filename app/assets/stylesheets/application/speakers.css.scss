@@ -3,7 +3,7 @@ ul.filter_ {
   margin: 0;
   padding: 0;
   list-style: none;
-  
+
   li {
     display: inline;
     float: left;
@@ -11,7 +11,7 @@ ul.filter_ {
     color: $grey;
     padding: 2px 5px;
     margin: 0;
-    
+
     a {
       display: block;
     }
@@ -30,40 +30,40 @@ blockquote.speaker_quote {
 }
 
 ul#speaker_overview {
-  display: inline; 
+  display: inline;
   width: 274px;
   float: left;
   margin: 0 20px 20px 0;
   padding: 0;
   list-style: none;
   background-color: #f7f5f6;
-  
+
   > li {
     display: block;
     padding: 20px;
     margin: 0;
-    
-    .img_frame { 
+
+    .img_frame {
       width: 234px;
       height: 234px;
     }
-    
+
     h3 {
       margin-bottom: 3px;
     }
-    
+
     span.title {
       font-size: 14px;
       line-height: 15px !important;
       font-weight: lighter;
     }
-    
+
     > ul.speaker_overview_talks {
       display: block;
       list-style: none;
       margin: 0;
       padding: 0;
-      
+
       > li {
         display: block;
         line-height: 17px;
@@ -77,7 +77,7 @@ ul#speaker_overview {
   }
   li.divided {
     border-top: 1px solid #ccc;
-    
+
     span.column_header {
       margin-bottom: 10px;
     }
@@ -94,23 +94,23 @@ ul#speaker_overview {
 body.list_edison_speakers {
 	background:#000 asset-url('application/edison_bg.png', image) top center no-repeat;
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	
+
 	p {
 		font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size:18px;
 		color:#fff;
 	}
-	
+
 	#main_content {
 		margin-top:150px;
-		
+
 		#edison_info {
 			position:relative;
 			width:1000px;
 			height:243px;
 			margin:-5px auto 50px auto;
 			background:transparent asset-url('application/edison_info_bg.png', image) top center no-repeat;
-			
+
 			a.received_invitation {
 				position:absolute;
 				top:0;
@@ -124,7 +124,7 @@ body.list_edison_speakers {
                 font-size: 18px;
                 text-align:center;
 			}
-			
+
 			div.info {
 				width:450px;
 				float:left;
@@ -132,76 +132,76 @@ body.list_edison_speakers {
 				text-align:right;
 				font-style:italic;
 				font-weight:bold;
-				
-				
+
+
 				p {
 					margin:0;
 					line-height:1.6em;
 					text-shadow: 0px -1px 1px #000000
-					
+
 					a {
 						color:#3170e1;
 					}
 				}
-				
-				
+
+
 			}
-			
+
 			div.info + div.info {
 				text-align:left;
 				font-style:normal;
 				margin-left:15px;
-				
+
 				h2 {
 					margin:0;
 					margin-bottom:10px;
-					
+
 					p {
 						font-size:20px;
 						color:#f6e800;
 						text-shadow: 0px -1px 1px #000;
 					}
 				}
-				
+
 				p {
 					font-size:14px;
 				}
-				
+
 				p + p {
 				 	margin-top:1.3em;
 				}
 			}
-			
+
 			div#edison_talks_application {
 				position:absolute;
 				top: 107%;
 				width: 100%;
 				text-align: center;
 			}
-			
+
 		}
-		
+
 		div#edison_speakers {
 			margin-top:75px;
 			min-height:208px;
 			background:transparent asset-url('application/edison_speakers_bg.png', image) top center repeat-y;
-			
+
 			ul.preview_list {
-		
+
 				li {
 					width:450px;
 					float:left;
 					display:block;
 					clear:left;
-				
+
 					a {
 						color:#f6e800;
 					}
-				
+
 					span {
 						color:#fff;
 					}
-				
+
 					blockquote.speaker_quote {
 						background: asset-url('application/edison_quotation_marks.png', image) top left no-repeat;
 						margin:15px 0 0 133px;
@@ -212,16 +212,16 @@ body.list_edison_speakers {
 						line-height:23px;
 					}
 				}
-			
+
 				li.even {
 					float:right;
 					clear:none;
-				
+
 				}
 			}
-			
+
 		}
-		
+
 		div#edison_speakers_none {
 			p {
 				font-style:italic;
@@ -229,8 +229,8 @@ body.list_edison_speakers {
 				margin-bottom:50px;
 			}
 		}
-		
-		
+
+
 	}
 }
 
@@ -239,33 +239,33 @@ body.speakers_top_picks {
     color:#323031;
     font-weight:bold;
   }
-  
+
   h3 {
     font-size:18px;
     line-height:1.5em;
   }
-  
+
   strong {
     color:#2c2a2b;
   }
-  
+
   #main_content {
     margin-top:75px;
-    
+
     p, li {
       font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-    
+
     #top_picks_header {
       padding-top:180px;
       height:250px;
       background:transparent asset-url('application/member_program_lightbulb.jpg', image) top right no-repeat;
-      
+
       h1 {
         font-size:35px;
         text-transform:uppercase;
       }
-      
+
       h2 {
         margin-bottom:25px;
         p {
@@ -275,81 +275,81 @@ body.speakers_top_picks {
           line-height:1.2em;
         }
       }
-      
+
       #page_share {
         float:none;
-        
-        
+
+
         li {
           display: inline;
           float: left;
           width: auto;
         }
       }
-      
+
       #top_picks_header_content {
       	position:relative;
         clear:both;
         padding-top:25px;
-        
+
         p {
           font-size:13px;
           width:475px;
-        	
+
           span {
         	font-style:italic;
         	font-size:10px;
           }
         }
       }
-      
+
     }
-    
+
     #top_picks_content {
       margin-top:25px;
-      
+
       #top_picks_levels {
         border-top:10px solid #00aeff;
         border-bottom:10px solid #00aeff;
         background:#fff;
         padding:15px;
-        
+
         -moz-box-shadow: 2px 2px 2px #888;
         -webkit-box-shadow: 2px 2px 2px #888;
         box-shadow: 2px 2px 2px #888;
-        
+
         .top_pick + .top_pick {
           margin-top:25px;
         }
-        
+
         div.left, div.right {
           width:450px;
         }
-        
+
         div {
         	margin-bottom:10px;
-        	
+
         	h3 {
               font-size:20px;
               line-height:1.5em;
               margin-bottom:10px;
             }
-        	
+
         	p {
         	  line-height:1.2em;
         	  margin-left:1em;
         	  margin-bottom:5px;
         	}
-        	
+
         	ul {
         	  list-style-type:disc;
         	  margin-left:3em;
         	  margin-bottom:10px;
         	  li {
-        	    
+
         	  }
         	}
-        	
+
         	a.btn_level {
         	  clear:both;
         	  margin-left:37px;
@@ -362,28 +362,28 @@ body.speakers_top_picks {
         	  font-weight:bold;
         	  font-size:13px;
         	}
-        	
+
         	a.btn_level:hover {
         	  text-decoration:none;
         	  background:#0383bf;
         	  border-top:1px solid #f6f6f6;
         	  border-bottom:1px solid #6a6a6a;
         	}
-        	
+
         	a.btn_level:active {
         	  text-decoration:none;
         	  background:#0383bf;
         	  border-top:1px solid #f6f5f6;
         	  border-bottom:1px solid #f6f5f6;
-        	  
+
         	  -moz-box-shadow: inset 0 0 1px 1px #0378af;
               -webkit-box-shadow: inset 0 0 1px 1px #0378af;
               box-shadow: inset 0 0 1px 1px #0378af;
         	}
         }
       }
-        
+
     }
-    
+
   }
 }

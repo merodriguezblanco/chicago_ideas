@@ -1,14 +1,14 @@
 user:
   show:
-    description: Returns a user object 
+    description: Returns a user object
     method: GET
     path: api_user
-    path_params: 
+    path_params:
       - ~user_id~
     params:
-      user_id: 
+      user_id:
         required: true
         type: path
-        description: the id of the user 
+        description: the id of the user
     on_success: returns the user object
     on_failure: a message describing the reason for the failure

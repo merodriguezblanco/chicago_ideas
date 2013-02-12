@@ -3,7 +3,7 @@ class Api::TalksController < Api::ApiController
     respond_to do |format|
       format.json {
         if request.path.include? 'speakers'
-          @parent = User.find(params[:speaker_id]) 
+          @parent = User.find(params[:speaker_id])
           @chapters = @parent.performances.collect{|p| p.chapter }.flatten
           @talks = @chapters.collect{|c| c.talk }
           json_models @talks

@@ -1,6 +1,6 @@
 class CreatBhsiLong < ActiveRecord::Migration
   def change
-    create_table "bhsi_longtexts", :force => true do |t|    
+    create_table "bhsi_longtexts", :force => true do |t|
       t.text     "about_yourself",                       :limit => 16777215,                    :null => false
       t.text     "social_venture_description",           :limit => 16777215,                    :null => false
       t.text     "venture_launched",                     :limit => 16777215,                    :null => false
@@ -17,6 +17,6 @@ class CreatBhsiLong < ActiveRecord::Migration
       t.text     "three_standout_statistics",            :limit => 16777215,                    :null => false
       t.integer  "bhsi_application_id"
     end
-    
+
   end
 end

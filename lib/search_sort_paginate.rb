@@ -2,7 +2,7 @@
 # install a bone DRY scope into active record which facilitates searching, sorting and pagination
 module SearchSortPaginate
   def self.included(base)
-    
+
     # a standard rails scope to wrap where, order, page and per
     # page and per are not out of teh box activerecord, they are supported by the kaminari pagination gem
     def base.search_sort_paginate params, options={}
@@ -51,7 +51,7 @@ module SearchSortPaginate
       sqls = []
 
       # itterate over the hash representation of the searh fields for this model
-      self.search_fields(parent_model).each do |field| 
+      self.search_fields(parent_model).each do |field|
 
         # the name of the models attribute or artificial_attribute we are searching by
         # can be set with the 'field' option else it is assumed to be the name
@@ -61,7 +61,7 @@ module SearchSortPaginate
         sql_field_name = artificial_attributes.key?(field_name) ? "(#{artificial_attributes[field_name]})" : (field[:field] || field[:name])
         # if there is no "." in the field name, then we assume the table being referenced is the table for the current model type
         sql_field_name = "`#{self.name.underscore.pluralize}`.`#{sql_field_name}`" unless sql_field_name.match(/\.|`/)
-        
+
         # ranges have a _from and _to which are passed in from the client
         from_field_name = (field_name.to_s+'_from').to_sym
         to_field_name = (field_name.to_s+'_to').to_sym
@@ -74,16 +74,16 @@ module SearchSortPaginate
         end
 
         # do we have any values (including a default) for this field, if we dont then it can be completely skipped
-        unless search_params[field_name].present? or search_params[from_field_name].present? or search_params[to_field_name].present? 
+        unless search_params[field_name].present? or search_params[from_field_name].present? or search_params[to_field_name].present?
           next
         end
 
         # what type of search is this
-        case field[:as] 
+        case field[:as]
           when :string
             # string searches can be across multiple columns, this is accomplished by using the "fields" option
             # if we dont have "fields", then we default to the field_name
-            sqls << ( field[:fields] ? field[:fields] : [field_name] ).collect{|f| 
+            sqls << ( field[:fields] ? field[:fields] : [field_name] ).collect{|f|
               # if there is no "." in the field name, then we assume the table being referenced is the table for the current model type
               sql_f = f.match(/\./) ? f : "`#{self.name.underscore.pluralize}`.`#{f}`"
               if field[:wildcard]
@@ -145,7 +145,7 @@ module SearchSortPaginate
       # build into one query
       return '('+sqls.join(') and (')+')'
     end
-    
+
   end
 end
-  
+

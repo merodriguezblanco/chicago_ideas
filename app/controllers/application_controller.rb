@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_nav_featured
   before_filter :get_header_models
   before_filter :capture_path
-    
+
   # the application homepage
   def index
     @talks = Talk.current.order('RAND()').limit(8)
@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
     @clinton = Chapter.find_by_id(67);
     @meta_data = {:page_title => "Welcome", :og_image => "http://www.chicagoideas.com/assets/application/logo.png", :og_title => "Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
   end
-  
-  
+
+
   def doc_raptor_send(options = { })
-    default_options = { 
+    default_options = {
       :name             => controller_name,
       :document_type    => request.format.to_sym,
       #:test             => ! Rails.env.production?,
@@ -29,18 +29,18 @@ class ApplicationController < ActionController::Base
     options = default_options.merge(options)
     options[:document_content] ||= render_to_string :template => "#{options[:template]}", :layout => 'pdf.html.haml'
     ext = options[:document_type].to_sym
-    
+
     response = DocRaptor.create(options)
-    
+
   end
-  
+
   def get_header_models
     @current_year = Year.find(2012)
   end
   def get_sponsors
     @sponsors = Sponsor.featured_sponsors.order('RAND()')
   end
-  def get_talks    
+  def get_talks
     @e_talks = TalkBrand.find(TALK_BRAND_ID).talks.current.order('RAND()').limit(10)
     @e_megatalks = TalkBrand.find(MEGATALK_BRAND_ID).talks.current.order('RAND()').limit(3)
     @e_speakers = User.speaker.not_deleted.current.order('RAND()').limit(10)
@@ -48,63 +48,63 @@ class ApplicationController < ActionController::Base
   def get_nav_featured
     @nav_featured_chapters = Chapter.homepage_featured.order('RAND()').limit(2)
   end
-  
+
   def about
     get_team_members
     @meta_data = {:page_title => "Who We Are", :og_title => "Chicago Ideas Week Who We Are", :og_type => "website"}
     render "application/about"
   end
-  
+
   def mission
     @meta_data = {:page_title => "Mission", :og_title => "Chicago Ideas Week Mission", :og_type => "website"}
     render "application/mission"
   end
-  
+
   def programs
     @meta_data = {:page_title => "Programs", :og_title => "Chicago Ideas Week Programs", :og_type => "website"}
     render "application/programs"
   end
-  
+
   def impact
     @meta_data = {:page_title => "Impact", :og_title => "Chicago Ideas Week Impact", :og_type => "website"}
     render "application/impact"
   end
-  
+
   def contact
     @meta_data = {:page_title => "Contact", :og_title => "Chicago Ideas Week Contact", :og_type => "website"}
     render "application/contact"
   end
-  
+
   def member_program
     @meta_data = {:page_title => "CIW Member Program", :og_title => "Chicago Ideas Week Member Program", :og_type => "website", :og_image => "http://www.chicagoideas.com/assets/application/member_program_lightbulb.jpg"}
     render "application/member_program"
   end
-  
+
   def livestream
     @meta_data = {:page_title => "CIW Livestream", :og_title => "Chicago Ideas Week Livestream", :og_type => "website", :og_image => "http://www.chicagoideas.com/assets/application/member_program_lightbulb.jpg"}
     render "application/livestream"
   end
-  
+
   def artist
     @meta_data = {:page_title => "CIW Artist in Residence", :og_title => "Chicago Ideas Week Artist in Residence", :og_type => "website"}
     render "application/artist_in_residence"
   end
-  
+
   def whatifchicago
     @meta_data = {:page_title => "CIW #WhatIfChicago", :og_title => "Chicago Ideas #WhatIfChicago", :og_type => "website"}
     render "application/whatifchicago"
   end
-  
+
   def support
     @meta_data = {:page_title => "CIW Become a Supporter", :og_title => "Chicago Ideas Become a Supporter", :og_type => "website"}
     render "application/support"
   end
-  
+
   def faq
     @meta_data = {:page_title => "CIW Frequently Asked Questions", :og_title => "Chicago Ideas Week Frequently Asked Questions", :og_type => "website"}
     render "application/faq"
   end
-  
+
   def badge
     if request.method == 'POST'
       @first_name = params['badge']['first_name']
@@ -114,7 +114,7 @@ class ApplicationController < ActionController::Base
       @inspiration_1 = params['badge']['inspiration_1']
       @inspiration_2 = params['badge']['inspiration_2']
       @inspiration_3 = params['badge']['inspiration_3']
-      
+
       pdf = doc_raptor_send({:document_type => "pdf".to_sym, :template => "application/badge_pdf.html.haml"})
       friendlyName = "CIW_Badge_#{@first_name}_#{@last_name}.pdf"
       friendlyName = friendlyName.gsub(" ", "")
@@ -126,38 +126,38 @@ class ApplicationController < ActionController::Base
       render "application/badge"
     end
   end
-  
+
    def project_youth
     @meta_data = {:page_title => "CIW PROJECT YOU(th)", :og_title => "Chicago Ideas Week PROJECT YOU(th)", :og_type => "website"}
     render "application/project_youth"
   end
-  
+
   def sizzle
     @meta_data = {:page_title => "CIW Sizzle Reel", :og_title => "Chicago Ideas Week", :og_type => "website"}
     render "application/sizzle"
   end
-  
+
   def media_inquiry
     @meta_data = {:page_title => "CIW Media Inquiry Form", :og_title => "Chicago Ideas Week", :og_type => "website"}
     render 'application/media_inquiry_form'
   end
-  
+
   def send_contact
     AdminMailer.contact_form(params[:contact]).deliver
     render_json_response :ok, :notice => "Your message has been sent."
   end
-  
+
   def community
   end
-  
-  def volunteer  
+
+  def volunteer
   end
-  
-  
+
+
   def special_programs_awards
     @meta_data = {:page_title => "Special Programs & Awards", :og_title => "Special Programs & Awards | Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
   end
-  
+
 
   def terms
     @meta_data = {:page_title => "Terms of Use", :og_image => "http://www.chicagoideas.com/assets/application/logo.png", :og_title => "Terms of Use | Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
@@ -166,8 +166,8 @@ class ApplicationController < ActionController::Base
   def privacy
     @meta_data = {:page_title => "Privacy Policy", :og_image => "http://www.chicagoideas.com/assets/application/logo.png", :og_title => "Privacy Policy | Chicago Ideas Week", :og_type => "website", :og_desc => "Chicago Ideas Week (CIW) is about the sharing of ideas, inspiring action and igniting change to positively impact our world. People who come to CIW are artists, engineers, technologists, inventors, scientists, musicians, economists, explorers-and, well...just innately passionate."}
   end
-  
-  # this contains the login and register links, we load it in via AJAX after the initial page has loaded.  
+
+  # this contains the login and register links, we load it in via AJAX after the initial page has loaded.
   # This allows us to cache fully rendered versions of the entire front end of the website.
   # This makes for an extremely fast experience for all our visitors
   def account_links
@@ -180,27 +180,27 @@ class ApplicationController < ActionController::Base
     json[:newsletter] = (current_user ) ? current_user.newsletter : nil
     render :json => json
   end
-  
-  
+
+
   # Capture the URL
   def capture_path
     cookies[:return_to] = request.path if request.method == "GET" && !devise_controller? && !request.xhr? && action_name != 'redirect'
-    #puts cookies.to_json    
+    #puts cookies.to_json
   end
-  
+
   def after_sign_in_path_for(resource)
     #puts session.to_json
     cookies[:return_to] || (resource.is_sponsor? ? sponsor_root_path : user_root_path)
   end
-  
+
   private
-  
+
     # appropriate headers to make our content cached - in heroku this gets cached by a squid like cache on top of our application servers
     # this makes for a very fast user experience
     def cache_rendered_page
       expires_in(1.hours)
     end
-  
+
     # recursive call for deep cloning a hash in a way which doesnt keep non scalar types also doesnt modify the params array
     # we use this in logging before_filters
     def collect_hash_contents hash

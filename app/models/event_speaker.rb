@@ -5,14 +5,14 @@ class EventSpeaker < ActiveRecord::Base
 
   belongs_to :speaker, :class_name => 'User'
   belongs_to :event
-  
-  
+
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
+
   validates_uniqueness_of :speaker_id, :scope => :event_id
-  
-  
+
+
   # the hash representing this model that is returned by the api
   def api_attributes(ref = nil)
     {
@@ -29,9 +29,9 @@ class EventSpeaker < ActiveRecord::Base
     when 'foo'
     else
       [
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
 end

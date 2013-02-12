@@ -8,7 +8,7 @@ class Admin::ChaptersController < Admin::AdminController
 
   # MEMBER ACTIONS
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # standard CRUD functionality exists in the base AdminController
 
   # the detail page for this chapter

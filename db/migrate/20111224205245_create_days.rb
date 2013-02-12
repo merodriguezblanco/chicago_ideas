@@ -13,9 +13,9 @@ class CreateDays < ActiveRecord::Migration
     end
     # days must be unique
     add_index :days, :date, :unique => true
-    
+
     add_index :days, :year_id
     add_foreign_key :days, :years
-    
+
   end
 end

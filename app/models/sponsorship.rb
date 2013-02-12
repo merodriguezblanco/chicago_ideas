@@ -1,14 +1,14 @@
 class Sponsorship < ActiveRecord::Base
   belongs_to :sponsorship_level
-  
+
   scope :by_sort, order('sort asc')
-  
+
   # when this model is created, set the sort order to the last in the current set (unless it was already set)
   before_validation {|record|
     return true if record.sort.present?
     record.sort = Sponsorship.maximum(:sort).to_i + 1
   }
-  
+
   # Sort the model records all at once
   def self.sort(ids)
     update_all(
@@ -16,7 +16,7 @@ class Sponsorship < ActiveRecord::Base
       { :id => ids }
     )
   end
-  
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -25,5 +25,5 @@ class Sponsorship < ActiveRecord::Base
       :sort => sort,
     }
   end
-  
+
 end

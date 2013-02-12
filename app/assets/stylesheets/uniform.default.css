@@ -15,21 +15,21 @@ http://pixelmatrixdesign.com/uniform/themer.html
 
 /* Global Declaration */
 
-div.selector, 
-div.selector span, 
-div.checker span, 
+div.selector,
+div.selector span,
+div.checker span,
 div.radio span {
   background-image: url(admin/uniform.png);
   background-repeat: no-repeat;
 }
 
-.selector, 
-.radio, 
-.checker, 
-.uploader, 
-.selector *, 
-.radio *, 
-.checker *, 
+.selector,
+.radio,
+.checker,
+.uploader,
+.selector *,
+.radio *,
+.checker *,
 .uploader *{
 	margin: 0;
 	padding: 0;
@@ -134,7 +134,7 @@ div.uploader span.filename {
 	height: 32px;
   line-height: 32px;
 	text-indent:-9999px;
-	
+
 }
 div.uploader input {
     border: medium none;

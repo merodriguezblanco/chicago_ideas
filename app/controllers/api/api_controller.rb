@@ -1,11 +1,11 @@
 class Api::ApiController < ApplicationController
-  
+
   # for the documentation
   layout 'api'
-  
+
   before_filter :log_api_activity!
-  
-  private 
+
+  private
 
     # tests for boolean, looks for certain human known flavours of "true"
     def api_boolean(value)
@@ -22,7 +22,7 @@ class Api::ApiController < ApplicationController
       return p
     end
 
-    # output helpers 
+    # output helpers
     # --------------------------------------
 
       # a standard way to return models. if they have errors then we return the error message
@@ -41,11 +41,11 @@ class Api::ApiController < ApplicationController
         # newer versions of the API clients expect results be be sent keyed with data (so we can add pagination later)
         if params.key?(:version) && params[:version] != '1.1.0' && params[:version] != '1.0.0' && params[:version] != '1.1.1'
           render :json => {
-            :data => models.collect{|model| access_level.nil? ? model.api_attributes : model.api_attributes(access_level)} 
+            :data => models.collect{|model| access_level.nil? ? model.api_attributes : model.api_attributes(access_level)}
           }
         else
-      
-          render :json => models.collect{|model| access_level.nil? ? model.api_attributes : model.api_attributes(access_level)} 
+
+          render :json => models.collect{|model| access_level.nil? ? model.api_attributes : model.api_attributes(access_level)}
         end
       end
 
@@ -66,7 +66,7 @@ class Api::ApiController < ApplicationController
           })
         }
       end
-    
+
       # called from a before filter, this method will log all api activity
       # non scaler types are stripped out of the params hash before saving incase they are file attachments
       def log_api_activity!
@@ -74,8 +74,8 @@ class Api::ApiController < ApplicationController
         # clone in way which strips out attachments
         params_to_log = collect_hash_contents(params)
 
-        params_to_log.delete('controller') 
-        params_to_log.delete('action') 
+        params_to_log.delete('controller')
+        params_to_log.delete('action')
 
         # we have some public API endpoints, so client_id can be null
         client_id = (current_client.present? ? current_client.id : nil) rescue nil;

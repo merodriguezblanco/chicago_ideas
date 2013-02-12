@@ -11,5 +11,5 @@ $(document).ready(function(){
     content = $($(this).attr("href")).html();
     Utility.open_dialog(content);
   });
- 
-}); 
+
+});

@@ -1,5 +1,5 @@
-.ez-hide { 
-  opacity: 0; 
+.ez-hide {
+  opacity: 0;
   display: none;
   @include opacity(0);
   cursor:pointer;
@@ -17,10 +17,10 @@
   height: 18px;
   width: 18px;
 }
-.ez-checked { 
-  background-position: 0 -20px; 
+.ez-checked {
+  background-position: 0 -20px;
 }
-.ez-selected { 
+.ez-selected {
   background-position: 0 -18px;
 }
- 
+

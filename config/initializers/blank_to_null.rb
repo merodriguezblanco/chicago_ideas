@@ -7,7 +7,7 @@ class ActiveRecord::Base
       send("#{column.name}=", nil) if read_attribute(column.name).blank?
     end
   end
-  
+
 end
 
 class String

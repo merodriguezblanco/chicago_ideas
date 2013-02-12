@@ -47,11 +47,11 @@ module CraigsAdmin
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
     # allow active_record generators to work, even though we also use mongoid
-    config.generators do |g| 
-      g.orm :active_record 
+    config.generators do |g|
+      g.orm :active_record
     end
-    
+
   end
 end

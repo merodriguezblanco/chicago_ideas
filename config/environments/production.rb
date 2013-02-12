@@ -38,11 +38,11 @@ CraigsAdmin::Application.configure do
 
   # Use a different cache store in production
   config.cache_store = :dalli_store
-  
+
   # Use Dalli as the rack-cache metastore
   $cache = Dalli::Client.new
   config.middleware.use ::Rack::Cache, :metastore => $cache, :entitystore => 'file:tmp/cache/entity'
-  
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
@@ -54,7 +54,7 @@ CraigsAdmin::Application.configure do
 
   config.action_mailer.asset_host = "http://23.23.114.156"
   config.action_mailer.default_url_options = {:host => "23.23.114.156"}
-  
+
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',

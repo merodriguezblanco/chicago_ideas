@@ -2,15 +2,15 @@ class Venue < ActiveRecord::Base
 
   # my bone dry solution to search, sort and paginate
   include SearchSortPaginate
-  
+
   require 'geocode'
-  
+
   BANNER_WIDTH = 1400
   BANNER_HEIGHT = 430
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
+
   validates :name, :presence => true
   validates :address1, :presence => true
   validates :city, :presence => true
@@ -19,32 +19,32 @@ class Venue < ActiveRecord::Base
   validates :country, :presence => true
   validates :lonlat, :presence => {:message => "Failed to geocode this business. Please check the whole address."}
   validate :validate_banner_dimensions, :if => "banner.present?", :unless => "errors.any?"
-  
+
   scope :by_name, order('name asc')
 
   before_validation {|record|
     # attempt to geocode the address with google
     record.lonlat = record.address.geocode
     record.errors.add :address1, "Failed to geocode this business. Please check the whole address." unless record.lonlat.present?
-  } 
-  
+  }
+
   # tell the dynamic form that we need to post to an iframe to accept the file upload
   # TODO:: find a more elegant solution to this problem, can we detect the use of has_attached_file?
   def accepts_file_upload?
     true
   end
-  
+
   # large format blessed photo for the website
   has_attached_file :banner,
-    :styles => { 
-      :large => "1400x430", 
+    :styles => {
+      :large => "1400x430",
       :medium => "1000x300#",
       :small => "300x144#",
       :thumb => "110x65#",
     },
-    :convert_options => { 
-      :large => "-quality 70", 
-      :medium => "-quality 70", 
+    :convert_options => {
+      :large => "-quality 70",
+      :medium => "-quality 70",
       :small => "-quality 70",
       :thumb => "-quality 70",
     },
@@ -62,7 +62,7 @@ class Venue < ActiveRecord::Base
     address = "#{name}, #{address}" if include_name
     address
   end
-  
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -86,39 +86,39 @@ class Venue < ActiveRecord::Base
     else
       [
         { :name => :search, :as => :string, :fields => [:name], :wildcard => :both },
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
   # a string representation of the required dimensions for the banner image
   def banner_dimensions_string
     "#{BANNER_WIDTH}x#{BANNER_HEIGHT}"
   end
-  
+
   # google powered maps and geocoding
   def position
     "#{lonlat.y},#{lonlat.x}"
   end
-  
+
   def google_maps_src width=280, height=280, zoom=12, maptype=:roadmap
     "http://maps.google.com/maps/api/staticmap?center=#{position}&zoom=#{zoom}&size=#{width}x#{height}&maptype=#{maptype}&markers=color:blue%7Clabel:A%7C#{position}&sensor=false"
   end
-  
+
   def google_maps_url
     "http://maps.google.com/maps?hl=en&q=#{position}"
   end
-  
+
   def bing_maps_src width=280, height=280, zoom=12, maptype=:Road
     "http://dev.virtualearth.net/REST/v1/Imagery/Map/#{maptype}/#{position}/#{zoom}?pushpin=#{position}&mapSize=#{width},#{height}&key=#{BING_MAPS_API_KEY}"
   end
-  
-  
-  private 
+
+
+  private
     # i know its strict, but otherwise people will upload images without appreciation for aspect ratio
     def validate_banner_dimensions
       dimensions = Paperclip::Geometry.from_file(banner.to_file(:original))
       errors.add(:banner, "Image dimensions were #{dimensions.width.to_i}x#{dimensions.height.to_i}, they must be exactly #{banner_dimensions_string}") unless dimensions.width == BANNER_WIDTH && dimensions.height == BANNER_HEIGHT
     end
-  
+
 end

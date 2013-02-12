@@ -22,11 +22,11 @@ class CreateThinkChicagoTable < ActiveRecord::Migration
       t.string :expected_graduation_date, :null => false
       t.string :employment_interests, :null => false
       t.string :employment_interests_extra, :null => true
-      
+
       t.text :honors_experience_activities, :limit => 16777215, :null => false
       t.text :qualities_attributes, :limit => 16777215, :null => false
       t.text :hope_to_gain,:limit => 16777215, :null => false
-      
+
       t.has_attached_file :current_resume
       t.has_attached_file :unofficial_transcript
       t.has_attached_file :faculty_endorsement
@@ -35,7 +35,7 @@ class CreateThinkChicagoTable < ActiveRecord::Migration
 
     end
   end
-  
+
   def self.down
     drop_table :think_chicago_applications
   end

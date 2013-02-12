@@ -6,7 +6,7 @@ class Admin::VolunteersController < Admin::AdminController
   def index
     @volunteers = Volunteer.search_sort_paginate(params)
   end
-  
+
   def export
     @users = Volunteer.all # get all the users
     respond_to do |format|
@@ -18,26 +18,26 @@ class Admin::VolunteersController < Admin::AdminController
             row << volunteer.csv_attributes
           end
         end
-    	
+
     	# send .csv back to the browser
-        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=volunteers_export_" << Date.today.to_s() << ".csv") 
+        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=volunteers_export_" << Date.today.to_s() << ".csv")
       }
     end
   end
 
   # MEMBER ACTIONS
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # standard CRUD functionality exists in the base AdminController
 
   # the detail page for this volunteer
   def show
     @section_title = 'Detail'
     @volunteer = Volunteer.find(params[:id])
-    
+
     respond_to do |format|
       format.pdf {
-        
+
          #if !@volunteer.pdf.exists?
           pdf = doc_raptor_send({:document_type => "pdf".to_sym})
           friendlyName = "Volunteer_#{@volunteer.user.name}.pdf"
@@ -49,13 +49,13 @@ class Admin::VolunteersController < Admin::AdminController
         #else
          # redirect_to @volunteer.pdf.url
         #end
-        
+
       }
       format.html {
         render
       }
     end
-    
+
   end
 
 

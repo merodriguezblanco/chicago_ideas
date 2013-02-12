@@ -1,10 +1,10 @@
 class SponsorUser < ActiveRecord::Base
   belongs_to :sponsor
   belongs_to :user
-  
+
   has_attached_file :sponsor_agreement
   before_save :check_primary
-  
+
   private
     def check_primary
       if self.primary_contact == true

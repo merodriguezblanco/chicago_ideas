@@ -8,7 +8,7 @@ class Admin::EventSpeakersController < Admin::AdminController
 
   # MEMBER ACTIONS
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # standard CRUD functionality exists in the base AdminController
 
   # the detail page for this event_speaker
