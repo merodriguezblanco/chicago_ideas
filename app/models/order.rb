@@ -8,29 +8,34 @@ class Order < ActiveRecord::Base
 
 
   validates_presence_of :name_on_card
-  validates_presence_of :email
+  validates_presence_of :email # TODO: add format validation
   validates_presence_of :address
   validates_presence_of :city
   validates_presence_of :state
   validates_presence_of :card_number
   validates_presence_of :zip
-  validates_presence_of :password
+  validates_presence_of :password # TODO: add format validation
 
-  validates :expiry_date, :presence => true, :length => { :is => 4 }
-  validates :cvc, :presence => true, :length => { :is => 3 }
+  validates :expiry_date, :presence => true, :length => { :is => 4 }, :numericality => true
+  validates :cvc, :presence => true, :length => { :is => 3 }, :numericality => true
 
   def process_transaction
-    transaction = AuthorizeNet::AIM::Transaction.new(AUTHNET_LOGIN,
-                                                     AUTHNET_KEY,
-                                                     :gateway => AUTHNET_ENV)
-    credit_card = AuthorizeNet::CreditCard.new(card_number, expiry_date)
-    response = transaction.purchase(member_type.price, credit_card)
+    if self.valid?
+      transaction = AuthorizeNet::AIM::Transaction.new(AUTHNET_LOGIN,
+                                                       AUTHNET_KEY,
+                                                       :gateway => AUTHNET_ENV)
+      credit_card = AuthorizeNet::CreditCard.new(card_number, expiry_date)
 
-    save
-    return response.success?
-  end
-
-  def create_member
-    user = User.find_or_create_by_email(self.email, :password => self.password)
+      response = transaction.purchase(member_type.price, credit_card)
+      if response.success?
+        # TODO: Serialize
+        save
+        return true
+      else
+        errors.add(:base, "There was a problem processing your credit card.")
+        return false
+      end
+    end
+    false
   end
 end
