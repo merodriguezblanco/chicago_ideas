@@ -105,8 +105,9 @@ CraigsAdmin::Application.routes.draw do
   resources :member_types, :only => [:index]
 
   # checkout
-  match 'payment' => 'orders#new', :via => :get, :as => 'payment'
+  match 'payment' => 'orders#new', :via => :get
   match 'payment' => 'orders#create', :via => :post
+  match 'thank_you/:id' => 'orders#show', :via => :get, :as => :thank_you
 
   # forms we capture data from
   resources :volunteers, :only => [:new, :create]
