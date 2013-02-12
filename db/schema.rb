@@ -362,7 +362,7 @@ ActiveRecord::Schema.define(:version => 20130208190228) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.integer  "price_in_cents"
+    t.integer  "price_in_cents", :default => 0
   end
 
   add_index "member_types", ["name"], :name => "index_member_types_on_name"
