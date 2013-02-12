@@ -2,17 +2,17 @@ class Quote < ActiveRecord::Base
 
   # my bone dry solution to search, sort and paginate
   include SearchSortPaginate
-  
+
   define_index do
     indexes body
     has created_at, updated_at
   end
-  
+
   belongs_to :user
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -22,7 +22,7 @@ class Quote < ActiveRecord::Base
       :user => user.present? ? user.api_attributes : "",
     }
   end
-  
+
    # Need to normalize the search attributes
   def search_attributes
     {:title => self.user.name, :description => self.body, :image => ''}
@@ -34,9 +34,9 @@ class Quote < ActiveRecord::Base
     when 'foo'
     else
       [
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
 end

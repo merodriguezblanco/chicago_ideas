@@ -1,7 +1,7 @@
 class RollingBackToBhsiApplications < ActiveRecord::Migration
   def up
     change_table :bhsi_applications do |t|
-      
+
       # Changing teh varchars back to varchars
       t.change :zipcode, :string, :length => 11
       t.change :phone_number, :string, :length => 11
@@ -28,13 +28,13 @@ class RollingBackToBhsiApplications < ActiveRecord::Migration
       t.change :reference_2_phone, :string, :length => 15
       t.change :reference_2_email, :string, :length => 50
       t.change :reference_2_relationship, :string, :length => 100
-      
+
       # Changing Text to long text
       t.change :about_yourself, :text, :limit => 655365
       t.change :social_venture_description, :text, :limit => 655365
-      t.change :explain_number, :text, :limit => 655365      
+      t.change :explain_number, :text, :limit => 655365
       t.change :organizational_development, :text, :limit => 655365
-      t.change :makes_social_innovation, :text, :limit => 655365      
+      t.change :makes_social_innovation, :text, :limit => 655365
       t.change :inspiration, :text, :limit => 655365
       t.change :sustainability_model, :text, :limit => 655365
       t.change :improvements, :text, :limit => 655365

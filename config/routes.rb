@@ -288,7 +288,7 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
+
     resources :cooperative_applications do
       member do
         # pages
@@ -296,8 +296,8 @@ CraigsAdmin::Application.routes.draw do
       end
       resources :notes, :only => [:new, :create]
     end
-    
-    
+
+
     resources :volunteers do
       member do
         # pages

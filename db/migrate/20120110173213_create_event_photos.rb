@@ -7,7 +7,7 @@ class CreateEventPhotos < ActiveRecord::Migration
       t.string :photo_content_type, :null => false
       t.integer :photo_file_size, :null => false
       t.datetime :photo_updated_at, :null => false
-      
+
       t.integer :event_id, :null => false
       t.string :caption, :null => true
 

@@ -19,7 +19,7 @@ class ChapterBanners < ActiveRecord::Migration
     remove_column :chapters, :banner_content_type
     remove_column :chapters, :banner_file_size
     remove_column :chapters, :banner_updated_at
-    
+
     [:sponsors, :talks, :users, :partners].each do |t|
       add_column t, :banner_file_name, :string, :null => true
       add_column t, :banner_content_type, :string, :null => true

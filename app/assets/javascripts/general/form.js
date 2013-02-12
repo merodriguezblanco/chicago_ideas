@@ -3,7 +3,7 @@ $(document).ready(function(){
   // we replace these checkboxes with nicer looking images of checkboxes
   $('.formtastic li.check_boxes input[type="checkbox"]').ezMark();
   $('.formtastic li.boolean input[type="checkbox"]').ezMark();
-  
+
   // all links can display messages
   $('a').live('ajax:success', function(data, status){
     // if we recieved a message then display it
@@ -38,20 +38,20 @@ $(document).ready(function(){
     Utility.open_dialog($('#dialog_loading').html());
 
   }).live('ajax:success', function(data, status){
-    
+
     var $dialog_contents = $(status.html);
-    
-    // if this link requires the page reloads on a successful response from interacting with this dialog, then we must pass this state onto the dialog 
+
+    // if this link requires the page reloads on a successful response from interacting with this dialog, then we must pass this state onto the dialog
     if ( $(this).is('.reload') ) {
       $dialog_contents.filter('form').addClass('reload');
     }
-    
+
     // put the remote content in the dialog
     Utility.open_dialog($dialog_contents);
-  
+
     // put focus on the first input (unless its a datepicker - because a datepicker will open when it receives focus)
     $('#dialog :input:visible:first:not(.ui-datepicker):not(.ui-timepicker)').focus();
-  
+
     // pressing the escape key should close the dialog
     $(document).unbind('keydown.dialog').bind('keydown.dialog',function (e) {
       if ( e.which == 27 ) {
@@ -88,7 +88,7 @@ $(document).ready(function(){
     }
   });
 
-  
+
   // all remote links have some blocking and animation to help users understand them
   $('a').live('ajax:before', function(data, status){
     $(this).addClass('locked');
@@ -130,7 +130,7 @@ $(document).ready(function(){
     }
   })
   .blur();
-  
+
   // scroll to errors in forms
   if ( $first_error = $('form.formtastic p.inline-errors:first').length > 0 ){
     $.scrollTo($('form.formtastic p.inline-errors:first').closest('li'));
@@ -168,10 +168,10 @@ Forms = {
 
   // when we dyanmically create iframes, this ensures they have unique id's
   unique_form_iframe : 0,
-  
+
   // when a form is loading
   form_loading: function(form){
-    
+
     // we change the label on the submit button (and store the default label, so we can rest it after the post)
     var $btn = $(form).find('input[type="submit"]');
     $(form).attr('post_label', $btn.val());
@@ -179,24 +179,24 @@ Forms = {
 
     // we add a submitting class to the form, this shows the loader and is used to prevent another post
     $(form).addClass('submitting');
-    
+
   },
-  
-  
+
+
   // when a form submit has completed
   form_success: function(form, status){
-    
+
     // if rails sent back a redirect instruction, then we redirect
     if ( status && status.status == "redirect" ){
       window.location = status.to;
       return;
-    } 
-  
+    }
+
     // if we recieved a message then display it
     if ( status && status.notice ){
       Utility.flash_notice(status.notice);
     }
-  
+
     // if we created or added an object then look for a table to update
     if ( status && status.created ){
       var $new_row = $(status.html).effect("pulsate", { times:3 }, 500);
@@ -209,29 +209,29 @@ Forms = {
       // insert the HTML
       $(selector).replaceWith($new_row);
     }
-  
+
     // if there was an error, then re-display the html (if there is html to display)
     if ( status && status.status == "error" && status.html ){
-      
+
       // if this is a form with an instruction to reload, pass that instruction to the new form
       var $dialog_contents = $(status.html);
 
-      // if this link requires the page reloads on a successful response from interacting with this dialog, then we must pass this state onto the dialog 
+      // if this link requires the page reloads on a successful response from interacting with this dialog, then we must pass this state onto the dialog
       if ( $(form).is('.reload') ) {
         $dialog_contents.filter('form').addClass('reload');
       }
-      
+
       $(form).replaceWith($dialog_contents);
       // if there are controls which havent been activated, this will activate them
       Forms.create_custom_controls();
       return;
-    
+
     } else if ( status && status.status == "error" ){
       // if there is no html, then close the dialog and assume there was a message
       Utility.close_dialog();
       return;
     }
-  
+
     // unlock the form
     $(form).removeClass('submitting');
     // and restore the default label
@@ -248,9 +248,9 @@ Forms = {
       Utility.close_dialog();
       return;
     }
-    
+
   },
-  
+
   // Nested Model Form
   // http://railscasts.com/episodes/197-nested-model-form-part-2
   remove_fields: function(link) {
@@ -267,14 +267,14 @@ Forms = {
     $new_elt.fadeIn().insertAfter($(link));
     $new_elt.find(':input:first').focus();
   },
-  
-  // the following custom controls are wrapped in this method 
+
+  // the following custom controls are wrapped in this method
   // so we can create them at page load and after opening a dialog
   create_custom_controls: function(){
-    
+
     // date pickers
     $(".datepicker:not(.hasDatepicker)").datepicker({
-      dateFormat:'yy-mm-dd', 
+      dateFormat:'yy-mm-dd',
       ampm: true,
       changeMonth: true,
       changeYear: true
@@ -287,28 +287,28 @@ Forms = {
 
     // date and time pickers
     $(".datetimepicker:not(.hasDatepicker)").datetimepicker({
-      dateFormat:'yy-mm-dd', 
+      dateFormat:'yy-mm-dd',
       ampm: true,
       changeMonth: true,
       changeYear: true
     });
-    
+
     // sexy looking check boxes and radio buttons
     $('input[type="radio"]:not(.control-activated), input[type="checkbox"]:not(.control-activated)').addClass('control-activated').ezMark();
 
     // "live" is not reliable on forms
     $('form').submit(function(){
       var $form = $(this);
-      
+
       // we dont submit forms that are already in progress
       if ( $form.is('.submitting') ){
         // prevent the form submit
         return false;
       }
-      
+
       // does this form post to an iframe
       if ( $form.attr('target') ){
-        
+
         // the same loading event that occurs with the non iframe forms
         Forms.form_loading($form);
         // when loading of the iframe has finished, grab the contents out of the iframe (we put the encoded JSON into a textarea because its a more reliable way to transmit it)
@@ -317,15 +317,15 @@ Forms = {
           var result = $.parseJSON(
             $('iframe[name="iframe_upload"]').contents().find('body textarea').val()
           )
-          
+
           // the same 'completed' event that occurs with the non iframe forms
           Forms.form_success($form, result);
 
         });
-        
+
       }
 
     });
-    
+
   }
 }

@@ -4,7 +4,7 @@
 en:
   formtastic:
     submit: Submit
-    
+
   activerecord:
     errors:
       models:
@@ -12,7 +12,7 @@ en:
           attributes:
             email:
               invalid_email: The provided email is an invalid format
-  api: 
+  api:
     errors:
-      missing_param:                "Missing a required parameter, please check the documentation"                               
-      missing_model:                "Could not find a model with this ID"      
+      missing_param:                "Missing a required parameter, please check the documentation"
+      missing_model:                "Could not find a model with this ID"

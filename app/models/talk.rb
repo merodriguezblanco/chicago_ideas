@@ -9,7 +9,7 @@ class Talk < ActiveRecord::Base
     indexes sponsor(:name), :as => :sponsor, :sortable => true
     has sponsor_id, created_at, updated_at
   end
-  
+
   belongs_to :track
   belongs_to :day
   belongs_to :venue
@@ -18,7 +18,7 @@ class Talk < ActiveRecord::Base
   has_many :chapters
   has_many :featured_chapters, :class_name => 'Chapter', :conditions => {:featured_on_talk => true}
   has_many :performances, :through => :chapters
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
 
@@ -32,13 +32,13 @@ class Talk < ActiveRecord::Base
   validates :start_time, :presence => true
   validates :end_time, :presence => true
   validate :validate_temporal_constraints, :unless => "errors.any?"
-  
+
   scope :archived, joins(:day).where("days.year_id != #{DateTime.now.year}")
   scope :current, joins(:day).where("days.year_id = #{DateTime.now.year}")
 
   has_attached_file :transcript,
   :path => "talk-transcript/:id.:extension"
-  
+
   # tell the dynamic form that we need to post to an iframe to accept the file upload
   # TODO:: find a more elegant solution to this problem, can we detect the use of has_attached_file?
   def accepts_file_upload?
@@ -70,55 +70,55 @@ class Talk < ActiveRecord::Base
     else
       [
         { :name => :search, :as => :string, :fields => [:name], :wildcard => :both },
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
   # return a banner, from a featured chapter (or nil)
   def banner size = :medium
     chapter = featured_chapters.first
     chapter.present? ? chapter.banner(size) : nil
   end
-   
+
    # return formatted date for the front-end
   def formatted_date
     "#{self.day.date.strftime("%A, %B %e, %Y")}"
   end
-   
+
   # return formatted time for the front-end
   def formatted_time
     start_time = "#{self.start_time.strftime("%l:%M")} #{self.start_time.strftime("%p")}"
     end_time = "#{self.end_time.strftime("%l:%M")} #{self.end_time.strftime("%p")}"
     "#{start_time} - #{end_time}"
   end
-  
+
 
   # return a banner, from a featured chapter (or nil)
   def banner_src
     chapter = featured_chapters.first
     chapter.present? ? chapter.banner(:medium) : nil
   end
-  
-  
+
+
   def is_current?
     self.day.year_id == DateTime.now.year ? true : false
   end
 
 
-  
+
   # Need to normalize the search attributes
   def search_attributes
     {:title => self.name, :description => (!self.description.blank?) ? self.description[0..100] : "", :image => self.banner(:thumb)}
   end
 
 
-  
-  private 
-  
+
+  private
+
     def validate_temporal_constraints
       # ensure end time is after start time
       errors.add(:end_time, "Must be after Start Time.") unless self.start_time < self.end_time
     end
-    
+
 end

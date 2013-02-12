@@ -9,7 +9,7 @@ class Admin::<%= controller_class_name %>Controller < Admin::AdminController
 
   # MEMBER ACTIONS
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # standard CRUD functionality exists in the base AdminController
 
   # the detail page for this <%= singular_table_name %>

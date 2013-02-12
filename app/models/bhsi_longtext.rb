@@ -1,11 +1,11 @@
 class BhsiLongtext < ActiveRecord::Base
-  
+
   include SearchSortPaginate
 
   belongs_to :BhsiApplication
-  
 
-  
+
+
   validates :about_yourself, :presence => true, :length => {
     :maximum   => 1000,
     :tokenizer => lambda { |str| str.scan(/\b\S+\b/) },
@@ -38,6 +38,6 @@ class BhsiLongtext < ActiveRecord::Base
     :tokenizer => lambda { |str| str.scan(/\b\S+\b/) },
     :too_long  => "must be less than %{count} words"
   }
-  
-  
+
+
 end

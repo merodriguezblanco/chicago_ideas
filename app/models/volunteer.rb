@@ -4,12 +4,12 @@ class Volunteer < ActiveRecord::Base
   include SearchSortPaginate
 
   belongs_to :user
-  
+
   has_attached_file :pdf, :path => "applications/volunteer/pdfs/:id/:filename"
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
+
   validates :user_id, :presence => true
   validates :first_name, :presence => true
   validates :last_name, :presence => true
@@ -36,29 +36,29 @@ class Volunteer < ActiveRecord::Base
     :tokenizer => lambda { |str| str.scan(/\b\S+\b/) },
     :too_long  => "must be less than %{count} words"
   }
-  
+
   validate :validate_interests_volunteering
   validate :validate_skills
-  
+
   def validate_interests_volunteering
     self.interests_volunteering.reject! { |et| et.empty? }  # need to remove empty string
     if self.interests_volunteering.length < 1
       self.errors.add('interests_volunteering', 'please select at least one')
     end
   end
-  
+
   def validate_skills
     self.skills.reject! { |et| et.empty? }  # need to remove empty string
     if self.skills.length < 1
       self.errors.add('skills', 'please select at least one')
     end
   end
-  
+
   before_create {|record|
     record.interests_volunteering = record.interests_volunteering.join(', ') # convert array to a string for saving
     record.skills = record.skills.join(', ') # convert array to a string for saving
   }
-  
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -87,15 +87,15 @@ class Volunteer < ActiveRecord::Base
       :hours => hours,
     }
   end
-  
+
   def self.csv_columns   # class method
     ['First Name', 'Last Name', 'Email', 'Phone', 'Post Code', 'Special Skills']
   end
-  
+
   def csv_attributes
     [get_first_name, get_last_name, get_email, get_phone, postcode, skills]
   end
-  
+
   def get_first_name
     fname = ((first_name).strip.length > 0) ? (first_name).strip : ''
     if fname.length == 0
@@ -107,7 +107,7 @@ class Volunteer < ActiveRecord::Base
     end
     return fname
   end
-  
+
   def get_last_name
     lname = ((last_name).strip.length > 0) ? (last_name).strip : ''
     if lname.length == 0
@@ -119,11 +119,11 @@ class Volunteer < ActiveRecord::Base
     end
     return lname
   end
-  
+
   def get_email
    return (email.strip.length > 0) ? email.strip : user.email.strip
   end
-  
+
   def get_phone
     return (phone.strip.length > 0) ? phone.strip : (!user.phone.nil? ? user.phone.strip : '')
   end
@@ -134,11 +134,11 @@ class Volunteer < ActiveRecord::Base
     when 'foo'
     else
       [
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
   def available_days
     days = []
     days << "monday" if avail_mon?
@@ -150,7 +150,7 @@ class Volunteer < ActiveRecord::Base
     days << "sunday" if avail_sun?
     days
   end
-  
+
   def available_times
     days = []
     days << "8am - 1pm" if avail_time_1?

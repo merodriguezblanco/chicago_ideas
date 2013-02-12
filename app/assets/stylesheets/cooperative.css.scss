@@ -16,8 +16,8 @@ ul.list-expand{
   padding:0;
   background:url(application/bg-border.png) bottom left repeat-x;
   clear:both;
-  position:relative; 
-  left:-20px; 
+  position:relative;
+  left:-20px;
   width:680px;
   ol{
     padding-top: 20px;
@@ -32,11 +32,11 @@ ul.list-expand{
 	ul.list-expand li.top_level a.expand-btn  i {background:url(application/expand.png) top left no-repeat; width:17px; height:16px; display:inline-block; vertical-align:middle; margin-right:2px;}
 	ul.list-expand li.top_level a.expand-btn:hover {text-decoration:none}
 	.hide-expand {display:none;}
-	
+
 .join-foot {padding:45px 0px 20px}
 .row-wrap {overflow:hidden; }
 	.row-wrap .big-btn {float:left; margin-right:48px}
-	
+
 .w100-fix {width:1000px; margin:0 auto; padding:65px 0 55px}
 .tab-nav {background:url(application/bg.gif) top left repeat; padding-top:57px; overflow:hidden}
 	.tab-nav .welcome {color:#a7a7a7; font-size:14px; }

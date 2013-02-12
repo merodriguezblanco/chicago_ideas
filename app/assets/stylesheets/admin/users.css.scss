@@ -6,19 +6,19 @@ body#admin_users_page {
     // dont show speaker column or delete on the speakers table
     table#users .speaker { display:none; }
   }
-  
+
   &.administrators {
     // dont show admin column or delete on the speakers table
     table#users .admin { display:none; }
   }
-  
+
   &.staff {
     // dont show staff column or delete on the speakers table
     table#users .staff { display:none; }
   }
-  
+
   &.show {
-    
+
     // a box describing the connectivity for this user account
     #connectivity {
       border: 1px solid #EEEEEE;
@@ -28,7 +28,7 @@ body#admin_users_page {
       text-align: center;
       width: 250px;
     }
-    
+
   }
 
 }

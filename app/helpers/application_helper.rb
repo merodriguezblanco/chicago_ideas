@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def conditional_html( lang = "en", &block )
     fb_meta = "xml:lang='en' xmlns:fb='http://www.facebook.com/2008/fbml' xmlns:og='http://opengraphprotocol.org/schema/' xmlns='http://www.w3.org/1999/xhtml'"
     haml_concat Haml::Util::html_safe <<-"HTML".gsub( /^\s+/, '' )
@@ -7,11 +7,11 @@ module ApplicationHelper
       <!--[if IE 7 ]><html lang="#{lang}" class="no-js ie7" #{fb_meta}> <![endif]-->
       <!--[if IE 8 ]><html lang="#{lang}" class="no-js ie8" #{fb_meta}> <![endif]-->
       <!--[if IE 9 ]><html lang="#{lang}" class="no-js ie9" #{fb_meta}> <![endif]-->
-      <!--[if (gte IE 9)|!(IE)]><!--> <html lang="#{lang}" class="no-js" #{fb_meta}> <!--<![endif]-->      
+      <!--[if (gte IE 9)|!(IE)]><!--> <html lang="#{lang}" class="no-js" #{fb_meta}> <!--<![endif]-->
     HTML
     haml_concat capture( &block ) << Haml::Util::html_safe( "\n</html>" ) if block_given?
   end
-  
+
   # Simple way to truncate a paragraph
 =begin
   def truncate_words(text, length = 250, end_string = ' ...')
@@ -25,11 +25,11 @@ module ApplicationHelper
     l = length - truncate_string.chars.length
     text.chars.length > length ? text[/\A.{#{l}}\w*\;?/m][/.*[\w\;]/m] + truncate_string : text
   end
-  
+
   def truncate_words text, length=55, separator = ' ', truncate_string = '...'
-    
+
   end
-  
+
   def truncate_words(text, length = 30, separator = ' ', truncate_string = '...')
     return if text.nil?
     truncated_text = text.split[0..length].join(separator)
@@ -39,14 +39,14 @@ module ApplicationHelper
       truncated_text + ' ' + truncate_string
     end
   end
-    
-    
-  
+
+
+
   # a robust method to display flash messages
   def flash_helper keys=[:notice, :alert]
     # allow keys to be a symbol or an array of symbols
     keys = [keys] unless keys.kind_of? Array
-    
+
     # html from each message
     html = ''
     flash.each do |key, msg|
@@ -75,7 +75,7 @@ module ApplicationHelper
   def section_title
     @section_title || params[:action].titlecase
   end
-  
+
   # creates a span for an icon sprite (jquery ui)
   def icon name, subset=nil
     css_class = "ui-icon ui-icon-#{name}"
@@ -103,8 +103,8 @@ module ApplicationHelper
     return 'never' unless m.present?
     return m.created_at.to_s(:ago)
   end
-  
 
-    
+
+
 
 end

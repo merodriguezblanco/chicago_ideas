@@ -48,15 +48,15 @@ body.pdf_admin {
   font-size: 14px;
   color: #333;
   width: 750px;
-  
+
 
   #content_container {
-    width: 750px;    
-    
+    width: 750px;
+
     #content {
       background-color: #fff;
     }
-    
+
   }
 }
 
@@ -72,21 +72,21 @@ h1 {
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid #ccc;
-  
+
   .row {
     display: block;
     width: 100%;
     margin: 0 0 20px 0;
-  
+
     .column, .column_double {
       display: inline;
       float: left;
       width: 200px;
       font-size: 14px;
       color: #555;
-      margin: 0 10px 0 0 !important; 
+      margin: 0 10px 0 0 !important;
     }
-  
+
     .column_double {
       width: 365px;
       font-size: 14px;
@@ -100,7 +100,7 @@ h1 {
   .row:after {
     clear: both;
   }
-  
+
 }
 
 .section:last-child {

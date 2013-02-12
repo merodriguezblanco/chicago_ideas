@@ -8,17 +8,17 @@ class Admin::CommunityPartnerApplicationsController < Admin::AdminController
 
   # MEMBER ACTIONS
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # standard CRUD functionality exists in the base AdminController
 
   # the detail page for this community_partner_application
   def show
     @section_title = 'Detail'
-    @community_partner_application = CommunityPartnerApplication.find(params[:id])  
+    @community_partner_application = CommunityPartnerApplication.find(params[:id])
     respond_to do |format|
-      
+
       format.pdf {
-        
+
         # if !@community_partner_application.pdf.exists?
           pdf = doc_raptor_send({:document_type => "pdf".to_sym})
           friendlyName = "CPA_#{@community_partner_application.name}.pdf"

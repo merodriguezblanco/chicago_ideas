@@ -15,7 +15,7 @@ class Admin::AffiliateEventApplicationsController < Admin::AdminController
   def show
     @section_title = 'Detail'
     @affiliate_event_application = AffiliateEventApplication.find(params[:id])
-    
+
     respond_to do |format|
       format.pdf {
         #if !@affiliate_event_application.pdf.exists?

@@ -1,7 +1,7 @@
 class ChangingTextToLongTextToBhsiApplications < ActiveRecord::Migration
   def change
     change_table :bhsi_applications do |t|
-      
+
       t.change :first_name, :text, :limit => 655365
       t.change :last_name, :text, :limit => 655365
       t.change :address1, :text, :limit => 655365
@@ -11,7 +11,7 @@ class ChangingTextToLongTextToBhsiApplications < ActiveRecord::Migration
       t.change :email, :text, :limit => 655365
       t.change :gender, :text, :limit => 655365
       t.change :birthdate, :text, :limit => 655365
-      
+
       t.change :title, :text, :limit => 655365
       t.change :social_venture_name, :text, :limit => 655365
       t.change :legal_structure, :text, :limit => 655365

@@ -1,10 +1,10 @@
 /**
- * ezMark (Minified) - A Simple Checkbox and Radio button Styling plugin. This plugin allows you to use a custom Image for 
+ * ezMark (Minified) - A Simple Checkbox and Radio button Styling plugin. This plugin allows you to use a custom Image for
  * Checkbox or Radio button. Its very simple, small and easy to use.
- * 
+ *
  * Copyright (c) Abdullah Rubiyath <http://www.itsalif.info/>.
  * Released under MIT License
- * 
+ *
  * @author Abdullah Rubiyath
  * @version 1.0
  * @date June 27, 2010

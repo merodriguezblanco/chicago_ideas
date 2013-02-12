@@ -76,6 +76,6 @@ if ( window.addEventListener ) {
 };
 
 // make some conditional jqiery code more readable with an exists function
-jQuery.fn.exists = function(){ 
+jQuery.fn.exists = function(){
   return this.length>0;
 }

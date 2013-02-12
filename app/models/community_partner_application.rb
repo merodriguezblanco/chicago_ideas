@@ -4,12 +4,12 @@ class CommunityPartnerApplication < ActiveRecord::Base
   include SearchSortPaginate
 
   belongs_to :user
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
+
   has_attached_file :pdf, :path => "applications/community/pdfs/:id/:filename"
-  
+
   validates :name, :presence => true
   validates :description, :presence => true
   validates :address1, :presence => true
@@ -27,7 +27,7 @@ class CommunityPartnerApplication < ActiveRecord::Base
   validates :will_promote_ciw, :acceptance => {:accept => true}
   validates :encourage_promote_ciw, :acceptance => {:accept => true}
   validates :provide_insight_guidance, :acceptance => {:accept => true}
-  
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -61,9 +61,9 @@ class CommunityPartnerApplication < ActiveRecord::Base
     else
       [
         { :name => :search, :as => :string, :fields => [:name], :wildcard => :both },
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
 end

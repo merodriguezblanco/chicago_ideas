@@ -1,5 +1,5 @@
 class EditVolunteers < ActiveRecord::Migration
-  
+
   def up
     change_column :volunteers, :type_of_position, :string, :null => true
     add_column :volunteers, :organization_name_1, :string, :null => true
@@ -13,7 +13,7 @@ class EditVolunteers < ActiveRecord::Migration
     add_column :volunteers, :organization_title_3, :string, :null => true
     add_column :volunteers, :interests_volunteering, :text, :null => true
     add_column :volunteers, :skills, :text, :null => true
-    
+
   end
 
   def down

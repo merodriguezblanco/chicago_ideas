@@ -23,7 +23,7 @@ class CreateAffiliateEventApplilcations < ActiveRecord::Migration
       t.boolean :event_info_available, :null => false
       t.boolean :not_make_changes, :null => false
       t.integer :user_id, :null => false
-      t.timestamps      
+      t.timestamps
     end
 
     add_index :affiliate_event_applilcations, :user_id

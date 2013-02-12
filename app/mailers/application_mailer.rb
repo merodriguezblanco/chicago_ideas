@@ -13,5 +13,5 @@ class ApplicationMailer < ActionMailer::Base
     @user = user
     mail(:to => @user.email, :subject => "Welcome to #{BUSINESS_NAME}")
   end
-  
+
 end

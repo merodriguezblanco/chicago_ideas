@@ -4,7 +4,7 @@ module CommonLinksHelper
   # this is a method very similar to rails core methods for halding paths and urls, but this one doesnt currently exist (true as of rails 3.1)
   def image_url(source)
     abs_path = image_path(source)
-    
+
     unless abs_path =~ /^http/
       abs_path = "#{request.protocol}#{request.host_with_port}#{abs_path}"
     end
@@ -24,7 +24,7 @@ module CommonLinksHelper
       body = "#{icon_html} #{body}".html_safe
       html_options[:class] = "#{html_options[:class]} icon"
     end
-    
+
     return link_to body, url, html_options
 
   end
@@ -62,11 +62,11 @@ module CommonLinksHelper
 
     delete_path = send("delete_admin_#{m.class.name.underscore}_path", m)
     delete_link = icon_link_to 'delete', delete_path, 'trash', :confirm => 'Are you sure?', :remote => true, :class => "toggle delete #{reload}", :style => ( m.deleted? ? "display:none;" : nil)
-    
+
     undelete_path = send("undelete_admin_#{m.class.name.underscore}_path", m)
     undelete_link = icon_link_to 'restore', undelete_path, 'arrowreturnthick-1-n', :confirm => 'Are you sure?', :remote => true, :class => "toggle undelete #{reload}", :style => ( m.deleted? ? nil : "display:none;")
 
-    return content_tag(:div, delete_link+undelete_link, :class => "toggle") 
+    return content_tag(:div, delete_link+undelete_link, :class => "toggle")
   end
 
   # flag and unflag links, which toggle back and forth via javascript
@@ -75,11 +75,11 @@ module CommonLinksHelper
 
     flag_path = send("flag_admin_#{m.class.name.underscore}_path", m)
     flag_link = icon_link_to 'flag', flag_path, 'flag', :remote => true, :class => "toggle flag #{reload}", :style => ( m.flagged? ? "display:none;" : nil)
-    
+
     unflag_path = send("unflag_admin_#{m.class.name.underscore}_path", m)
     unflag_link = icon_link_to 'unflag', unflag_path, 'flag', :remote => true, :class => "toggle unflag #{reload}", :style => ( m.flagged? ? nil : "display:none;")
 
-    return content_tag(:div, flag_link+unflag_link, :class => "toggle") 
+    return content_tag(:div, flag_link+unflag_link, :class => "toggle")
   end
 
   # publish and unpublish links, which toggle back and forth via javascript
@@ -88,13 +88,13 @@ module CommonLinksHelper
 
     publish_path = send("publish_admin_#{m.class.name.underscore}_path", m)
     publish_link = icon_link_to 'publish', publish_path, 'plusthick', :remote => true, :class => "toggle publish #{reload}", :style => ( m.published? ? "display:none;" : nil)
-    
+
     unpublish_path = send("unpublish_admin_#{m.class.name.underscore}_path", m)
     unpublish_link = icon_link_to 'unpublish', unpublish_path, 'minusthick', :remote => true, :class => "toggle unpublish #{reload}", :style => ( m.published? ? nil : "display:none;")
 
-    return content_tag(:div, publish_link+unpublish_link, :class => "toggle") 
+    return content_tag(:div, publish_link+unpublish_link, :class => "toggle")
   end
-  
+
   def export_model_link klass, format, title=nil
     if title.nil?
       title = "export all #{klass.name.pluralize.downcase}"

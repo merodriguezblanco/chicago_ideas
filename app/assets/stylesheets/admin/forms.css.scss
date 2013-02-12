@@ -1,7 +1,7 @@
 body.admin {
   form.formtastic fieldset {
     position:relative;
-    
+
     // active states for the form inputs
     &.inputs input {
       color: #222;
@@ -9,7 +9,7 @@ body.admin {
         border-color: #820035;
       }
     }
-    
+
     // toggle on fieldsets, by clicking the legend
     &.toggle {
       > ol {
@@ -20,7 +20,7 @@ body.admin {
         cursor: pointer;
       }
     }
-  
+
     li.boolean {
       height: 20px;
       label {
@@ -32,7 +32,7 @@ body.admin {
         right: 0;
       }
     }
-  
+
     // nested forms
     a.add {
       background-color: #FFFFFF;
@@ -55,7 +55,7 @@ body.admin {
       padding: 10px;
       border: 1px solid #CCCCCC;
       margin-bottom: 10px;
-      
+
       a.remove {
         color: red;
         font-weight: bold;
@@ -67,17 +67,17 @@ body.admin {
       li {
         margin: 0 0 6px 0;
       }
-      
+
       input, input[type="text"], input[type="email"], input[type="url"] {
         padding: 6px;
         width: 434px;
       }
-      
+
       textarea {
         height: 60px;
         width: 580px;
       }
-      
+
       label {
         padding: 0;
         font-size: 12px;

@@ -6,7 +6,7 @@ class Admin::EdisonTalksApplicationsController < Admin::AdminController
   def index
     @edison_talks_applications = EdisonTalksApplication.search_sort_paginate(params)
   end
-  
+
   def export
     @applications = EdisonTalksApplication.all # get all the users
     respond_to do |format|
@@ -18,9 +18,9 @@ class Admin::EdisonTalksApplicationsController < Admin::AdminController
             row << a.csv_attributes
           end
         end
-    	
+
     	# send .csv back to the browser
-        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=edison_talks_applications_export_" << Date.today.to_s() << ".csv") 
+        send_data(csv, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment; filename=edison_talks_applications_export_" << Date.today.to_s() << ".csv")
       }
     end
   end
@@ -34,10 +34,10 @@ class Admin::EdisonTalksApplicationsController < Admin::AdminController
   def show
     @section_title = 'Detail'
     @edison_talks_application = EdisonTalksApplication.find(params[:id])
-    
+
     respond_to do |format|
       format.pdf {
-        
+
         pdf = doc_raptor_send({:document_type => "pdf".to_sym})
         friendlyName = "Edison_Talks_Application_#{@edison_talks_application.name}.pdf"
         friendlyName = friendlyName.gsub(" ", "")
@@ -46,23 +46,23 @@ class Admin::EdisonTalksApplicationsController < Admin::AdminController
         @edison_talks_application.pdf = File.open("#{Rails.root}/tmp/#{friendlyName}");
         @edison_talks_application.save!({:validate => false})
         send_data pdf, :filename => friendlyName, :type => "pdf"
-        
+
       }
       format.html {
         render
       }
     end
-    
+
   end
-  
+
   def self.csv_columns   # class method
     ['First Name', 'Last Name', 'Email', 'Phone', 'Post Code']
   end
-  
+
   def csv_attributes
     [get_first_name, get_last_name, get_email, get_phone, postcode]
   end
-  
+
 
 
   # MEMBER PAGES

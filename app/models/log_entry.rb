@@ -14,7 +14,7 @@ class LogEntry
   index :user_id
   index :action
   index :host
-  
+
   def user
     User.find(user_id)
   end
@@ -26,5 +26,5 @@ class LogEntry
   def user_agent_main
     user_agent.split(' ').first
   end
-  
+
 end

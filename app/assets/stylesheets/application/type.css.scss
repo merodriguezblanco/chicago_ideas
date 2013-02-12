@@ -35,12 +35,12 @@ h3 {
   font-weight: 600;
 }
 
-p, pre { 
+p, pre {
   font-family: "Helvetica Neue", Helvetia, Arial, sans-serif;
   font-size: 15px;
   color:$grey;
   line-height: 25px;
-  margin-bottom:15px; 
+  margin-bottom:15px;
 }
 p:last-child { margin-bottom:0; }
 
@@ -106,17 +106,17 @@ span.expired_date {
 
   .column {
     width:320px;
-    
+
     img {
 	  display: block;
     }
-    
+
   }
- 
+
   .column_full {
     width:960px;
-    
-    
+
+
     .intro_content {
 	    width:440px;
 	    float:right;
@@ -130,9 +130,9 @@ span.expired_date {
 	    margin-bottom: 15px;
 	    text-transform:uppercase;
 	    text-align:center;
-	   
+
     }
-    
+
     h6 {
       font-weight:normal;
       color:#000;
@@ -140,60 +140,60 @@ span.expired_date {
       line-height:30px;
       margin-bottom:15px;
     }
-    
+
     td {
       padding-bottom:15px;
-      
+
       p {
 	      font-size: 14px;
 	      color: #333;
 	      display: block;
 	      line-height: 22px;
-	      
+
 	      a {
 	        color:#000;
-	        
+
 	      }
-	      
+
 	      a:hover {
 	        text-decoration:underline;
 	      }
       }
     }
-    
+
     td + td {
       padding-left:20px;
     }
     span + span {
     	margin-top:8px;
     }
-  
-  
-  
+
+
+
 
   }
-  
+
   .column_left {
     img {
       float:left;
     }
-    
+
     p {
       clear:left;
     }
   }
-  
+
   .column_middle {
     img {
       margin:0 auto;
     }
   }
-  
+
   .column_right {
     img {
       float:right;
     }
-    
+
     p {
       clear:right;
     }

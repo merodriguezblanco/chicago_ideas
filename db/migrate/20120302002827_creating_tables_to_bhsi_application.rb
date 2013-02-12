@@ -1,7 +1,7 @@
 class CreatingTablesToBhsiApplication < ActiveRecord::Migration
   def change
     change_table :bhsi_applications do |t|
-      
+
       t.string :first_name, :null => false
       t.string :last_name, :null => false
       t.string :address1, :null => false
@@ -34,9 +34,9 @@ class CreatingTablesToBhsiApplication < ActiveRecord::Migration
       t.string :strong_midwest_connections, :null => false
       t.string :strong_midwest_connections_explained
       t.string :additional_comments
-      
+
       t.string :previous_budget, :null => false
-      
+
       t.string :reference_1_name, :null => false
       t.string :reference_1_relationship, :null => false
       t.string :reference_1_phone, :null => false
@@ -45,7 +45,7 @@ class CreatingTablesToBhsiApplication < ActiveRecord::Migration
       t.string :reference_2_relationship, :null => false
       t.string :reference_2_phone, :null => false
       t.string :reference_2_email, :null => false
-      
+
       t.string :press_clipping_1, :null => false
       t.string :press_clipping_2, :null => false
       t.string :press_clipping_3, :null => false

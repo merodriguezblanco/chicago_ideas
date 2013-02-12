@@ -1,5 +1,5 @@
 module EmailHelper
-  
+
   # email helpers, because emails have lots of inline css and we want to DRY that up
   # ----------------------------------------------------------------------------------------------------
   def email_spacer
@@ -29,5 +29,5 @@ module EmailHelper
   def email_link_to link_text, link_url
     link_to link_text, link_url, :style => 'color: #121212; font-family: Arial, sans-serif; font-size: 14px;'
   end
-  
+
 end

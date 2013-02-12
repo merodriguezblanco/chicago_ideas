@@ -1,6 +1,6 @@
-every 1.days do 
-  
+every 1.days do
+
   # rebuild the sphinx index, used for the search feature
-  rake "fs:index"                 
+  rake "fs:index"
 
 end

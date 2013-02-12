@@ -10,13 +10,13 @@ class DeviseCreateSponsorUsers < ActiveRecord::Migration
       t.confirmable
       # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
       # t.token_authenticatable
-      
+
       t.integer :sponsor
       t.string :title
       t.string :phone
       t.boolean :newsletters_subscription
       t.boolean :primary_contact
-      
+
       t.timestamps
     end
 

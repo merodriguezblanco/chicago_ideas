@@ -6,7 +6,7 @@ class ChangeTopicToTrack < ActiveRecord::Migration
     rename_column :talks, :topic_id, :track_id
 
     rename_table :topics, :tracks
-    
+
     add_foreign_key :talks, :tracks
   end
 
@@ -16,7 +16,7 @@ class ChangeTopicToTrack < ActiveRecord::Migration
     rename_column :talks, :track_id, :topic_id
 
     rename_table :tracks, :topics
-    
+
     add_foreign_key :talks, :topics
   end
 end

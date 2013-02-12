@@ -10,9 +10,9 @@ $(document).ready(function(){
       $ul.slideDown('fast');
     }
   });
-  
+
   // if the contents of the menu is active, then open it
   $('#content_navigation h2 a.toggle').closest('h2').next('ul').find('li.active').closest('ul').show();
-  
-  
+
+
 });

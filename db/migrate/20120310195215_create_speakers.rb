@@ -3,7 +3,7 @@ class CreateSpeakers < ActiveRecord::Migration
     create_table :speakers do |t|
       t.integer :year_id
       t.integer :user_id
-      t.timestamps 
+      t.timestamps
     end
      User.speaker.each do |spk|
         newSpeaker = Speaker.new()

@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  
+
   # COLLECTION ACTIONS
   # ---------------------------------------------------------------------------------------------------------
   def index
@@ -9,7 +9,7 @@ class JobsController < ApplicationController
 
   # MEMBER ACTIONS
   # ---------------------------------------------------------------------------------------------------------
-  
+
   # standard CRUD functionality exists in the base AdminController
 
   # the detail page for this job

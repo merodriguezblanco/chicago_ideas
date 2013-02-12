@@ -2,14 +2,14 @@ class Job < ActiveRecord::Base
 
   # my bone dry solution to search, sort and paginate
   include SearchSortPaginate
-  
+
   scope :published, where(:published => true)
 
-  
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
-  
-  
+
+
   # the hash representing this model that is returned by the api
   def api_attributes
     {
@@ -33,9 +33,9 @@ class Job < ActiveRecord::Base
     when 'foo'
     else
       [
-        { :name => :created_at, :as => :datetimerange }, 
+        { :name => :created_at, :as => :datetimerange },
       ]
     end
   end
-  
+
 end

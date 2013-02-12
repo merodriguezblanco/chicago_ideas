@@ -1,6 +1,6 @@
 class UpdateFieldsToCommunityPartnerApplication < ActiveRecord::Migration
   def up
-    change_table :community_partner_applications do |t|      
+    change_table :community_partner_applications do |t|
       t.string :contact_email, :null => false
       t.change :facebook_page, :string, {:null => true}
       t.change :twitter_handle, :string, {:null => true}
@@ -11,7 +11,7 @@ class UpdateFieldsToCommunityPartnerApplication < ActiveRecord::Migration
   end
 
   def down
-    change_table :community_partner_applications do |t|      
+    change_table :community_partner_applications do |t|
       t.remove :contact_email
       t.change :facebook_page, :string, {:null => false}
       t.change :twitter_handle, :string, {:null => false}

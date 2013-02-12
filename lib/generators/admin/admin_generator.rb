@@ -1,5 +1,5 @@
 require 'rails/generators/resource_helpers'
-require 'rails/generators/active_record' 
+require 'rails/generators/active_record'
 require 'rails/generators/migration'
 
 module Rails
@@ -27,10 +27,10 @@ module Rails
         template "views/index.html.haml", "app/views/admin/#{controller_file_name}/index.html.haml"
         template "views/show.html.haml", "app/views/admin/#{controller_file_name}/show.html.haml"
         template "views/notes.html.haml", "app/views/admin/#{controller_file_name}/notes.html.haml"
-        
+
         template "views/_collection_controls.html.haml", "app/views/admin/#{controller_file_name}/_collection_controls.html.haml"
         template "views/_member_controls.html.haml", "app/views/admin/#{controller_file_name}/_member_controls.html.haml"
-        
+
         template "views/_table.html.haml", "app/views/admin/#{controller_file_name}/_table.html.haml"
         template "views/_model.html.haml", "app/views/admin/#{controller_file_name}/_#{file_name}.html.haml"
         template "views/_fields.html.haml", "app/views/admin/#{controller_file_name}/_fields.html.haml"
@@ -43,9 +43,9 @@ module Rails
       def add_breadcrumb
         append_file "app/views/shared/_breadcrumbs_item.html.haml", new_breadcrumb
       end
-      
-      private 
-      
+
+      private
+
         def new_route
           str = "\n"
           str += "    resources :#{plural_table_name} do\n"
@@ -60,7 +60,7 @@ module Rails
           str += "    end\n"
           str
         end
-      
+
         def new_breadcrumb
           str = "\n"
           str += "- elsif base_model.kind_of? #{model_class_name}\n"
@@ -75,15 +75,15 @@ module Rails
         def model_class_name
           file_name.camelize
         end
-        
+
         def has_name_attribute?
           attribute_exits? :name
         end
-        
+
         def has_deleted_at_attribute?
           attribute_exits? :deleted_at
         end
-        
+
         # are any of the attributes for a file?
         def has_a_file_attribute?
           attributes.each do |attribute|
@@ -91,7 +91,7 @@ module Rails
           end
           return false
         end
-        
+
         # does this new model have a specific attribute?
         def attribute_exits? attribute_name
           attributes.each do |attribute|
@@ -99,11 +99,11 @@ module Rails
           end
           return false
         end
-        
+
         def next_migration_number
           ActiveRecord::Generators::Base.next_migration_number('db/migrate')
         end
-        
+
     end
   end
 end

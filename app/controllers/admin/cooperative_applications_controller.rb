@@ -2,14 +2,14 @@ class Admin::CooperativeApplicationsController < Admin::AdminController
   def index
     @cooperative_applications = CooperativeApplication.search_sort_paginate(params)
   end
-  
+
   def show
     @section_title = 'Detail'
-    @cooperative_application = CooperativeApplication.find(params[:id])  
+    @cooperative_application = CooperativeApplication.find(params[:id])
     respond_to do |format|
-      
+
       format.pdf {
-        
+
         # if !@cooperative_application.pdf.exists?
           pdf = doc_raptor_send({:document_type => "pdf".to_sym})
           friendlyName = "CPA_#{@cooperative_application.name}.pdf"
@@ -29,5 +29,5 @@ class Admin::CooperativeApplicationsController < Admin::AdminController
       }
     end
   end
-  
+
 end
