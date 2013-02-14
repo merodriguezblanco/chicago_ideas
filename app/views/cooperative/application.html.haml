@@ -6,11 +6,40 @@
     = semantic_form_for @resource, url: cooperative_index_path, method: :post do |f|
       .left-column
         %h1.head-page-tab
-          %small CIW 2013: 
-          Co-op Application
+          CIW 2013: Co-op Application
         .desc-page
           Thanks for applying to The Cooperative! But just in case something crazy happens, we recommend you save all your entries before submitting. If you experience technical problems or if you have any questions, please contact Kelly@chicagoideas.com.
         %fieldset.inputs
+          .head-box-form.icon3
+            %p
+              %strong Fill out contact information below:
+            %p
+              %span.red
+                *
+              Required field
+          .box-upload-file
+            = f.inputs class: 'co_app_name_last_name' do
+              = f.input :name,      placeholder: 'First Name', required: true
+              = f.input :last_name, placeholder: 'Last Name',  required: true
+              = f.input :title
+            = f.inputs class: 'co_app_organization' do
+              = f.input :organization, required: true
+            %p.co_app_contact_info
+              Contact Information
+            = f.inputs class: 'co_app_phone_email' do
+              = f.input :phone, placeholder: '(xxx) xxx-xxxx', required: true
+              = f.input :email, required: true
+            = f.inputs class: 'co_app_org_mission' do
+              = f.input :org_mission, as: 'text', label: "Organization's mission", required: true
+            = f.inputs class: 'co_app_website_twitter' do
+              = f.input :org_website, label: "Organization's Website",        required: true
+              = f.input :org_twitter, label: "Organization's Twitter handle", placeholder: '@'
+            %p.co_app_hashtags_desc
+              Three #hashtags that best describe your work and what you are passionate about
+            = f.inputs class: 'co_app_hashtags' do
+              = f.input :passion_1, label: false, placeholder: '#'
+              = f.input :passion_2, label: false, placeholder: '#'
+              = f.input :passion_3, label: false, placeholder: '#'
           .head-box-form
             %p
               %strong Here's what we're looking for:
@@ -32,23 +61,17 @@
             .form-row
               .numb 3
               .over-hid
-                %label What are your expectations for being involved in the Co-op? <small>(200 WORDS MAX)</small>
-                = f.text_area :expectations, maxlength: 200
-                .red= @resource.errors[:expectations].first
-            .form-row
-              .numb 4
-              .over-hid
                 %label What was the most meaningful or magical part of 2012 for you? <small>(200 WORDS MAX)</small>
                 = f.text_area :part_meaningful, maxlength: 200
                 .red= @resource.errors[:part_meaningful].first
             .form-row
-              .numb 5
+              .numb 4
               .over-hid
                 %label What was your most inspiring failure? <small>(300 WORD MAX)</small>
                 = f.text_area :ins_failure, maxlength: 300
                 .red= @resource.errors[:ins_failure].first
             .form-row
-              .numb 6
+              .numb 5
               .over-hid
                 %label What Chicago neighborhood best represents who you are? Why? <small>(100 WORDS MAX)</small>
                 = f.text_area :neighborhood, maxlength: 100
@@ -60,55 +83,15 @@
             .form-row
               .numb 1
               .over-hid
-                %label Briefly describe the ereas in which the Chicago Ideas Week community can assist you or your organization: <small>(NO WORD LIMIT)</small>
+                %label Briefly describe the areas in which the Chicago Ideas Week community can assist you or your organization: <small>(NO WORD LIMIT)</small>
                 = f.text_area :assisted_area
                 .red= @resource.errors[:assisted_area].first
             .form-row
               .numb 2
               .over-hid
-                %label List three #hashtags that best describe your work and what you are passionate about: <small>(NO WORD LIMIT)</small>
-                = f.text_area :passion
-                .red= @resource.errors[:passion].first
-            .form-row
-              .numb 3
-              .over-hid
                 %label Are there any other organization or individuals you would recommend to be a member of the Co-op? If so, why? <small>(200 WORDS)</small>
                 = f.text_area :recommend, maxlength: 200
                 .red= @resource.errors[:recommend].first
-      .right-column
-        .right-inner
-          .row.wrap-row-form
-            .title
-              %strong Information
-            .span.wrap-form
-              %label Name
-              = f.text_field :name
-              .red= @resource.errors[:name].first
-            .span.wrap-form
-              %label Title
-              = f.text_field :title
-              .red= @resource.errors[:title].first
-          .row.wrap-row-form.bor-top
-            .span.wrap-form
-              %label Organization
-              = f.text_field :organization
-              .red= @resource.errors[:organization].first
-            .span.wrap-form
-              %label Phone
-              = f.text_field :phone, placeholder: "Phone: (xxx) xxx-xxxx"
-              .red= @resource.errors[:phone].first
-            .span.wrap-form
-              %label Organization's mission
-              = f.text_area :org_mission
-              .red= @resource.errors[:org_mission].first
-            .span.wrap-form
-              %label Organization's Twitter handle
-              = f.text_field :org_twitter, placeholder: "@"
-              .red= @resource.errors[:org_twitter].first
-      .row
-        =f.submit "Save Changes", class: "form-submit"
+        .row
+          = f.submit "Submit Application", class: "form-submit"
   .clr
-          
-              
-                    
-          
