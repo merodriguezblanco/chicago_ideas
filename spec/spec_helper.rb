@@ -36,3 +36,13 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def assert_presence(model, field)
+  assert model.invalid?
+  assert_match /can't be blank/, model.errors[field].join
+end
+
+def assert_email(model, field)
+  assert model.invalid?
+  assert_match /is not an email/, model.errors[field].join
+end
