@@ -39,7 +39,7 @@ set :scm, :git
 set :repository, "git@github.com:frangucc/chicago_ideas.git"
 
 # master is our default git branch
-set :branch, "master"
+set :branch, "staging"
 
 # Deploy via github
 set :deploy_via, :remote_cache
