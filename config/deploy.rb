@@ -14,8 +14,8 @@ set :application, "chicago_ideas"
 set :rails_env, :production
 
 # Deploy username and sudo username
-set :user, ENV['USER'] # ubuntu
-set :user_rails, ENV['USER']
+set :user, 'ubuntu'
+set :user_rails, 'ubuntu'
 
 # App Domain
 set :domain, "23.23.114.156"
