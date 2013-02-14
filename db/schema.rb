@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206145020) do
+ActiveRecord::Schema.define(:version => 20130214151900) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -236,16 +236,14 @@ ActiveRecord::Schema.define(:version => 20130206145020) do
     t.string   "title"
     t.string   "organization"
     t.string   "phone"
-    t.string   "org_mission"
+    t.text     "org_mission"
     t.string   "org_twitter"
     t.text     "reason"
     t.text     "worked_on"
-    t.text     "expectations"
     t.text     "part_meaningful"
     t.text     "ins_failure"
     t.text     "neighborhood"
     t.text     "assisted_area"
-    t.text     "passion"
     t.text     "recommend"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -253,6 +251,12 @@ ActiveRecord::Schema.define(:version => 20130206145020) do
     t.string   "pdf_content_type"
     t.integer  "pdf_file_size"
     t.datetime "pdf_updated_at"
+    t.string   "last_name",        :null => false
+    t.string   "email",            :null => false
+    t.string   "org_website",      :null => false
+    t.string   "passion_1"
+    t.string   "passion_2"
+    t.string   "passion_3"
   end
 
   create_table "days", :force => true do |t|
