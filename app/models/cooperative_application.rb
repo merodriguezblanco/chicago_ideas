@@ -2,21 +2,26 @@ class CooperativeApplication < ActiveRecord::Base
 
   include SearchSortPaginate
 
-  validates :name, presence: true
-  validates :title, presence: true
-  validates :organization, presence: true
-  validates :phone, presence: true
-  validates :org_mission, presence: true
-  validates :org_twitter, presence: true
-  validates :reason, presence: true
-  validates :worked_on, presence: true
-  validates :expectations, presence: true
-  validates :part_meaningful, presence: true
-  validates :ins_failure, presence: true
-  validates :neighborhood, presence: true
-  validates :assisted_area, presence: true
-  validates :passion, presence: true
-  validates :recommend, presence: true
+  MAX_WORKED_ON_WORDS       = 400
+  MAX_PART_MEANINGFUL_WORDS = 200
+  MAX_INS_FAILURE_WORDS     = 300
+  MAX_NEIGHBORHOOD_WORDS    = 100
+
+  validates :name,            presence: true
+  validates :last_name,       presence: true
+  validates :organization,    presence: true
+  validates :phone,           presence: true
+  validates :email,           presence: true, email: true
+  validates :org_mission,     presence: true
+  validates :org_website,     presence: true
+  validates :org_twitter,     presence: true
+  validates :reason,          presence: true
+  validates :worked_on,       presence: true, length: { maximum: MAX_WORKED_ON_WORDS,       too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
+  validates :part_meaningful, presence: true, length: { maximum: MAX_PART_MEANINGFUL_WORDS, too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
+  validates :ins_failure,     presence: true, length: { maximum: MAX_INS_FAILURE_WORDS,     too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
+  validates :neighborhood,    presence: true, length: { maximum: MAX_NEIGHBORHOOD_WORDS,    too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
+  validates :assisted_area,   presence: true
+  validates :recommend,       presence: true
 
   has_attached_file :pdf, :path => "applications/cooperative/pdfs/:id/:filename"
 

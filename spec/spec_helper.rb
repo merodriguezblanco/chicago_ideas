@@ -46,3 +46,8 @@ def assert_email(model, field)
   assert model.invalid?
   assert_match /is not an email/, model.errors[field].join
 end
+
+def assert_max_words_count(model, field, max_words)
+  model.should be_invalid
+  model.errors[field].join.should match(/You have exceeded the #{max_words} word count!/)
+end

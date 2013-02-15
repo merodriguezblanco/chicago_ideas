@@ -17,24 +17,36 @@ describe CooperativeApplication do
     end
   end
 
-  it 'should have valid worked_on' do
-    co_app.worked_on = 401
-    should be_invalid
+  it 'should have valid worked_on words count' do
+    co_app.worked_on = 'word ' * CooperativeApplication::MAX_WORKED_ON_WORDS
+    co_app.errors[:worked_on].should be_empty
+
+    co_app.worked_on << 'word'
+    assert_max_words_count co_app, :worked_on, CooperativeApplication::MAX_WORKED_ON_WORDS
   end
 
-  it 'should have valid part_meaningful' do
-    co_app.part_meaningful = 201
-    should be_invalid
+  it 'should have valid part_meaningful words count' do
+    co_app.part_meaningful = 'word ' * CooperativeApplication::MAX_PART_MEANINGFUL_WORDS
+    co_app.errors[:part_meaningful].should be_empty
+
+    co_app.part_meaningful << 'word'
+    assert_max_words_count co_app, :part_meaningful, CooperativeApplication::MAX_PART_MEANINGFUL_WORDS
   end
 
-  it 'should have valid ins_failure' do
-    co_app.worked_on = 301
-    should be_invalid
+  it 'should have valid ins_failure words count' do
+    co_app.ins_failure = 'word ' * CooperativeApplication::MAX_INS_FAILURE_WORDS
+    co_app.errors[:ins_failure].should be_empty
+
+    co_app.ins_failure << 'word'
+    assert_max_words_count co_app, :ins_failure, CooperativeApplication::MAX_INS_FAILURE_WORDS
   end
 
-  it 'should have valid ins_failure' do
-    co_app.worked_on = 101
-    should be_invalid
+  it 'should have valid neighborhood words count' do
+    co_app.neighborhood = 'word ' * CooperativeApplication::MAX_NEIGHBORHOOD_WORDS
+    co_app.errors[:neighborhood].should be_empty
+
+    co_app.neighborhood << 'word'
+    assert_max_words_count co_app, :neighborhood, CooperativeApplication::MAX_NEIGHBORHOOD_WORDS
   end
 
 end
