@@ -61,11 +61,12 @@ after "deploy:setup", "deploy:set_rvm_version"
 after "deploy:setup", "deploy:fix_setup_permissions"
 
 # Fix permissions
-before "deploy:start", "deploy:fix_permissions"
-after "deploy:restart", "deploy:fix_permissions"
-after "assets:precompile", "deploy:fix_permissions"
-before  "deploy:start", "deploy:symlink_database_and_system_folder"
+# before "deploy:start", "deploy:fix_permissions"
+# after "deploy:restart", "deploy:fix_permissions"
+# after "assets:precompile", "deploy:fix_permissions"
 after "deploy", "deploy:migrate"
+after "deploy", "deploy:symlink_database_and_system_folder"
+after "deploy", "deploy:restart"
 # Clean-up old releases
 after "deploy:restart", "deploy:cleanup"
 
