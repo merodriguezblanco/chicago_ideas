@@ -2,6 +2,11 @@ class CooperativeApplication < ActiveRecord::Base
 
   include SearchSortPaginate
 
+  MAX_WORKED_ON_WORDS       = 400
+  MAX_PART_MEANINGFUL_WORDS = 200
+  MAX_INS_FAILURE_WORDS     = 300
+  MAX_NEIGHBORHOOD_WORDS    = 100
+
   validates :name,            presence: true
   validates :last_name,       presence: true
   validates :organization,    presence: true
@@ -11,10 +16,10 @@ class CooperativeApplication < ActiveRecord::Base
   validates :org_website,     presence: true
   validates :org_twitter,     presence: true
   validates :reason,          presence: true
-  validates :worked_on,       presence: true, length: { maximum: 400 }
-  validates :part_meaningful, presence: true, length: { maximum: 200 }
-  validates :ins_failure,     presence: true, length: { maximum: 300 }
-  validates :neighborhood,    presence: true, length: { maximum: 100 }
+  validates :worked_on,       presence: true, length: { maximum: MAX_WORKED_ON_WORDS,       too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
+  validates :part_meaningful, presence: true, length: { maximum: MAX_PART_MEANINGFUL_WORDS, too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
+  validates :ins_failure,     presence: true, length: { maximum: MAX_INS_FAILURE_WORDS,     too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
+  validates :neighborhood,    presence: true, length: { maximum: MAX_NEIGHBORHOOD_WORDS,    too_long: "You have exceeded the %{count} word count!", tokenizer: lambda { |str| str.scan(/\w+/) } }
   validates :assisted_area,   presence: true
   validates :recommend,       presence: true
 
