@@ -38,13 +38,13 @@ RSpec.configure do |config|
 end
 
 def assert_presence(model, field)
-  assert model.invalid?
-  assert_match /can't be blank/, model.errors[field].join
+  model.should be_invalid
+  model.errors[field].join.should match(/can't be blank/)
 end
 
 def assert_email(model, field)
-  assert model.invalid?
-  assert_match /is not an email/, model.errors[field].join
+  model.should be_invalid
+  model.errors[field].join.should match(/is not an email/)
 end
 
 def assert_max_words_count(model, field, max_words)
