@@ -56,25 +56,25 @@
               .numb 2
               .over-hid
                 %label What social projects have you worked on (i.e. volunteerism, community projects, etc.)? <small>(400 WORDS MAX)</small>
-                = f.text_area :worked_on, maxlength: 400
+                = f.text_area :worked_on
                 .red= @resource.errors[:worked_on].first
             .form-row
               .numb 3
               .over-hid
                 %label What was the most meaningful or magical part of 2012 for you? <small>(200 WORDS MAX)</small>
-                = f.text_area :part_meaningful, maxlength: 200
+                = f.text_area :part_meaningful
                 .red= @resource.errors[:part_meaningful].first
             .form-row
               .numb 4
               .over-hid
                 %label What was your most inspiring failure? <small>(300 WORD MAX)</small>
-                = f.text_area :ins_failure, maxlength: 300
+                = f.text_area :ins_failure
                 .red= @resource.errors[:ins_failure].first
             .form-row
               .numb 5
               .over-hid
                 %label What Chicago neighborhood best represents who you are? Why? <small>(100 WORDS MAX)</small>
-                = f.text_area :neighborhood, maxlength: 100
+                = f.text_area :neighborhood
                 .red= @resource.errors[:neighborhood].first
           .head-box-form.icon2
             %p
@@ -90,7 +90,7 @@
               .numb 2
               .over-hid
                 %label Are there any other organization or individuals you would recommend to be a member of the Co-op? If so, why? <small>(200 WORDS)</small>
-                = f.text_area :recommend, maxlength: 200
+                = f.text_area :recommend
                 .red= @resource.errors[:recommend].first
         .row
           = f.submit "Submit Application", class: "form-submit"
