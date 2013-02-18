@@ -17,6 +17,12 @@ describe OrderMailer do
       @email.to[0].should   == order.email
     end
 
+    it 'should have proper content' do
+      @email.body.should match(/Thank you for joining CIW's Member Program/)
+      @email.body.should match(/Hi, #{order.name_on_card}/)
+      @email.body.should match(/With your support we are able to provide world-class/)
+    end
+
   end
 
 end
