@@ -15,9 +15,15 @@ class CooperativeController < ApplicationController
 
     if @resource.save
       CooperativeMailer.send_form(friendlyName).deliver
-      redirect_to thankyou_cooperative_index_path
+      respond_to do |format|
+        format.html { redirect_to thankyou_cooperative_index_path }
+        format.js   { render :nothing => true, :status => 200 }
+      end
     else
-      render :application
+      respond_to do |format|
+        format.html { render :application }
+        format.js   { render :application, :layout => false, :status => :unprocessable_entity }
+      end
     end
   end
 end

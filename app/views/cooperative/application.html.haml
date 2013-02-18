@@ -3,7 +3,7 @@
   .banner_wrapper{:style => "background: url(#{asset_path "application/ciw_banner.jpg"}) top center no-repeat;"}
 .bg-white.clearfix
   #page.coop_application
-    = semantic_form_for @resource, url: cooperative_index_path, method: :post do |f|
+    = semantic_form_for @resource, url: cooperative_index_path, method: :post, :remote => true do |f|
       .left-column
         %h1.head-page-tab
           CIW 2013: Co-op Application
@@ -95,3 +95,8 @@
         .row
           = f.submit "Submit Application", class: "form-submit"
   .clr
+
+.hidden_cooperative{ :data => { :root => root_path }, :display => 'none' }
+= render :partial => 'shared/thank_you_modal',
+         :locals  => { :message    => 'Thank you for applying to the Co-op! Your application has been received. We look forward to learning more about you and your organization!',
+                       :submessage => '' }
