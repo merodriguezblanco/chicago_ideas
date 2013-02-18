@@ -36,3 +36,8 @@
 
         = f.buttons do
           = f.submit :value => "Confirm Purchase", :class => "btn submit", :id => "confirm_purchase"
+
+= render :partial => 'shared/thank_you_modal',
+         :locals  => { :message    => 'Thank you for signing up to our Membership Program! You will be receiving a confirmation email and a receipt sent to the email you supplied momemtarily.',
+                       :submessage => 'Inspire others by sharing Chicago Ideas Week' }
+

@@ -1,0 +1,96 @@
+.thank_you_modal_hidden {
+  display: none;
+}
+
+#thank_you_modal {
+  height: 400px;
+  width: 750px;
+  background: transparent;
+  .thank_you_modal_inner {
+    background: url(application/fancybox/fancy_shadow_n.png) no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    .thank_you_close_button {
+      background: url(application/fancybox/fancy_close_blue.png) no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      height: 25px;
+      width: 25px;
+      right: 0;
+      margin-top: 15px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    .thank_you_info {
+      width: 100%;
+      height: 80%;
+      border-bottom: 1px solid rgb(183, 181, 181);
+      .thank_you_heart {
+        float: left;
+        background: url(application/fancybox/fancy_heart.png) no-repeat;
+        background-size: 100% 100%;
+        width: 206px;
+        height: 206px;
+        margin-top: 60px;
+        margin-left: 60px;
+      }
+      .thank_you_message {
+        float: left;
+        width: 324px;
+        margin-left: 60px;
+        margin-top: 70px;
+        .thank_you_title {
+          font-size: 4em;
+          font-weight: bold;
+          text-align: center;
+          color: rgb(14, 113, 195);
+        }
+        .thank_you_desc {
+          margin-top: 40px;
+          text-align: center;
+        }
+      }
+      .thank_you_share {
+        position: absolute;
+        margin-top: 290px;
+        margin-left: 30px;
+        font-size: 1em;
+      }
+    }
+    .thank_you_share_links {
+      height: 19%;
+      width: 100%;
+      .thank_you_twitter, .thank_you_facebook, .thank_you_stairs {
+        float: left;
+        width: 33.1%;
+        height: 100%;
+        border-top: 1px solid #FFF;
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .thank_you_twitter {
+        a {
+          background: url(application/fancybox/fancy_twitter.png) no-repeat center;
+        }
+        border-right: 1px solid #FFF;
+      }
+      .thank_you_facebook {
+        a {
+          background: url(application/fancybox/fancy_facebook.png) no-repeat center;
+        }
+        border-right: 1px solid #FFF;
+        border-left: 1px solid rgb(183, 181, 181);
+      }
+      .thank_you_stairs {
+        a {
+          background: url(application/fancybox/fancy_stairs.png) no-repeat center;
+        }
+        border-left: 1px solid rgb(183, 181, 181);
+      }
+    }
+  }
+}

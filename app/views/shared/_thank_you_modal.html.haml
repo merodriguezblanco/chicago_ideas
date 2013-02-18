@@ -1,0 +1,20 @@
+.thank_you_modal_hidden
+  #thank_you_modal
+    .thank_you_modal_inner
+      .thank_you_close_button
+      .thank_you_info
+        .thank_you_heart
+        .thank_you_message
+          %p.thank_you_title
+            Thank You!
+          %p.thank_you_desc
+            = message
+        %p.thank_you_share
+          = submessage
+      .thank_you_share_links
+        .thank_you_twitter
+          = link_to '', '#'
+        .thank_you_facebook
+          = link_to '', '#'
+        .thank_you_stairs
+          = link_to '', '#'
