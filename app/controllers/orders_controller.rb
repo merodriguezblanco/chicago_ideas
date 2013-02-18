@@ -11,9 +11,13 @@ class OrdersController < ApplicationController
 
     if @order.process_transaction
       OrderMailer.thank_you_membership(@order).deliver
-      redirect_to thank_you_path(@order.to_param), :notice => "Purchase confirmed"
+      respond_to do |format|
+        format.js { render :nothing => true, :status => 200 }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.js { render :new, :layout => false, :status => :unprocessable_entity }
+      end
     end
   end
 

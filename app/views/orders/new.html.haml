@@ -14,7 +14,7 @@
 
   .box.double.left
     .column_row
-      = semantic_form_for(@order, url: '/payment', method: :post) do |f|
+      = semantic_form_for(@order, url: '/payment', method: :post, :remote => true) do |f|
         .form_section
           %span.form_section_header Billing Information
           = f.inputs :class => "v_lists c_list" do
@@ -37,7 +37,7 @@
         = f.buttons do
           = f.submit :value => "Confirm Purchase", :class => "btn submit", :id => "confirm_purchase"
 
+.hidden_new_order{ :data => { :root => root_path }, :display => 'none' }
 = render :partial => 'shared/thank_you_modal',
          :locals  => { :message    => 'Thank you for signing up to our Membership Program! You will be receiving a confirmation email and a receipt sent to the email you supplied momemtarily.',
                        :submessage => 'Inspire others by sharing Chicago Ideas Week' }
-
