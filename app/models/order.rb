@@ -14,7 +14,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :state
   validates_presence_of :card_number
   validates_presence_of :zip
-  validates_presence_of :password # TODO: add format validation
+  #validates_presence_of :password # TODO: add format validation
 
   validates :expiry_date, :presence => true, :length => { :is => 4 }, :numericality => true
   validates :cvc, :presence => true, :length => { :is => 3 }, :numericality => true

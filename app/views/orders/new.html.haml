@@ -12,28 +12,31 @@
     #page.title_left
       %h1 Membership purchase
 
-  .box.double.left
+  #membership_purchase.box.double.left
     .column_row
       = semantic_form_for(@order, url: '/payment', method: :post, :remote => true) do |f|
         .form_section
           %span.form_section_header Billing Information
+          %hr.form_section_separator
           = f.inputs :class => "v_lists c_list" do
             = f.input :member_type_id,  :as => :hidden, :value => @order.member_type.id
-            = f.input :name_on_card,    :as => :string, :required => true
+            = f.input :name_on_card,    :as => :string, :required => true, :placeholder => 'Full Name'
+            = f.input :email,           :as => :string, :required => true
             = f.input :address,         :as => :string, :required => true
             = f.input :city,            :as => :string, :required => true
-            = f.input :state,           :as => :string, :required => true
-            = f.input :zip,             :as => :string, :required => true, :label => "Zip Code"
+            = f.inputs :class => 'form_state_cards' do
+              = f.input :state,         :as => :string, :required => true
+              %li.form_cards
+                %ul
+                  %li= image_tag 'application/billing_card1.png'
+                  %li= image_tag 'application/billing_card2.png'
+                  %li= image_tag 'application/billing_card3.png'
+                  %li= image_tag 'application/billing_card4.png'
             = f.input :card_number,     :as => :string, :required => true
-            = f.input :cvc,             :as => :string, :required => true, :label => "Verification Code"
-            = f.input :expiry_date,     :as => :string, :required => true, :placeholder => "MMYY"
-
-        .form_section
-          = f.inputs :class => "v_lists c_list" do
-            %span.form_section_header Account Information
-            = f.input :email, :as => :string, :required => true
-            = f.input :password, :as => :password, :required => true, :label=> "Password"
-
+            = f.inputs :class => 'form_expdate_cvc' do
+              = f.input :expiry_date,   :as => :string, :required => true, :label => 'Exp Date', :placeholder => 'MMYY'
+              = f.input :cvc,           :as => :string, :required => true, :label => "CVC"
+            = f.input :zip,             :as => :string, :required => true, :label => "Zip Code"
         = f.buttons do
           = f.submit :value => "Confirm Purchase", :class => "btn submit", :id => "confirm_purchase"
 

@@ -1,0 +1,88 @@
+#membership_purchase {
+  width: 100%;
+  .column_row {
+    padding: 60px;
+    width: 35%;
+    .form_section {
+      border-bottom: none;
+      .form_section_header {
+        font-size: 1.5em;
+        color: rgb(87, 87, 87);
+      }
+      .form_section_separator {
+        margin: 20px auto 30px auto;
+      }
+      .v_lists {
+        ol li {
+          overflow: auto;
+          label {
+            float: left;
+            width: 115px;
+            margin-top: 8px;
+            padding-right: 20px;
+            text-align: right;
+          }
+          input {
+            float: left;
+          }
+          p {
+            float: left;
+            margin-left: 134px;
+            margin-bottom: 0;
+            font-size: 0.8em;
+          }
+        }
+        .form_state_cards {
+          #order_state_input {
+            float: left;
+            width: 60%;
+            input {
+              width: 53px;
+            }
+          }
+          .form_cards {
+            float: left;
+            width: 40%;
+            ul {
+              margin-top: 6px;
+              margin-left: 6px;
+              li {
+                display: inline;
+                img {
+                  width: 30px;
+                }
+              }
+            }
+          }
+        }
+        .form_expdate_cvc {
+          #order_expiry_date_input {
+            float: left;
+            width: 70%;
+            input {
+              width: 88px;
+            }
+          }
+          #order_cvc_input {
+            float: left;
+            width: 25%;
+            margin-left: 16px !important;
+            label {
+              width: 40px;
+              padding-right: 4px;
+            }
+            input {
+              width: 25px;
+            }
+            p {
+              margin-left: 4px;
+            }
+          }
+        }
+      }
+    }
+    .buttons ol input {
+      float: right;
+    }
+  }
+}
