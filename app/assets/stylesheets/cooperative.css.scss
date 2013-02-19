@@ -39,6 +39,10 @@ ul.list-expand{
 	ul.list-expand li.top_level a.expand-btn:hover {text-decoration:none}
 	.hide-expand {display:none;}
 
+ul.list-expand li.top_level #member_exp ol li {
+  list-style-type: decimal;
+}
+
 .join-foot {padding:45px 0px 20px}
 .row-wrap {overflow:hidden; }
 	.row-wrap .big-btn {float:left; margin-right:48px}
