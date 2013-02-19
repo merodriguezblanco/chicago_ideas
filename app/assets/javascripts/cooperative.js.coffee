@@ -16,5 +16,6 @@ $(document).ready ->
       hideOnOverlayClick: false
       centerOnScroll: true
   ).live 'ajax:error', (xhr, data, status) ->
+    $main_header = $('#wrapper > #main_header').detach()
     $('#wrapper').empty()
-    $('#wrapper').html(data.responseText)
+    $('#wrapper').html($main_header).append(data.responseText)
