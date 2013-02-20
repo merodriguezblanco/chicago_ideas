@@ -31,10 +31,10 @@
               = f.input :state,         :as => :string, :required => true
               %li.form_cards
                 %ul
-                  %li= image_tag 'application/billing_card1.png'
-                  %li= image_tag 'application/billing_card2.png'
-                  %li= image_tag 'application/billing_card3.png'
-                  %li= image_tag 'application/billing_card4.png'
+                  %li= image_tag 'application/orders/billing_card1.png'
+                  %li= image_tag 'application/orders/billing_card2.png'
+                  %li= image_tag 'application/orders/billing_card3.png'
+                  %li= image_tag 'application/orders/billing_card4.png'
             = f.input :card_number,     :as => :string, :required => true
             = f.inputs :class => 'form_expdate_cvc' do
               = f.input :expiry_date,   :as => :string, :required => true, :label => 'Exp Date', :placeholder => 'MMYY'
