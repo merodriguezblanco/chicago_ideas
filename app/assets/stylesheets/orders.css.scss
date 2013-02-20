@@ -97,13 +97,13 @@
     }
     .membership_summary {
       width: 100%;
+      padding: 20px 0 20px 30px;
       background: rgb(246, 246, 246);
+      color: rgb(87, 87, 87);
       border-top: 1px solid rgb(193, 193, 193);
       border-bottom: 1px solid rgb(193, 193, 193);
     }
     .need_help {
-      padding: 20px 0 20px 30px;
-      color: rgb(87, 87, 87);
       .need_help_title {
         font-size: 15px;
         font-weight: bold;
@@ -117,6 +117,24 @@
           width: 250px;
           padding-left: 30px;
           font-size: 13px;
+        }
+      }
+    }
+    .share_ciw {
+      margin-top: 30px;
+      .share_title {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .share_info {
+        font-size: 14px;
+      }
+      .share_links {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-align: center;
+        a {
+          padding-right: 15px;
         }
       }
     }
