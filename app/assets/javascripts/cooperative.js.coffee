@@ -4,7 +4,9 @@ $(document).ready ->
     $.fancybox.close()
     window.location.href = $('.hidden_cooperative').attr('data-root')
 
-  $('#new_cooperative_application').live('ajax:success', (xhr, data, status) ->
+  $('#new_cooperative_application').live('ajax:beforeSend', ->
+    $.fancybox.showActivity()
+  ).live('ajax:success', (xhr, data, status) ->
     $.fancybox
       content: $('#thank_you_modal')
       autoDimensions: true
@@ -15,7 +17,10 @@ $(document).ready ->
       hideOnContentClick: false
       hideOnOverlayClick: false
       centerOnScroll: true
-  ).live 'ajax:error', (xhr, data, status) ->
+  ).live('ajax:error', (xhr, data, status) ->
     $main_header = $('#wrapper > #main_header').detach()
     $('#wrapper').empty()
     $('#wrapper').html($main_header).append(data.responseText)
+  ).live('ajax:complete', (xhr, data, status) ->
+    $.fancybox.hideActivity()
+  )
