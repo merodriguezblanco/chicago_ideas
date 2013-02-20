@@ -5,13 +5,13 @@
       %p.detailed_title
         = member_type.name
         %br
-        Price: 
-        = number_to_currency member_type.price_in_cents
+        Price:
+        = number_to_currency member_type.price
       %p.detailed_projected
         (projected members=xx, maximum=xx)
   %p.detailed_content
     = member_type.description
   %p.detailed_total
-    Value = 
-    = number_to_currency member_type.price_in_cents
+    Value =
+    = number_to_currency member_type.price
     = link_to 'BUY', payment_path(:member_id => member_type.id), :class => 'blue_btn'

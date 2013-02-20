@@ -5,8 +5,8 @@
       %p
         = truncate member_type.name, :length => 20
         %br
-        Price: 
-        = number_to_currency member_type.price_in_cents
+        Price:
+        = number_to_currency member_type.price
   .member_buy
     = link_to 'Buy Now', payment_path(:member_id => member_type.id), :class => 'blue_btn'
   .member_more_info
