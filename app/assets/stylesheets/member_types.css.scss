@@ -23,6 +23,7 @@
       width: 50%;
       border-right: 1px solid rgb(182, 176, 176);
       .member_detailed {
+        display: none;
         padding-right: 30px;
         .detailed_header {
           img {
@@ -86,6 +87,7 @@
         border-radius: 7px;
         border-top: 1px solid rgb(166, 166, 166);
         border-bottom: 1px solid #FFF;
+        cursor: pointer;
         div {
           float: left;
         }
@@ -206,4 +208,8 @@
 .blue_btn:hover {
   background-color: #FFFFFF;
   text-decoration: none;
+}
+
+.active_member_type {
+  display: block !important;
 }
