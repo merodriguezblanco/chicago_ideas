@@ -1,0 +1,9 @@
+.membership_summary.member_type_summary.group
+  = image_tag 'application/orders/member_type.png'
+  .member_type_info
+    %p.member_type_name
+      = member_type.name
+      %span.member_type_price
+        = number_to_currency member_type.price_in_cents
+    %p.member_type_description
+      = member_type.description
