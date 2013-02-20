@@ -6,27 +6,7 @@
         %li
           %span Member Program
 
-%section.container#main_content
-  %div#member_program_header
-    %h1 CIW Member Program
-
-    %h2
-      %p Enjoy Unparalleled Access,
-      %p Advanced Tickets,
-      %p & Invitations to Insider Parties!
-
-  %div#member_program_content.clearfix
-    %div#member_program_levels.clearfix
-
-      %h2 Memberships
-      %div
-        - @member_types.each do |mt|
-          %div{:style => "width: 200px; float: left; padding: 5px;"}
-            %h2= mt.name
-            %p{:style => "height: 200px;"}= mt.description
-            %p
-              = number_to_currency(mt.price)
-              = link_to("Buy", payment_path(:member_id => mt.id), :class => "blue_btn")
+= render 'member_types/main_content', :member_types => @member_types
 = render 'member_types/join_ciw'
 = render 'member_types/started_with'
 = render 'member_types/questions'

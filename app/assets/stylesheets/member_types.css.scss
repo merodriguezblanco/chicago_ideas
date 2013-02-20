@@ -1,3 +1,133 @@
+.main_content {
+  min-height: 650px;
+  background: url(application/member_types/main_content_background.png) repeat;
+  background-size: 100% 100%;
+  .main_title {
+    width: 400px;
+    margin: 50px auto auto auto;
+    font-size: 34px;
+    color: rgb(83, 83, 83);
+    text-align: center;
+  }
+  .main_subtitle {
+    width: 330px;
+    margin: 20px auto auto auto;
+    text-align: center;
+    font-size: 15px;
+  }
+  .member_types {
+    width: 90%;
+    margin: 50px auto;
+    .member_type_detailed_container {
+      float: left;
+      width: 50%;
+      border-right: 1px solid rgb(182, 176, 176);
+      .member_detailed {
+        padding-right: 30px;
+        .detailed_header {
+          img {
+            float: left;
+          }
+          .detailed_title_projected {
+            float: left;
+            margin: 15px auto auto 30px;
+            .detailed_title {
+              margin-bottom: 0;
+              padding-bottom: 15px;
+              color: rgb(24,24,24);
+              font-weight: bold;
+              font-size: 23px;
+              border-bottom: 1px solid rgb(160, 154, 154);
+            }
+            .detailed_projected {
+              padding-top: 15px;
+              color: rgb(18,117,197);
+              font-weight: bold;
+              font-size: 16px;
+              border-top: 1px solid white;
+            }
+          }
+        }
+        .detailed_content {
+          min-height: 240px;
+          padding-left: 60px;
+          padding-top: 40px;
+          margin-bottom: 0;
+          font-size: 13px;
+        }
+        .detailed_total {
+          padding-left: 50px;
+          font-size: 13px;
+          font-weight: bold;
+          color: rgb(18, 117, 197);
+          a {
+            float: right;
+            margin-right: 60px;
+            width: 100px;
+          }
+        }
+      }
+    }
+    .member_types_summaries {
+      float: left;
+      width: 45%;
+      padding-left: 30px;
+      border-left: 1px solid #FFF;
+      .join_membership {
+        font-size: 13px;
+        font-weight: bold;
+        color: rgb(97, 97, 97);
+      }
+      .member_summary {
+        width: 450px;
+        margin-top: 15px;
+        background: url(application/member_types/member_summary_background.png) repeat;
+        background-size: 100% 100%;
+        border-radius: 7px;
+        border-top: 1px solid rgb(166, 166, 166);
+        border-bottom: 1px solid #FFF;
+        div {
+          float: left;
+        }
+        .member_info {
+          width: 45%;
+          padding: 2px 0 2px 10px;
+          border-right: 1px solid #FFF;
+          img {
+            float: left;
+          }
+          .member_name_price {
+            float: left;
+            margin-top: 5px;
+            margin-left: 10px;
+            p {
+              margin: 0;
+              color: #000;
+              font-size: 12px;
+              font-weight: bold;
+              line-height: 15px;
+            }
+          }
+        }
+        .member_buy, .member_more_info {
+          height: 45px;
+          width: 25%;
+          text-align: center;
+          border-left: 1px solid rgb(159, 152, 152);
+          a {
+            margin: 8px auto;
+            font-size: 11px;
+            font-weight: bold;
+            width: 60px;
+          }
+        }
+        .member_buy {
+          border-right: 1px solid #FFF;
+        }
+      }
+    }
+  }
+}
 .member_type_join {
   min-height: 220px;
   background: url(application/member_types/join_ciw_background.png) repeat;
@@ -48,4 +178,32 @@
     margin: 30px auto auto auto;
     font-size: 15px;
   }
+}
+
+.group:before, .group:after {
+  content: '';
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1; /* IE6&7 */
+}
+
+.blue_btn {
+  @include border-radius(3px);
+  background-color: #EEEEEE;
+  border: 1px solid #777777;
+  color: #222222;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 8px;
+  padding: 4px 9px;
+  text-align: center;
+  width: 160px;
+}
+.blue_btn:hover {
+  background-color: #FFFFFF;
+  text-decoration: none;
 }
