@@ -11,7 +11,7 @@ listen "#{@app}/tmp/sockets/unicorn.sock", :backlog => 64
 timeout 30
 
 # App PID
-pid "#{@app}/tmp/pids/chicago_ideas_unicorn.pid"
+pid "#{@app}/tmp/pids/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, some applications/frameworks log to stderr or stdout,
