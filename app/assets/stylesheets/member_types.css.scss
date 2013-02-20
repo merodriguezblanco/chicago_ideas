@@ -1,0 +1,17 @@
+.member_type_questions {
+  height: 220px;
+  background: url(application/member_types/questions_background.png);
+  border-top: 1px solid rgb(194, 194, 194);
+  color: rgb(83, 83, 83);
+  text-align: center;
+  .organization {
+    width: 300px;
+    margin: 40px auto auto auto;
+    font-size: 12px;
+  }
+  .questions {
+    width: 400px;
+    margin: 30px auto auto auto;
+    font-size: 15px;
+  }
+}

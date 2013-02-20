@@ -27,3 +27,4 @@
             %p
               = number_to_currency(mt.price)
               = link_to("Buy", payment_path(:member_id => mt.id), :class => "blue_btn")
+= render 'member_types/questions'
