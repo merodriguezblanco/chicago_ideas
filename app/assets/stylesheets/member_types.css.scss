@@ -1,3 +1,19 @@
+.member_type_started_with {
+  height: 220px;
+  text-align: center;
+  .info {
+    width: 650px;
+    margin: 0 auto;
+    padding-top: 40px;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 40px;
+    color: rgb(83, 83, 83);
+    span {
+      color: rgb(14, 113, 195);
+    }
+  }
+}
 .member_type_questions {
   height: 220px;
   background: url(application/member_types/questions_background.png);
