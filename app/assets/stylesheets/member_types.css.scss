@@ -1,3 +1,21 @@
+.member_type_join {
+  min-height: 220px;
+  background: url(application/member_types/join_ciw_background.png) repeat;
+  background-size: 100% 100%;
+  border-top: 1px solid rgb(194, 194, 194);
+  border-bottom: 1px solid rgb(194, 194, 194);
+  .join_content {
+    width: 65%;
+    height: 100%;
+    margin: auto auto;
+    p {
+      float: left;
+      width: 400px;
+      margin: 50px 10px;
+      font-size: 14px;
+    }
+  }
+}
 .member_type_started_with {
   height: 220px;
   text-align: center;
