@@ -13,7 +13,7 @@
       %h1 Membership purchase
 
   #membership_purchase.box.double.left
-    .column_row
+    #membership_form_section.column_row
       = semantic_form_for(@order, url: '/payment', method: :post, :remote => true) do |f|
         .form_section
           %span.form_section_header Billing Information
@@ -39,6 +39,10 @@
             = f.input :zip,             :as => :string, :required => true, :label => "Zip Code"
         = f.buttons do
           = f.submit :value => "Confirm Purchase", :class => "btn submit", :id => "confirm_purchase"
+    #membership_summary_section.colum_row
+      %p.summary_header
+        Summary &amp; Support
+      = render 'need_help'
 
 .hidden_new_order{ :data => { :root => root_path }, :display => 'none' }
 = render :partial => 'shared/thank_you_modal',

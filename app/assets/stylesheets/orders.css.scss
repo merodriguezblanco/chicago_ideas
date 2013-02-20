@@ -1,6 +1,7 @@
 #membership_purchase {
   width: 100%;
-  .column_row {
+  #membership_form_section {
+    float: left;
     padding: 60px;
     width: 35%;
     .form_section {
@@ -85,4 +86,50 @@
       float: right;
     }
   }
+  #membership_summary_section {
+    float: left;
+    width: 40%;
+    padding: 60px;
+    .summary_header {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: rgb(87, 87, 87);
+    }
+    .membership_summary {
+      width: 100%;
+      background: rgb(246, 246, 246);
+      border-top: 1px solid rgb(193, 193, 193);
+      border-bottom: 1px solid rgb(193, 193, 193);
+    }
+    .need_help {
+      padding: 20px 0 20px 30px;
+      color: rgb(87, 87, 87);
+      .need_help_title {
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .need_help_content {
+        img {
+          float: left;
+        }
+        .need_help_info {
+          float: left;
+          width: 250px;
+          padding-left: 30px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.group:before, .group:after { 
+  content: '';
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1; /* IE6&7 */
 }
