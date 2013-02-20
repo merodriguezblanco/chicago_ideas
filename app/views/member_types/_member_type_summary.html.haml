@@ -1,0 +1,13 @@
+.member_summary.group
+  .member_info
+    = image_tag 'application/member_types/member_type.png'
+    .member_name_price
+      %p
+        = truncate member_type.name, :length => 20
+        %br
+        Price: 
+        = number_to_currency member_type.price_in_cents
+  .member_buy
+    = link_to 'Buy Now', payment_path(:member_id => member_type.id), :class => 'blue_btn'
+  .member_more_info
+    = link_to 'More Info', '', :class => 'blue_btn'

@@ -1,0 +1,17 @@
+.member_detailed
+  .detailed_header.group
+    = image_tag 'application/member_types/member_type_big.png'
+    .detailed_title_projected
+      %p.detailed_title
+        = member_type.name
+        %br
+        Price: 
+        = number_to_currency member_type.price_in_cents
+      %p.detailed_projected
+        (projected members=xx, maximum=xx)
+  %p.detailed_content
+    = member_type.description
+  %p.detailed_total
+    Value = 
+    = number_to_currency member_type.price_in_cents
+    = link_to 'BUY', payment_path(:member_id => member_type.id), :class => 'blue_btn'
