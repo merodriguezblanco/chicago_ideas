@@ -1,8 +1,7 @@
 $(document).ready ->
 
-  $('div.thank_you_close_button') .live "click", ->
+  $('a.thank_you_close_button') .live "click", ->
     $.fancybox.close()
-    window.location.href = $('.hidden_cooperative').attr('data-root')
 
   $('#new_cooperative_application').live('ajax:beforeSend', ->
     $.fancybox.showActivity()

@@ -1,7 +1,7 @@
 .thank_you_modal_hidden
   #thank_you_modal
     .thank_you_modal_inner
-      .thank_you_close_button
+      = link_to (image_tag 'application/fancybox/fancy_close_blue.png'), root_path, :class => 'thank_you_close_button'
       .thank_you_info
         .thank_you_heart
         .thank_you_message
