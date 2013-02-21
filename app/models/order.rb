@@ -8,7 +8,6 @@ class Order < ActiveRecord::Base
 
 
   validates_presence_of :name_on_card
-  validates_presence_of :email # TODO: add format validation
   validates_presence_of :address
   validates_presence_of :city
   validates_presence_of :state
@@ -16,6 +15,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :zip
   #validates_presence_of :password # TODO: add format validation
 
+  validates :email, :email => true, :presence => true
   validates :expiry_date, :presence => true, :length => { :is => 4 }, :numericality => true
   validates :cvc, :presence => true, :length => { :is => 3 }, :numericality => true
 
