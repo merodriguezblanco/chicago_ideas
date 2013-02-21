@@ -4,6 +4,8 @@ class MemberType < ActiveRecord::Base
   include SearchSortPaginate
 
 
+  validates :minimum_members, numericality: true
+
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
   has_many :members
@@ -42,6 +44,11 @@ class MemberType < ActiveRecord::Base
         { :name => :created_at, :as => :datetimerange },
       ]
     end
+  end
+
+  def maximum_members_string
+    return "unlimited" if maximum_members == 0
+    maximum_members
   end
 
 end
