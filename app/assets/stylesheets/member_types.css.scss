@@ -182,34 +182,6 @@
   }
 }
 
-.group:before, .group:after {
-  content: '';
-  display: table;
-}
-.group:after {
-  clear: both;
-}
-.group {
-  zoom: 1; /* IE6&7 */
-}
-
-.blue_btn {
-  @include border-radius(3px);
-  background-color: #EEEEEE;
-  border: 1px solid #777777;
-  color: #222222;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 8px;
-  padding: 4px 9px;
-  text-align: center;
-  width: 160px;
-}
-.blue_btn:hover {
-  background-color: #FFFFFF;
-  text-decoration: none;
-}
-
 .active_member_type {
   display: block !important;
 }
