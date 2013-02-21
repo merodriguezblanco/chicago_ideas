@@ -2,8 +2,8 @@
   = image_tag 'application/orders/member_type.png'
   .member_type_info
     %p.member_type_name
-      = member_type.name
+      = truncate member_type.name, :length => 27
       %span.member_type_price
         = number_to_currency member_type.price
     %p.member_type_description
-      = member_type.description
+      = truncate member_type.description, :length => 150
