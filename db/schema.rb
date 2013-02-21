@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214151900) do
+ActiveRecord::Schema.define(:version => 20130221014955) do
 
   create_table "affiliate_event_applications", :force => true do |t|
     t.string   "first_name",           :null => false
@@ -366,7 +366,9 @@ ActiveRecord::Schema.define(:version => 20130214151900) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.integer  "price_in_cents", :default => 0
+    t.integer  "price_in_cents"
+    t.integer  "projected_members", :default => 0
+    t.integer  "maximum_members",   :default => 0
   end
 
   add_index "member_types", ["name"], :name => "index_member_types_on_name"
@@ -402,14 +404,17 @@ ActiveRecord::Schema.define(:version => 20130214151900) do
   add_index "notes", ["author_id"], :name => "index_notes_on_author_id"
 
   create_table "orders", :force => true do |t|
-    t.integer  "total_in_cents",              :default => 0
-    t.boolean  "approved",                    :default => false
+    t.integer  "total_in_cents"
+    t.boolean  "approved"
     t.integer  "user_id"
     t.integer  "member_type_id"
-    t.string   "number",         :limit => 8,                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
+    t.text     "response_data"
   end
+
+  add_index "orders", ["token"], :name => "index_orders_on_token"
 
   create_table "partners", :force => true do |t|
     t.string   "name",              :limit => 100, :null => false
