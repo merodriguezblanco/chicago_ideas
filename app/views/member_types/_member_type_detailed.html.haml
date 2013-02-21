@@ -8,7 +8,7 @@
         Price:
         = number_to_currency member_type.price
       %p.detailed_projected
-        (projected members=xx, maximum=xx)
+        (projected members=#{ member_type.projected_members }, maximum=#{ member_type.maximum_members_string })
   %p.detailed_content
     = member_type.description
   %p.detailed_total
