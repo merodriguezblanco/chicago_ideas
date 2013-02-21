@@ -3,8 +3,8 @@ class MemberType < ActiveRecord::Base
   # my bone dry solution to search, sort and paginate
   include SearchSortPaginate
 
-
-  validates :minimum_members, numericality: true
+  validates :projected_members, numericality: { :greater_than => 0, only_integer: true }
+  validates :maximum_members, numericality: { :greater_than_or_equal_to => 0, only_integer: true }
 
   # we have a polymorphic relationship with notes
   has_many :notes, :as => :asset
@@ -15,13 +15,13 @@ class MemberType < ActiveRecord::Base
   end
 
   def price
-    return 0 if @price.nil?
-    @price || price_in_cents / 100
+    price_in_cents / 100
   end
 
   before_save :set_price_in_cents
+
   def set_price_in_cents
-    self.price_in_cents = price.to_i * 100 if price.to_i * 100 != price_in_cents
+    self.price_in_cents = @price.to_i * 100 if @price.to_i * 100 != price_in_cents
   end
 
   # the hash representing this model that is returned by the api
