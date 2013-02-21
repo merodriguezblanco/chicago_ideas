@@ -13,7 +13,7 @@ class MemberType < ActiveRecord::Base
   end
 
   def price
-    return nil if self.new_record?
+    return 0 if @price.nil?
     @price || price_in_cents / 100
   end
 
