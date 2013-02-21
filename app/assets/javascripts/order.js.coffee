@@ -1,8 +1,7 @@
 $(document).ready ->
 
-  $('div.thank_you_close_button') .live "click", ->
+  $('a.thank_you_close_button') .live "click", ->
     $.fancybox.close()
-    window.location.href = $('.hidden_new_order').attr('data-root')
 
   $('#new_order').live('ajax:beforeSend', ->
     $.fancybox.showActivity()

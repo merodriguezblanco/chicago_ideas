@@ -96,7 +96,6 @@
           = f.submit "Submit Application", class: "btn submit form-submit"
   .clr
 
-.hidden_cooperative{ :data => { :root => root_path }, :display => 'none' }
 = render :partial => 'shared/thank_you_modal',
          :locals  => { :message    => 'Thank you for applying to the Co-op! Your application has been received. We look forward to learning more about you and your organization!',
                        :submessage => '' }
